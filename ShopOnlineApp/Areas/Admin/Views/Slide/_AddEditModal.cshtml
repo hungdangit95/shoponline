@@ -1,0 +1,79 @@
+﻿<div id="modal-add-edit" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Add edit Slide</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" id="frmMaintainance">
+                        <div class="form-group">
+                            <input type="hidden" id="hidIdM" value="0" />
+                            <label for="txtNameM" class="col-sm-2 control-label no-padding-right">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtNameM" class="form-control" id="txtNameM">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">Category</label>
+                            <div class="col-sm-10">
+                                <select id="ddlGroupAlias" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtDescM" class="col-sm-2 control-label no-padding-right">Description</label>
+                            <div class="col-sm-10">
+                                <textarea rows="4" name="txtDescM" class="form-control" id="txtDescM"></textarea>
+                            </div>
+                        </div>
+                     
+                        <div class="form-group">
+                            <label for="txtName" class="col-sm-2 control-label no-padding-right">Chọn ảnh</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input type="file" id="fileImages" />
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="hidden" id="hidId" value="" />
+                                @*<div id="image_place" class="col-md-12">
+                                </div>*@
+                                <img style="padding-left:-1px;" width="300px;" id="image_place" src=""  class="" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtContentM" class="col-sm-2 control-label no-padding-right">Content</label>
+                            <div class="col-sm-10">
+                                <textarea id="txtContent" rows="6" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtURL" class="col-sm-2 control-label no-padding-right">URL</label>
+                            <div class="col-sm-10">
+                                <input name="txtURL" class="form-control" id="txtURL"></input>
+                            </div>
+                        </div>
+                       
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" checked="checked" id="ckStatusM">
+                                        <span class="text">Active.</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSave" class="btn btn-success">Save changes</button>
+                                <button type="button" id="btnCancel" data-dismiss="modal" class="btn btn-danger">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

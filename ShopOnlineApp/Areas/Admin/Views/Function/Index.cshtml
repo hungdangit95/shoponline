@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
+    @*<script src="~/app/controller/product-category/index.js" asp-append-version="true"></script>*@
+    <script src="~/app/controller/function/index.js" asp-append-version="true"></script>
+    <script>
+        var functions = new functionController();
+        functions.initialize();
+    </script>
+}
+<div class="page-title">
+    <div class="title_left">
+        <h3>Functions <small>List Function</small></h3>
+    </div>
+    <div class="title_right">
+        <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right">
+            <button class="btn btn-success" id="btnCreate" type="button">Create</button>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <ul id="treeFunction"></ul>
+                <div id="contextMenu" class="easyui-menu" style="width: 120px;">
+                    <div id="btnEdit" data-id="5" data-options="iconCls:'icon-edit'">Sửa</div>
+                    <div id="btnDelete" data-options="iconCls:'icon-remove'">Xoá</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("_AddOrEditFunction.cshtml");

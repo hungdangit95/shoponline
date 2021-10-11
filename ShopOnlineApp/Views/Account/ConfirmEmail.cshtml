@@ -1,0 +1,167 @@
+﻿@{
+    ViewData["Title"] = "Confirm email";
+}
+<!-- Breadcrumbs -->
+
+<style>
+    .register--container .register-header .title-wrapper .title-bar a {
+        font-weight: 500;
+        color: #584d4d;
+        font-size: 13px;
+        margin: 0;
+        letter-spacing: 0.3px;
+    }
+    .text-primary {
+        color: #EB5D13 !important;
+    }
+    .text-bold {
+        font-weight: 500;
+    }
+    text-muted {
+        color: #73717a !important;
+    }
+    .text-center {
+        text-align: center !important;
+    }
+    .text-font-13 {
+        font-size: 13px !important;
+    }
+    .text-font-14 {
+        font-size: 14px !important;
+    }
+    .register--container .register-body {
+        padding: 1rem;
+    }
+    .justify-content-center {
+        justify-content: center !important;
+    }
+    .flex-column {
+        flex-direction: column !important;
+    }
+    .d-flex {
+        display: flex !important;
+    }
+    btn-primary {
+        color: #fff;
+        background-color: #EB5D13;
+        border-color: #EB5D13;
+    }
+   
+</style>
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Go to Home Page" href="/">Home</a><span>&raquo;</span></li>
+                    <li><strong>Register</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+<section class="main-container col1-layout">
+    <div class="main container">
+            <div class="page-content">
+                <div class="account-login">
+                    <div class="col-md-3 col-sm-2"></div>
+                    <div class="col-md-6 col-sm-8">
+                        <div class="d-flex register-header justify-content-center">
+                            <ul class="d-flex list-unstyled m-0 title-wrapper">
+                                <li class="title-bar"><a> Thông báo</a></li>
+                            </ul>
+                        </div>
+                        <div class="d-flex flex-column register-body justify-content-center">
+
+                            <div class="register-success-container">
+
+                                <div class="form-group">
+                                    <h5 class="text-muted text-center">Xin chúc mừng, tài khoản của bạn đã được tạo thành công!</h5>
+                                    @*<p class="text-muted text-center text-font-13">
+                                        Tài khoản: <span class="text-bold text-primary">abiding4@mailinator.com</span>
+                                    </p>*@
+                                </div>
+                                <div class="form-group success-wraper">
+                                    <div class="row mt-5">
+                                        <div class="col-sm-8">
+                                            <p class="text-muted text-font-14 text-uppercase text-bold">Bạn đã có thể</p>
+                                            <p><i aria-hidden="true" class="fa fa-check-circle text-green"></i> Gửi yêu cầu báo giá.</p>
+                                            <p>
+                                                <i aria-hidden="true" class="fa fa-check-circle text-green"></i> Trao đổi, thương lượng với
+                                                nhà cung cấp.
+                                            </p>
+                                            <p><i aria-hidden="true" class="fa fa-check-circle text-green"></i> Đặt mua sản phẩm/dịch vụ.</p>
+                                            <p>
+                                                <i aria-hidden="true" class="fa fa-check-circle text-green"></i> Nhiều ưu đãi và khuyến mại
+                                                khác...
+                                            </p>
+                                        </div>
+                                        <!----><div class="col-sm-4 pt-2 ng-star-inserted" style="background: #fafafa;">
+
+
+
+
+                                            @*<h6 class="text-primary">abiding4@mailinator.com</h6>*@
+                                            <p>
+                                                <a class="text-muted" href="https://identity.vietvatlieu.com/connect/authorize?client_id=Abiding&amp;response_type=id_token token&amp;scope=Abiding_Api openid&amp;state=15532757625450.1436932870877914&amp;nonce=vN6DSgCA8P&amp;redirect_uri=https://workspace.vietvatlieu.com/authentication-callback.html?route=/supplier/store-profile">
+                                                    <i aria-hidden="true" class="fa fa-hand-o-right">
+                                                    </i> Bổ sung thông tin gian hàng
+                                                </a>
+                                            </p>
+                                            <p>
+                                                <a class="text-muted" href="https://helpcenter.vietvatlieu.com/#ho-tro-nha-cung-cap">
+                                                    <i aria-hidden="true" class="fa fa-hand-o-right"></i> Hướng dẫn cho người
+                                                    bán mới
+                                                </a>
+                                            </p>
+                                            <p>
+                                                <a class="text-muted" href="/subscriptions">
+                                                    <i aria-hidden="true" class="fa fa-hand-o-right"></i> Tìm hiểu nâng cấp gói kinh
+                                                    doanh VIP
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group  d-flex  justify-content-center">
+                                    <a  class="btn btn-primary mr-1 text-uppercase" href="/">
+                                        <i class="icofont-arrow-left icofont text-font-16"></i>
+                                        Về mua sắm
+                                    </a>
+                                    <a class="btn btn-outline-primary  ml-1 text-uppercase" href="https://identity.vietvatlieu.com/connect/authorize?client_id=Abiding&amp;response_type=id_token token&amp;scope=Abiding_Api openid&amp;state=15532757625440.041419853070790325&amp;nonce=vN6DSgCA8P&amp;redirect_uri=https://workspace.vietvatlieu.com/authentication-callback.html?route=/buyer/dashboard">Quản lý mua bán</a>
+                                </div>
+                            </div>
+
+                            <div class="row learn-more-container d-none d-md-flex">
+                                <div class="col-sm-4">
+                                    <p class="text-bold text-uppercase text-muted text-font-13">Mẹo &amp; chỉ dẫn mua hàng</p>
+                                    <p class="text-muted text-font-12">Hướng dẫn sử dụng, mua hàng, gửi yêu cầu, hướng dẫn cho người bán.</p>
+                                    <a class="btn btn-sm btn-outline-primary mt-2" href="https://helpcenter.vietvatlieu.com/?cat=52">Tìm hiểu</a>
+                                </div>
+                                <div class="col-sm-4 border-left">
+                                    <p class="text-bold text-uppercase text-muted  text-font-13">Gửi yêu cầu báo giá</p>
+                                    <p class="text-muted text-font-12">Gửi ngay yêu cầu để nhận được báo giá tốt nhất về sản phẩm bạn quan tâm!</p>
+                                    <a class="btn btn-sm btn-outline-primary mt-2" href="/rfq">Tạo yêu cầu</a>
+                                </div>
+                                <div class="col-sm-4 border-left">
+                                    <p class="text-bold text-uppercase text-muted  text-font-13">Gói nhà cung cấp</p>
+                                    <p class="text-muted text-font-12">Nâng cấp để kinh doanh hiệu quả hơn với các gói nhà cung cấp VIP.</p>
+                                    <a class="btn btn-sm btn-outline-primary mt-2" href="/subscriptions">Nâng cấp</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+</section>
+
+<!-- Main Container End -->
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

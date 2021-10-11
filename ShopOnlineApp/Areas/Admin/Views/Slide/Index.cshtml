@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Scripts
+    {
+    @*<script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
+        <script src="~/app/controller/product/quantity-management.js"></script>
+        <script src="~/app/controller/product/image-management.js"></script>
+        <script src="~/app/controller/product/whole-price-management.js"></script>*@
+    <script src="~/app/controller/slide/index.js" asp-append-version="true"></script>
+    <script>
+        var slide = new slideController();
+        slide.initialize();
+    </script>
+}
+<div class="page-title">
+    <div class="title_left">
+        <h3>Slides</h3>
+    </div>
+
+    <div class="title_right">
+        <div class="col-md-4 col-sm-5 col-xs-12 form-group pull-right">
+            <div class="input-group">
+                <input type="text" id="txtKeyword" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" id="btnSearch" type="button">Tìm kiếm!</button>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-12  form-group pull-right">
+            <select class="form-control" id="ddlCategorySearch">
+                <option>--Chọn loại--</option>
+            </select>
+        </div>
+        <div class="col-md-5 col-sm-12  form-group pull-right">
+            <button id="btnCreate" class="btn btn-success">Tạo</button>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix">
+</div>
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>List Slide</h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Tên</th>
+                        <th>Loại</th>
+                        <th>Description</th>
+                        <th>Ảnh</th>
+                        <th>Url</th>
+                        <th>Trang thái</th>
+                        <th width="20%">#</th>
+                    </tr>
+                </thead>
+                <tbody id="tbl-content"></tbody>
+            </table>
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
+                        <select class="col-sm-2" id="ddlShowPage">
+                            <option value="10" selected="selected">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                        </select>
+                        <span class="item-per-page">
+                            bản ghi/trang.
+                        </span>
+                        Tổng số bản ghi: <strong id="lblTotalRecords"></strong>
+                    </div>
+                </div><div class="col-sm-12">
+                    <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
+                        <ul id="paginationUL"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<script id="table-template" type="x-tmpl-mustache">
+    <tr>
+        <td>{{Name}}</td>
+        <td>{{GroupAlias}}</td>
+        <td>
+            {{Description}}
+        </td>
+        <td>{{{Image}}}</td>
+        <td>{{Url}}</td>
+        <td>{{{Status}}}</td>
+        <th scope="row">
+            <a class="btn  btn-sm btn-edit" data-id="{{Id}}"><i class="fa fa-pencil"></i></a>
+            <a class="btn  btn-sm btn-delete" data-id="{{Id}}"><i class="fa fa-trash"></i></a>
+        </th>
+    </tr>
+</script>
+@Html.Partial("_AddEditModal.cshtml")

@@ -1,0 +1,187 @@
+﻿@model ShopOnlineApp.Application.ViewModels.Bill.BillViewModel
+@{
+    ViewData["Title"] = "ConfirmOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    //var data = (BillViewModel)ViewBag.BillModel ?? new BillViewModel();
+    decimal totalPrice = 0;
+}
+@*<div class="single_top">
+        <div class="single_grid">
+            <h1>Kết quả giao dịch</h1>
+            @{
+                var success = (bool)ViewBag.IsSuccess;
+            }
+            @if (success)
+            {
+                <div class="alert alert-success">@ViewBag.Result Vui lòng <a href="/">click vào đây</a> để về trang chủ.</div>
+            }
+            else
+            {
+                <div class="alert alert-danger">@ViewBag.Result. Vui lòng <a href="/">click vào đây</a> để về trang chủ.</div>
+            }
+
+            <div class="clearfix"> </div>
+        </div>
+    </div>*@
+<style>
+    hoan-tat-avt, .echbay-blog-avt {
+        background: #fff center no-repeat url(../images-global/noavatar.png);
+        /* background-size: auto 100%; */
+        background-size: contain;
+    }
+</style>
+<!-- Breadcrumbs -->
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Go to Home Page" href="/">Home</a><span>&raquo;</span></li>
+                    <li><strong>Checkout</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+<section class="main-container col2-right-layout">
+    <div class="main container">
+        <div class="row">
+            <div class="col-main col-sm-12 col-xs-12">
+                <div class="page-title">
+                    <h2>Checkout</h2>
+                </div>
+                <div class="page-content checkout-page">
+                        @if ((bool)ViewBag.IsSuccess)
+                        {
+                         
+                            <div id="container">
+                                <section id="main-content">
+                                    <div id="main" style="min-height:250px;">
+                                        <div id="rME">
+                                            <div class="medium l25 w90">
+                                                <div class="padding-global-content col-main-content">
+                                                    <div class="col-main-padding col-booking-done-padding">
+                                                        <p class="big text-center upper">Thanh toán đơn hàng thành công!</p>
+                                                        <br>
+                                                        <div>Mã đơn hàng: <span class="redcolor bold medium18">@Model.Id</span></div>
+                                                        <br>
+                                                        <div>Rất cảm ơn bạn đã mua hàng!</div>
+                                                        <br>
+                                                        <div>
+                                                            <span class="bold">Shop online</span> đã ghi nhận đơn hàng của bạn.<br>
+                                                            Chúng tôi sẽ sớm giao hàng cho bạn !<br>
+                                                            <br>
+                                                            <span class="bold" style="text-decoration:underline">Xin bạn lưu ý</span>: Email xác nhận Đơn hàng đã được gửi đến địa chỉ Email của bạn. Nếu bạn không tìm thấy trong Hộp thư đến (Inbox) vui lòng kiểm tra hộp thư Spam hoặc Junk Folder.<br>
+                                                            <br>
+                                                            Nếu bạn có bất kỳ thắc mắc nào, xin vui lòng liên hệ với chúng tôi qua đường dây nóng: <span class="bold redcolor medium phone-numbers-inline"><a href="tel:0986705655" rel="nofollow" class="gg-phone-conversion">0983491814</a></span>.<br>
+                                                            <div id="show-product-for-google">
+                                                                <br>
+                                                                <h3 class="l35 text-center">Thông tin khách hàng</h3>
+                                                                <div class="hoantat-cus-padding l20 gray2bg">
+                                                                    <div>Số đơn hàng: <strong>@Model.Id</strong></div>
+                                                                    <div>Khách hàng: <strong>@Model.CustomerName</strong></div>
+                                                                    <div>Số điện thoại: <strong>@Model.CustomerMobile</strong></div>
+                                                                    <div>Địa chỉ nhận hàng: <strong>@Model.CustomerAddress</strong></div>
+                                                                    <div>Ghi chú của khách hàng: <strong>@Model.CustomerMessage</strong></div><br>
+                                                                    @*<div>Hình thức thanh toán: <strong>@((ShopOnlineApp.Data.Enums.PaymentMethod)data.PaymentMethod)</strong></div>
+                                                                        <div>Trạng thái thanh toán: <strong>Chưa thanh toán</strong></div>*@
+                                                                </div>
+                                                                <h3 class="l35 text-center">Chi tiết đơn hàng</h3><div class="hoantat-post-padding l20 tborder lborder rborder bborder">
+                                                                    <div class="cf">
+                                                                    @if (@Model.BillDetails.Any())
+                                                                    {
+                                                                        foreach (var item in Model.BillDetails)
+                                                                        {
+                                                                            totalPrice += item.Price*item.Quantity;
+
+                                                                            <div class="row">
+                                                                                <div class="col-md-5">
+                                                                                    <div class="lf f25 fullsize-if-mobile">
+                                                                                        <div data-size="1" style="text-align: center;">
+                                                                                            <img width="117px;" src="@item.Product?.Image"/>
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-7">
+                                                                                    <div class="lf f75 fullsize-if-mobile">
+
+
+                                                                                        <div class="left-menu-space">
+                                                                                            <h4><a href="javascript:void(0);" target="_blank" class="bluecolor">@item.Product?.Name</a></h4>
+                                                                                            <div class="l30">
+                                                                                                <div class="redcolor"><strong class="ebe-currency">@item.Product?.Price</strong></div>
+                                                                                                <div>Màu sắc: @item.Color?.Name </div>
+                                                                                                <div>Kích thước: @item.Size?.Name </div>
+                                                                                                <div>Số lượng: @item.Quantity</div>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                    </div>
+
+
+                                                                                </div>
+                                                                           
+                                                                                <hr/>
+                                                                            </div>
+
+                                                                            <p>&nbsp;</p>
+                                                                        }
+                                                                    }
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="row hoantat-post-padding l20 lborder rborder bborder cf center-if-mobile">
+                                                                    <div class="col-md-3">
+
+                                                                    </div>
+                                                                    <div class="col-md-7">
+                                                                        <div>
+
+                                                                            <div class="lf f25 fullsize-if-mobile ">Tổng giá trị đơn hàng</div>
+                                                                            <div class="lf f25 fullsize-if-mobile">
+                                                                                <div class="left-menu-space"><strong class="ebe-currency medium18 redcolor"> $ @totalPrice</strong></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <br>
+
+                                                            <div>
+                                                                Trân trọng,<br>
+                                                                <span class="bold">Đội ngũ OnlineShop - Đơn vị cung cấp đồ quần áo cao cấp hàng đầu Việt Nam</span>
+                                                            </div>
+                                                            <br>
+                                                            <div class="cf center-if-mobile"><a href="/" class="medium w-button default-bg d-inline">« Trở về Trang chủ</a></div>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+
+                                        </div>
+                                    </div>
+                                </section>
+                                <section id="sidebar"></section>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-danger">
+                                Have an error in order progress. Please contact to administrator.
+                            </div>
+                        }
+                   
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

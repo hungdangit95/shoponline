@@ -1,0 +1,80 @@
+﻿@model ShopOnlineApp.Models.BlogViewModel.BlogFilterViewModel
+@{
+    ViewData["Title"] = "Content";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Go to Home Page" href="/">Home</a><span>&raquo;</span></li>
+                    <li><strong>Danh sách tin tức</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="blog_post">
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- Center colunm-->
+            <div class="center_column col-xs-12 col-sm-12" id="center_column">
+                <div class="page-title">
+                    <h2>Blog</h2>
+                </div>
+                <div class="toolbar column">
+                    <form action="blogs.html" method="get">
+                        <div class="sorter">
+                            <div class="short-by">
+                                <label>Sort By:</label>
+                                <select name="sortBy" asp-for="SortType"
+                                        onchange="this.form.submit()" asp-items="Model.SortTypes"></select>
+                            </div>
+                            <div class="short-by page">
+                                <label>Show:</label>
+                                <select name="pageSize" asp-for="PageSize" onchange="this.form.submit()"
+                                        asp-items="Model.PageSizes"></select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="product-grid-area">
+                    <ul class="blog-posts">
+                        @foreach (var item in Model.Data.Items)
+                        {
+                            var url = "/" + item.SeoAlias + "-b." + item.Id + ".html";
+
+                            <li class="post-item wow fadeInUp">
+                                <article class="entry">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="entry-thumb image-hover2">
+                                                <a href="blog_single_post.html">
+                                                    <figure><img src="@item.Image" alt="Blog"></figure>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <h3 class="entry-title"><a href="@url">@item.Name</a></h3>
+                                            <div class="entry-meta-data"> <span class="author"> <i class="pe-7s-user"></i>&nbsp; by: <a href="#">Admin</a></span> <span class="cat"> <i class="pe-7s-folder"></i>&nbsp; <a href="#">News, </a> <a href="#">Promotions</a> </span> <span class="comment-count"> <i class="pe-7s-comment"></i>&nbsp; 3 </span> <span class="date"><i class="pe-7s-date"></i>&nbsp; @item.DateModified.ToString("dd MMM yyyy", CultureInfo.InvariantCulture)</span> </div>
+                                            <div class="entry-excerpt">@item.Description </div>
+                                            <div class="entry-more"> <a href="/@item.SeoAlias-b.@(item.Id).html" class="button"> Continus reading &nbsp; <i class="fa fa-angle-double-right"></i></a> </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+                @*@(await Component.InvokeAsync("PagerBlog", Model.Data))*@
+                @Html.Partial("_PagerBlog.cshtml", Model.Data)
+            </div>
+            <!-- ./ Center colunm -->
+        </div>
+        <!-- ./row-->
+    </div>
+</section>
+

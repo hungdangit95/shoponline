@@ -1,0 +1,29 @@
+version: '3.4'
+volumes:
+  shoponline:
+networks:
+  backend:
+services:
+  mssqlserver:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    networks:
+      - backend
+    volumes:
+      - shoponline:/var/lib/mssql
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Pa55w0rd2021"
+      MSSQL_PID: Express
+    ports:
+      - "1433:1433"
+  shoponlineapp:
+    image: ${DOCKER_REGISTRY-}shoponlineapp
+    networks:
+      - backend
+    environment:
+      - DBHOST=mssqlserver
+    depends_on:
+      - mssqlserver 
+    build:
+      context: .
+      dockerfile: ShopOnlineApp/Dockerfile

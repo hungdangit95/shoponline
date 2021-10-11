@@ -1,0 +1,178 @@
+﻿@model ShopOnlineApp.Application.ViewModels.Bill.BillViewModel
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var totalPrice = "";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Go to Home Page" href="index.html">Home</a><span>&raquo;</span></li>
+                    <li><strong>Order Information</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+<section class="main-container col2-right-layout">
+    <div class="main container">
+        <div class="row">
+            <div class="col-main col-sm-9 col-xs-12">
+                <div class="my-account">
+                    <div class="page-title">
+                        <h2>Order Information</h2>
+                    </div>
+                    <div class="orders-list table-responsive">
+                        <!--order info tables-->
+                        <table class="table table-bordered cart_summary table-striped">
+                            <tr>
+                                <td class="order-number">Order Number</td>
+                                <td data-title="Order Number">@Model.Id</td>
+                            </tr>
+                            <tr>
+                                <td class="order-number">Order Date</td>
+                                <td data-title="Order Date">@Model.DateCreated.Value.ToString("MM/dd/yyyy")</td>
+                            </tr>
+                            <tr>
+                                <td class="order-number">Order Status</td>
+                                <td data-title="Order Status">@Model.BillStatus</td>
+                            </tr>
+                            <tr>
+                                <td class="order-number">Last Updated</td>
+                                <td data-title="Last Update">@Model.DateModified.Value.ToString("MM/dd/yyyy")</td>
+                            </tr>
+                            <tr>
+                                <td class="order-number">Total</td>
+                                @foreach (var orderDetail in Model.BillDetails)
+                                {
+                                    totalPrice = (orderDetail.Price * orderDetail.Quantity).ToString("N0");
+                                }
+                                <td data-title="Total"><p>$ @totalPrice</p></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6 col-sm-6">
+                            <div class="page-title">
+                                <h2>Ship To</h2>
+                            </div>
+
+                            <table class="table table-bordered cart_summary">
+
+                                <tr>
+                                    <td> Name</td>
+                                    <td data-title="First Name">@Model.CustomerName</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Address </td>
+                                    <td data-title="Address 1">@Model.CustomerAddress</td>
+                                </tr>
+                                <tr>
+                                    <td>Message</td>
+                                    <td data-title="City">@Model.CustomerMessage </td>
+                                </tr>
+                                <tr>
+                                    <td>Phone</td>
+                                    <td data-title="Phone">@Model.CustomerMobile</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <p>&nbsp;</p>
+
+                    <div class="row">
+                        <h3 class="l35 text-center">Chi tiết đơn hàng</h3><div class="hoantat-post-padding l20 tborder lborder rborder bborder">
+                            <div class="cf">
+                                @if (Model.BillDetails.Any())
+                                {
+                                    foreach (var item in Model.BillDetails)
+                                    {
+                                        totalPrice += item.Price * item.Quantity;
+
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <div class="lf f25 fullsize-if-mobile">
+                                                    <div data-size="1" style="text-align: center;">
+                                                        <img width="117px;" src="@item.Product.Image" />
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-7">
+
+                                                <div class="lf f75 fullsize-if-mobile">
+
+
+                                                    <div class="left-menu-space">
+                                                        <h4><a href="javascript:void(0);" target="_blank" class="bluecolor">@item.Product.Name</a></h4>
+                                                        <div class="l30">
+                                                            <div class="redcolor"><strong class="ebe-currency">@item.Product.Price</strong></div>
+                                                            <div>Màu sắc: @item.Color.Name </div>
+                                                            <div>Kích thước: @item.Size.Name </div>
+                                                            <div>Số lượng: @item.Quantity</div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+                                        <p>&nbsp;</p>
+
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <aside class="right sidebar col-sm-3 col-xs-12">
+                <div class="sidebar-account block">
+                    <div class="sidebar-bar-title">
+                        <h3>My Account</h3>
+                    </div>
+                    <div class="block-content">
+                        <ul>
+                            <li><a>Account Dashboard</a></li>
+                            <li><a href="#">Account Information</a></li>
+                            <li><a href="#">Address Book</a></li>
+                            <li><a href="#">My Orders</a></li>
+                            <li><a href="#">Billing Agreements</a></li>
+                            <li><a href="#">Recurring Profiles</a></li>
+                            <li><a href="#">My Product Reviews</a></li>
+                            <li><a href="#">My Tags</a></li>
+                            <li class="current"><a href="#">My Wishlist</a></li>
+                            <li><a href="#">My Downloadable</a></li>
+                            <li class="last"><a href="#">Newsletter Subscriptions</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="compare block">
+                    <div class="sidebar-bar-title">
+                        <h3>Compare Products (2)</h3>
+                    </div>
+                    <div class="block-content">
+                        <ol id="compare-items">
+                            <li class="item"> <a href="#" title="Remove This Item" class="remove-cart"><i class="icon-close"></i></a> <a href="#" class="product-name">Vestibulum porta tristique porttitor.</a> </li>
+                            <li class="item"> <a href="#" title="Remove This Item" class="remove-cart"><i class="icon-close"></i></a> <a href="#" class="product-name">Lorem ipsum dolor sit amet</a> </li>
+                        </ol>
+                        <div class="ajax-checkout">
+                            <button type="submit" title="Submit" class="button button-compare"> <span> Compare</span></button>
+                            <button type="submit" title="Submit" class="button button-clear"> <span> Clear All</span></button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>

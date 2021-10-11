@@ -1,0 +1,120 @@
+﻿@model ShopOnlineApp.Models.ProductViewModels.DetailViewModel
+
+@section Scripts{
+
+    <script src="~/client-app/controllers/product/details.js" asp-append-version="true"></script>
+    <script src="~/client-app/controllers/wish-list/Index.js" asp-append-version="true"></script>
+    <script>
+        var productObj = new ProductDetailController();
+        productObj.initialize();
+
+        var wishListObj = new wishListController();
+        wishListObj.initialize();
+    </script>
+}
+
+<div id="quick_view_popup-overlay"></div>
+<div style="display: block;" id="quick_view_popup-wrap">
+</div>
+<div id="quick_view_popup-outer">
+    <div id="quick_view_popup-content">
+        <div style="width: auto; height: auto; overflow: auto; position: relative;">
+            <div class="product-view-area">
+                <div class="product-big-image col-xs-12 col-sm-5 col-lg-5 col-md-5">
+                    <div class="icon-sale-label sale-left">Sale</div>
+                    <div class="large-image"> <a href="@Model.Product.Image" class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20"> <img class="zoom-img" src="@Model.Product.Image"> </a> </div>
+                    <div class="flexslider flexslider-thumb">
+                        <ul class="previews-list slides">
+                            @foreach (var item in Model.ProductImages)
+                            {
+                                <li><a href='@item.Path' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: '@item.Path' "><img src="@item.Path" alt="Thumbnail 2" /></a></li>
+                            }
+
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-xs-12 col-sm-7 col-lg-7 col-md-7">
+                    <div class="product-details-area">
+                        <div class="product-name">
+                            <h1>@Model.Product.Name</h1>
+                        </div>
+                        <div class="price-box">
+                            @*<p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $ @Model.Product.PromotionPrice </span> </p>
+                                <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $ @Model.Product.OriginalPrice </span> </p>*@
+                            @if (Model.Product.PromotionPrice.HasValue)
+                            {
+                                <p class="special-price">
+                                    <span class="price-label">Special Price</span>
+                                    <span class="price"> @Model.Product.PromotionPrice.Value.ToString("N0") </span>
+                                </p>
+                                <p class="old-price">
+                                    <span class="price-label">Regular Price:</span>
+                                    <span class="price"> @Model.Product?.Price.ToString("N0") (vnd) </span>
+                                </p>
+                            }
+                            else
+                            {
+                                <p class="special-price">
+                                    <span class="price-label">Special Price</span>
+                                    <span class="price"> @Model.Product?.Price.ToString("N0") (vnd) </span>
+                                </p>
+                            }
+                        </div>
+                        <div class="ratings">
+                       
+                            <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> </div>
+                            <p class="availability pull-right  @(Model.Product.Status==ShopOnlineApp.Data.Enums.Status.Active?"in-stock":"out-of-stock")">Availability: <span>In Stock</span></p>
+                        </div>
+                        <div class="short-description">
+                            <h2>Quick Overview</h2>
+                            <p>@Html.Raw(Model.Product.Content)</p>
+                        </div>
+                        <div class="product-color-size-area">
+                            <div class="color-area">
+                                <h2 class="saider-bar-title">Color</h2>
+                                <div class="color">
+                                    <select asp-items="Model.Colors" id="ddlColorId" style="width: 81px;"></select>
+                                </div>
+                            </div>
+                            <div class="size-area">
+                                <h2 class="saider-bar-title">Size</h2>
+                                <div class="size">
+                                    <select asp-items="Model.Sizes" id="ddlSizeId"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-variation">
+                            <form action="#" method="post">
+                                <div class="cart-plus-minus">
+                                    <label for="qty">Quantity:</label>
+                                    <div class="numbers-row">
+                                        <div onClick="var result = document.getElementById('txtQuantity'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;" class="dec qtybutton"><i class="fa fa-minus">&nbsp;</i></div>
+                                        <input type="text" class="qty" title="Qty" value="1" maxlength="12" id="txtQuantity" name="txtQuantity">
+                                        <div onClick="var result = document.getElementById('txtQuantity'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="inc qtybutton"><i class="fa fa-plus">&nbsp;</i></div>
+                                    </div>
+                                </div>
+                                <button class="button pro-add-to-cart" id="btnAddToCart" data-id="@Model.Product.Id" title="Add to Cart" type="button"><span><i class="fa fa-shopping-basket"></i> Add to Cart</span></button>
+                            </form>
+                        </div>
+                        <div class="product-cart-option">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-heart"></i><span>Add to Wishlist</span></a></li>
+                                <li><a href="#"><i class="fa fa-retweet"></i><span>Add to Compare</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--product-view-->
+
+        </div>
+    </div>
+    <a style="display: inline;" id="quick_view_popup-close" onclick="goBack()" href="javascript:void(0);"><i class="icon pe-7s-close"></i></a>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>

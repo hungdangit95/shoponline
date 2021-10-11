@@ -1,0 +1,120 @@
+﻿@model IEnumerable<ShopOnlineApp.Application.ViewModels.Bill.BillViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string totalPrice = "";
+}
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Go to Home Page" href="index.html">Home</a><span>&raquo;</span></li>
+                    <li><strong>Orders List</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+<section class="main-container col2-right-layout">
+    <div class="main container">
+        <div class="row">
+            <div class="col-main col-sm-9 col-xs-12">
+                <div class="my-account">
+                    <div class="page-title">
+                        <h2>Orders List</h2>
+                    </div>
+                    @if (Model.Any())
+                    {
+                        <div class="orders-list table-responsive">
+                            <!--orders list table-->
+                            <table class="table table-bordered cart_summary table-striped">
+                                <thead>
+                                    <tr>
+                                        <!--titles for td-->
+                                        <th>Order Number</th>
+                                        <th>Order Date</th>
+                                        <th>Order Status</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var order in Model.AsParallel())
+                                    {
+                                        var url = "order." + order.Id + ".html";
+                                        foreach (var orderDetail in order.BillDetails)
+                                        {
+                                            totalPrice = (orderDetail.Price * orderDetail.Quantity).ToString("N0");
+                                        }
+                                        <tr>
+                                            <!--order number-->
+                                            <td data-title="Order Number"><a href="@url" class="order-number">@order.Id</a></td>
+                                            <!--order date-->
+                                            <td data-title="Order Date">@order.DateCreated.Value.ToString("dd/MM/yyyy") </td>
+                                            <!--order status-->
+                                            <td data-title="Order Status">@order.BillStatus</td>
+                                            <!--quanity-->
+                                            <td data-title="Total">
+                                                <span class="order-total">
+                                                    $ @totalPrice 
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="orders-list table-responsive">
+                            <div class="alert alert-danger" role="alert">
+                                Không có đơn hàng nào
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+            <aside class="right sidebar col-sm-3 col-xs-12">
+                <div class="sidebar-account block">
+                    <div class="sidebar-bar-title">
+                        <h3>My Account</h3>
+                    </div>
+                    <div class="block-content">
+                        <ul>
+                            <li><a>Account Dashboard</a></li>
+                            <li><a href="#">Account Information</a></li>
+                            <li><a href="#">Address Book</a></li>
+                            <li><a href="#">My Orders</a></li>
+                            <li><a href="#">Billing Agreements</a></li>
+                            <li><a href="#">Recurring Profiles</a></li>
+                            <li><a href="#">My Product Reviews</a></li>
+                            <li><a href="#">My Tags</a></li>
+                            <li class="current"><a href="#">My Wishlist</a></li>
+                            <li><a href="#">My Downloadable</a></li>
+                            <li class="last"><a href="#">Newsletter Subscriptions</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="compare block">
+                    <div class="sidebar-bar-title">
+                        <h3>Compare Products (2)</h3>
+                    </div>
+                    <div class="block-content">
+                        <ol id="compare-items">
+                            <li class="item"> <a href="#" title="Remove This Item" class="remove-cart"><i class="icon-close"></i></a> <a href="#" class="product-name">Vestibulum porta tristique porttitor.</a> </li>
+                            <li class="item"> <a href="#" title="Remove This Item" class="remove-cart"><i class="icon-close"></i></a> <a href="#" class="product-name">Lorem ipsum dolor sit amet</a> </li>
+                        </ol>
+                        <div class="ajax-checkout">
+                            <button type="submit" title="Submit" class="button button-compare"> <span> Compare</span></button>
+                            <button type="submit" title="Submit" class="button button-clear"> <span> Clear All</span></button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>

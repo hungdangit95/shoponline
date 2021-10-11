@@ -1,0 +1,122 @@
+﻿@model ExternalLoginViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<!-- Breadcrumbs -->
+<style>
+    .rc-anchor.rc-anchor-normal.rc-anchor-light {
+        margin-top: 8px;
+    }
+</style>
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Go to Home Page" href="/">Home</a><span>&raquo;</span></li>
+                    <li><strong>Associate your @ViewData["LoginProvider"] account.</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+<section class="main-container col1-layout">
+    <div class="main container">
+        <div class="page-content">
+            <div class="account-login">
+                <div class="col-md-3 col-sm-2"></div>
+                <div class="col-md-6 col-sm-8">
+                    <p class="text-info">
+                        You've successfully authenticated with <strong>@ViewData["LoginProvider"]</strong>.
+                        Please enter an email address for this site below and click the Register button to finish
+                        logging in.
+                    </p>
+                    <div class="single-input p-bottom50 clearfix">
+                        <form asp-action="ExternalLoginConfirmation" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="col-sm-6">
+                                <label asp-for="FullName"></label>
+                                <div class="input-text">
+                                    <input type="text" asp-for="FullName" name="fullName" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label asp-for="Email"></label>
+                                <div class="input-text">
+                                    <input type="text" name="email" asp-for="Email" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label asp-for="DOB"></label>
+                                <div class="input-text">
+                                    <input type="date" asp-for="DOB" name="dob" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label asp-for="PhoneNumber"></label>
+                                <input asp-for="PhoneNumber" class="form-control" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label asp-for="Gender"></label>
+                                <div class="input-text">
+                                    <label><input asp-for="Gender" value="true" type="radio" />Male</label>
+                                    <span class="d-none">sdsdsdsd</span>
+                                    <label><input asp-for="Gender" value="false" type="radio" />Female</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label asp-for="Address"></label>
+                                <div class="input-text">
+                                    <input type="text" asp-for="Address" name="Address" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <label asp-for="Avatar"></label>
+                                <div class="input-group">
+                                    <span><img id="image_place" src="./client-side/images/default-image.png" width="140px" height="140px"></span>
+                                    <input type="file" id="fileImages" style="margin-top: 10px;">
+                                </div>
+                                <input type="hidden" asp-for="Avatar" id="avatar" />
+                            </div>
+                            <p>&nbsp;</p>
+                            <div class="col-sm-6">
+                                <div class=" col-md-12">
+                                    <recaptcha />
+                                    <span class="text-danger" id="recaptchaErrorMessage"></span>
+                                </div>
+                            </div>
+                            <p>&nbsp;</p>
+                            <div class="col-sm-12">
+                                <div class="submit-text">
+                                    <button type="submit" class="button"><i class="fa fa-user"></i>&nbsp; <span>Register</span></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Main Container End -->
+
+@section Scripts {
+
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <recaptcha-script validation-message-element-id="recaptchaErrorMessage" />
+    <script src="~/client-app/controllers/account/register.js" asp-append-version="true"></script>
+    <script>
+        $(function() {
+            var register = new registerController();
+            register.initialize();
+        });
+    </script>
+}

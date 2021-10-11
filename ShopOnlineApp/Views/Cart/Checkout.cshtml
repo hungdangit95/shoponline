@@ -1,0 +1,459 @@
+﻿@using ShopOnlineApp.Application.ViewModels.Bill
+@model CheckoutViewModel
+@{
+    ViewData["Title"] = "Checkout";
+
+    var data = (BillViewModel)ViewBag.BillModel ?? new BillViewModel();
+    decimal totalPrice = 0;
+
+}
+@section Scripts {
+    <recaptcha-script validation-message-element-id="recaptchaErrorMessage" />
+
+    @await Html.PartialAsync("_ValidationScriptsPartial");
+
+    <script src="~/client-app/controllers/cart/shoppingCart.js" asp-append-version="true"></script>
+}
+<style>
+    hoan-tat-avt, .echbay-blog-avt {
+        background: #fff center no-repeat url(../images-global/noavatar.png);
+        /* background-size: auto 100%; */
+        background-size: contain;
+    }
+</style>
+<!-- Breadcrumbs -->
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul>
+                    <li class="home"> <a title="Go to Home Page" href="/">Home</a><span>&raquo;</span></li>
+                    <li><strong>Checkout</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs End -->
+<!-- Main Container -->
+<section class="main-container col2-right-layout">
+    <div class="main container">
+        <div class="row">
+            <div class="col-main col-sm-12 col-xs-12">
+                <div class="page-title">
+                    <h2>Checkout</h2>
+                </div>
+                <div class="page-content checkout-page">
+                    @if (ViewData["Success"] != null)
+                    {
+                        if ((bool)ViewData["Success"])
+                        {
+                            @*<div class="alert alert-success">
+                                    Thank you for your order. We are going to confirm your order soon.
+
+                                </div>*@
+                            <div id="container">
+                                <section id="main-content">
+                                    <div id="main" style="min-height:250px;">
+                                        <div id="rME">
+                                            <div class="medium l25 w90">
+                                                <div class="padding-global-content col-main-content">
+                                                    <div class="col-main-padding col-booking-done-padding">
+                                                        <p class="big text-center upper">Đơn hàng của bạn đã được gửi đi!</p>
+                                                        <br>
+                                                        <div>Mã đơn hàng: <span class="redcolor bold medium18">@data.Id</span></div>
+                                                        <br>
+                                                        <div>Rất cảm ơn bạn đã mua hàng!</div>
+                                                        <br>
+                                                        <div>
+                                                            <span class="bold">Shop online</span> đã ghi nhận đơn hàng của bạn.<br>
+                                                            Đơn hàng sẽ được xác nhận bới quản trị viên để bạn có thể hoàn thành nốt việc thanh toán.<br>
+                                                            <br>
+                                                            <span class="bold" style="text-decoration:underline">Xin bạn lưu ý</span>: Email xác nhận Đơn hàng đã được gửi đến địa chỉ Email của bạn. Nếu bạn không tìm thấy trong Hộp thư đến (Inbox) vui lòng kiểm tra hộp thư Spam hoặc Junk Folder.<br>
+                                                            <br>
+                                                            Nếu bạn có bất kỳ thắc mắc nào, xin vui lòng liên hệ với chúng tôi qua đường dây nóng: <span class="bold redcolor medium phone-numbers-inline"><a href="tel:0986705655" rel="nofollow" class="gg-phone-conversion">0986 70 5655</a></span>.<br>
+                                                            <div id="show-product-for-google">
+                                                                <br>
+                                                                <h3 class="l35 text-center">Thông tin khách hàng</h3>
+                                                                <div class="hoantat-cus-padding l20 gray2bg">
+
+                                                                    <div>Số đơn hàng: <strong>@data.Id</strong></div>
+                                                                    <div>Khách hàng: <strong>@data.CustomerName</strong></div>
+                                                                    <div>Số điện thoại: <strong>@data.CustomerMobile</strong></div>
+                                                                    <div>Địa chỉ nhận hàng: <strong>@data.CustomerAddress</strong></div>
+                                                                    <div>Ghi chú của khách hàng: <strong>@data.CustomerMessage</strong></div><br>
+                                                                    @*<div>Hình thức thanh toán: <strong>@((ShopOnlineApp.Data.Enums.PaymentMethod)data.PaymentMethod)</strong></div>
+                                                                        <div>Trạng thái thanh toán: <strong>Chưa thanh toán</strong></div>*@
+                                                                </div>
+                                                                <h3 class="l35 text-center">Chi tiết đơn hàng</h3><div class="hoantat-post-padding l20 tborder lborder rborder bborder">
+                                                                    <div class="cf">
+                                                                        <div class="row">
+                                                                            @if (data.BillDetails.Any())
+                                                                            {
+                                                                                foreach (var item in data.BillDetails)
+                                                                                {
+                                                                                    totalPrice += item.Price;
+                                                                                    <div class="col-md-3">
+                                                                                        <div class="lf f25 fullsize-if-mobile">
+                                                                                            <div data-size="1" style="text-align: center;">
+                                                                                                <img width="117px;" src="@item.Product.Image" />
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-7">
+
+                                                                                        <div class="lf f75 fullsize-if-mobile">
+
+
+                                                                                            <div class="left-menu-space">
+                                                                                                <h4><a href="javascript:void(0);" target="_blank" class="bluecolor">@item.Product.Name</a></h4>
+                                                                                                <div class="l30">
+                                                                                                    <div class="redcolor"><strong class="ebe-currency">@item.Product.Price</strong></div>
+                                                                                                    <div>Màu sắc: @item.Color.Name </div>
+                                                                                                    <div>Kích thước: @item.Size.Name </div>
+                                                                                                    <div>Số lượng: @item.Quantity</div>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                        </div>
+
+
+                                                                                    </div>
+                                                                                }
+                                                                            }
+                                                                            <hr />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="row hoantat-post-padding l20 lborder rborder bborder cf center-if-mobile">
+                                                                    <div class="col-md-3">
+
+                                                                    </div>
+                                                                    <div class="col-md-7">
+                                                                        <div>
+
+                                                                            <div class="lf f25 fullsize-if-mobile ">Tổng giá trị đơn hàng</div>
+                                                                            <div class="lf f25 fullsize-if-mobile">
+                                                                                <div class="left-menu-space"><strong class="ebe-currency medium18 redcolor"> $@totalPrice</strong></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <br>
+
+                                                            <div>
+                                                                Trân trọng,<br>
+                                                                <span class="bold">Đội ngũ OnlineShop - Đơn vị cung cấp đồ quần áo cao cấp hàng đầu Việt Nam</span>
+                                                            </div>
+                                                            <br>
+                                                            <div class="cf center-if-mobile"><a href="/" class="medium w-button default-bg d-inline">« Trở về Trang chủ</a></div>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+
+                                        </div>
+                                    </div>
+                                </section>
+                                <section id="sidebar"></section>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-danger">
+                                Have an error in order progress. Please contact to administrator.
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        if (Model.Carts != null)
+                        {
+                            <form method="post" id="frmPayment">
+                                @Html.AntiForgeryToken()
+                                @*<h4 class="checkout-sep">1. Checkout Method</h4>
+                                <div class="box-border">
+                                    <div class="row">
+
+                                        @if (!User.Identity.IsAuthenticated)
+                                        {
+                                            <div class="col-sm-6">
+                                                <h5>Login</h5>
+                                                <p>Already registered? Please log in below:</p>
+                                                <button class="button" onclick="window.location.href='/login.html'"><i class="icon-login"></i>&nbsp; <span>Login</span></button>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>*@
+
+                                <h4 class="checkout-sep">1. Shipping Information</h4>
+                                <div class="box-border">
+                                    <ul>
+                                        <li class="row">
+                                            <div class="col-sm-6">
+                                                <label class="required">Full name</label>
+                                                <input class="input form-control" id="txtName" type="text" >
+                                            </div>
+                                            <!--/ [col] -->
+                                            <div class="col-sm-6">
+                                                <label class="required">Phone</label>
+                                                <input class="input form-control"  id="txtPhone" type="text" >
+                                            </div>
+                                        </li>
+
+                                        <li class="row">
+                                            <div class="col-xs-12">
+                                                <label class="required">Address</label>
+                                                <input id="txtAddress" class="input form-control" type="text">
+                                            </div>
+
+                                        </li>
+
+                                        <li class="row">
+                                            <div class="col-sm-12">
+                                                <label class="required">Message</label>
+                                                <input id="txtMessage" class="input form-control" type="text" >
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <h4 class="checkout-sep">2. Payment Information</h4>
+                                <div class="box-border">
+                                    <ul>
+                                        @*@for (int i = 0; i < Model.PaymentMethods.Count; i++)
+                                            {
+                                                <li>
+                                                    <label asp-for="@Model.PaymentMethods[i].Value">
+                                                        <input type="radio" name="paymentMethod" asp-for="PaymentMethod" value="@Model.PaymentMethods[i].Value">
+                                                        @Model.PaymentMethods[i].Name
+                                                    </label>
+                                                </li>
+                                            }*@
+                                        <label><input type="radio" id="rdoCash" name="paymentMethod" value="CASH" checked="checked" /> Tiền mặt</label>
+                                        <label><input type="radio" id="rdoNL" name="paymentMethod" value="NL" /> TK VNPAY</label>
+
+                                        <label><input type="radio" id="rdoBank" value="ATM_ONLINE" name="paymentMethod" /> Thẻ Ngân hàng nội địa</label>
+
+                                        <label><input type="radio" id="rdoVisa" name="paymentMethod" value="VISA" /> VISA</label>
+                                        <div id="codContent" class="boxContent" style="display:none;">
+                                            <p>
+                                               Được thanh toán tiền sau  khi giao hàng
+                                            </p>
+                                        </div>
+                                        <div id="bankContent" class="boxContent" style="display:none;">
+                                            Danh sách ngân hàng nội địa:
+                                            <ul class="cardList clearfix">
+                                                <li class="bank-online-methods ">
+                                                    <label for="vcb_ck_on">
+                                                        <i class="VCB"  title="Ngân hàng TMCP Ngoại Thương Việt Nam"></i>
+                                                        <input type="radio" name="creditCard" ID="VCB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="vnbc_ck_on">
+                                                        <i class="DAB" title="Ngân hàng Đông Á"></i>
+                                                        <input type="radio" name="creditCard" ID="DAB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="tcb_ck_on">
+                                                        <i class="TCB" title="Ngân hàng Kỹ Thương"></i>
+                                                        <input type="radio" name="creditCard" ID="TCB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="sml_atm_mb_ck_on">
+                                                        <i class="MB" title="Ngân hàng Quân Đội"></i>
+                                                        <input type="radio" name="creditCard" ID="MB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="shb_ck_on">
+                                                        <i class="SHB" title="Ngân hàng Sài Gòn - Hà Nội"></i>
+                                                        <input type="radio" name="creditCard" ID="SHB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="sml_atm_vib_ck_on">
+                                                        <i class="VIB" title="Ngân hàng Quốc tế"></i>
+                                                        <input type="radio" name="creditCard" ID="VIB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="sml_atm_vtb_ck_on">
+                                                        <i class="ICB" title="Ngân hàng Công Thương Việt Nam"></i>
+                                                        <input type="radio" name="creditCard" ID="ICB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="sml_atm_exb_ck_on">
+                                                        <i class="EXB" title="Ngân hàng Xuất Nhập Khẩu"></i>
+                                                        <input type="radio" name="creditCard" ID="EXB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="sml_atm_acb_ck_on">
+                                                        <i class="ACB" title="Ngân hàng Á Châu"></i>
+                                                        <input type="radio" name="creditCard" ID="ACB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="sml_atm_hdb_ck_on">
+                                                        <i class="HDB" title="Ngân hàng Phát triển Nhà TPHCM"></i>
+                                                        <input type="radio" name="creditCard" ID="HDB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="sml_atm_msb_ck_on">
+                                                        <i class="MSB" title="Ngân hàng Hàng Hải"></i>
+                                                        <input type="radio" name="creditCard" ID="MSB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="sml_atm_nvb_ck_on">
+                                                        <i class="NVB" title="Ngân hàng Nam Việt"></i>
+                                                        <input type="radio" name="creditCard" ID="NVB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="sml_atm_vab_ck_on">
+                                                        <i class="VAB" title="Ngân hàng Việt Á"></i>
+                                                        <input type="radio" name="creditCard" ID="VAB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="sml_atm_vpb_ck_on">
+                                                        <i class="VPB" title="Ngân Hàng Việt Nam Thịnh Vượng"></i>
+                                                        <input type="radio" name="creditCard" ID="VPB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="sml_atm_scb_ck_on">
+                                                        <i class="SCB" title="Ngân hàng Sài Gòn Thương tín"></i>
+                                                        <input type="radio" name="creditCard" ID="SCB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="ojb_ck_on">
+                                                        <i class="OJB" title="Ngân hàng Đại Dương"></i>
+                                                        <input type="radio" name="creditCard" ID="OJB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="bnt_atm_pgb_ck_on">
+                                                        <i class="PGB" title="Ngân hàng Xăng dầu Petrolimex"></i>
+                                                        <input type="radio" name="creditCard" ID="PGB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="bnt_atm_gpb_ck_on">
+                                                        <i class="GPB" title="Ngân hàng TMCP Dầu khí Toàn Cầu"></i>
+                                                        <input type="radio" name="creditCard" ID="GPB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="bnt_atm_agb_ck_on">
+                                                        <i class="AGB" title="Ngân hàng Nông nghiệp &amp; Phát triển nông thôn"></i>
+                                                        <input type="radio" name="creditCard" ID="AGB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="bnt_atm_sgb_ck_on">
+                                                        <i class="SGB" title="Ngân hàng Sài Gòn Công Thương"></i>
+                                                        <input type="radio" name="creditCard" ID="SGB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="bnt_atm_nab_ck_on">
+                                                        <i class="NAB" title="Ngân hàng Nam Á"></i>
+                                                        <input type="radio" name="creditCard" ID="NAB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                                <li class="bank-online-methods ">
+                                                    <label for="sml_atm_bab_ck_on">
+                                                        <i class="BAB" title="Ngân hàng Bắc Á"></i>
+                                                        <input type="radio" name="creditCard" ID="BAB" GroupName="bankcode" />
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div id="nganluongContent" class="boxContent" style="display:none;">
+                                            <p>
+                                                Thanh toán trực tuyến AN TOÀN và ĐƯỢC BẢO VỆ, sử dụng thẻ ngân hàng trong và ngoài nước hoặc nhiều hình thức tiện lợi khác.
+                                                Được bảo hộ & cấp phép bởi NGÂN HÀNG NHÀ NƯỚC, ví điện tử duy nhất được cộng đồng ƯA THÍCH NHẤT 2 năm liên tiếp, Bộ Thông tin Truyền thông trao giải thưởng Sao Khuê
+                                                <br />Giao dịch. Đăng ký ví NgânLượng.vn miễn phí <a href="https://www.nganluong.vn/?portal=nganluong&amp;page=user_register" target="_blank">tại đây</a>
+                                            </p>
+                                        </div>
+                                    </ul>
+                                    @*<button class="button"><i class="fa fa-angle-double-right"></i>&nbsp; <span>Continue</span></button>*@
+                                </div>
+                                <h4 class="checkout-sep last">3. Order Review</h4>
+                                <div class="box-border">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered cart_summary">
+                                            <thead>
+                                                <tr>
+                                                    <th class="cart_product">Product</th>
+                                                    <th>Description</th>
+                                                    <th>Unit price</th>
+                                                    <th>Qty</th>
+                                                    <th>Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model.Carts)
+                                                {
+                                                    <tr>
+                                                        <td class="cart_product"><a href="/@item.Product.SeoAlias-p.@(item.Product.Id).html"><img src="@item.Product.Image" alt="@item.Product.Name"></a></td>
+                                                        <td class="cart_description">
+                                                            <p class="product-name"><a href="/@item.Product.SeoAlias-p.@(item.Product.Id).html">@item.Product.Name </a></p>
+                                                            <small><a href="#">Color : @item.Color.Name</a></small><br>
+                                                            <small><a href="#">Size : @item.Size.Name</a></small>
+                                                        </td>
+                                                        <td class="price"><span>@item.Price.ToString("N0") </span></td>
+                                                        <td class="qty">@item.Quantity</td>
+                                                        <td class="price"><span> $ @((item.Price * item.Quantity).ToString("N0")) </span></td>
+                                                    </tr>
+
+                                                }
+
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="3"><strong>Total</strong></td>
+                                                    <td colspan="2"><strong> $ @Model.Carts.Sum(x => x.Quantity * x.Price).ToString("N0") </strong></td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <recaptcha /><span class="text-danger" id="recaptchaErrorMessage"></span>
+                                    <button type="button" class="button" onclick="window.location.href='/cart.html'"><span>Back to cart</span></button>
+
+                                    <button id="btnCreateOrder" class="button pull-right"><span>Buy Now</span></button>
+                                </div>
+                            </form>
+                        }
+                        else
+                        {
+                            <div class="panel panel-danger">
+                                <div class="panel-heading">There are no items in your cart <a href="/">Continue Shopping</a> </div>
+                            </div>
+                        }
+
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Main Container End -->

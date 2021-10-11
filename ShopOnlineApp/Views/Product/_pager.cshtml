@@ -1,0 +1,65 @@
+﻿@model ShopOnlineApp.Data.EF.Common.ModelListResult<ProductViewModel>
+@{
+    var data = Model;
+
+    var urlTemplate = Url.Action() + "?page={0}";
+    var request = ViewContext.HttpContext.Request;
+    foreach (var key in request.Query.Keys)
+    {
+        if (key == "page")
+        {
+            continue;
+        }
+
+        urlTemplate += "&" + key + "=" + request.Query[key];
+    }
+    int startIndex = 0;
+    int finishIndex = 0;
+    if (Model != null)
+    {
+        startIndex = Math.Max(Model.PageIndex - 5, 1);
+        finishIndex = Math.Min(Model.PageIndex + 5, Model.PageCount);
+    }
+}
+@if (Model != null)
+{
+    <div class="pagination-area">
+        <div class="col-md-4 col-sm-4 items-info">
+            Từ @Model.FirstRowOnPage đến @Model.LastRowOnPage của @Model.RowCount sản phẩm
+        </div>
+        <div class="col-md-8 col-sm-8">
+            @if (Model.PageCount >= 1)
+            {
+                <ul>
+                    @if (Model.PageIndex == startIndex)
+                    {
+                        <li><i class="fa fa-angle-left"></i></li>
+                    }
+                    else
+                    {
+                        <li><a href="@urlTemplate.Replace("{0}", Model.PageCount.ToString())"><i class="fa fa-angle-left"></i></a></li>
+                    }
+                    @for (var i = startIndex; i <= finishIndex; i++)
+                    {
+                        if (i == Model.PageIndex)
+                        {
+                            <li><a class="active" href="#"><span>@i</span></a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@urlTemplate.Replace("{0}", i.ToString())">@i</a></li>
+                        }
+                    }
+                    @if (Model.PageIndex == finishIndex)
+                    {
+                        <li><i class="fa fa-angle-right"></i></li>
+                    }
+                    else
+                    {
+                        <li><a href="@urlTemplate.Replace("{0}", Model.PageCount.ToString())"><i class="fa fa-angle-right"></i></a></li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+}

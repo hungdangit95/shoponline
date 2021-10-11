@@ -1,0 +1,72 @@
+﻿<div id="modal-add-edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add/Update Function </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" id="frmMaintainance">
+
+                        <div class="form-group">
+                            <label for="txtId" class="col-sm-2 control-label no-padding-right">Id</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtId" class="form-control" id="txtId" placeholder="Id">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" id="hidIdM" value="0" />
+                            <label for="txtNameM" class="col-sm-2 control-label no-padding-right">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtNameM" class="form-control" id="txtNameM" placeholder="Name of Function">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label no-padding-right">Parent</label>
+                            <div class="col-sm-10">
+                                <input style="min-width: 250px !important; " id="ddlFunctionIdM" class="form-control" name="ddlCategoryIdM" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtOrderM" class="col-sm-2 control-label no-padding-right">Sort Order</label>
+                            <div class="col-sm-10">
+                                <input type="number" name="txtOrderM" class="form-control" id="txtOrderM">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtURL" class="col-sm-2 control-label no-padding-right">URL</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtURL" class="form-control" id="txtURL">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtIconCss" class="col-sm-2 control-label no-padding-right">IconCss</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtIconCss" class="form-control" id="txtIconCss">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" checked="checked" id="ckStatusM">
+                                        <span class="text">Active.</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnCancel" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="btnSave" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

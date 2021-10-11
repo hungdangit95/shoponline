@@ -1,0 +1,141 @@
+﻿@using Microsoft.AspNetCore.Localization
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic page needs -->
+    <meta charset="utf-8">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Online Shop</title>
+    <meta name="description" content="best template, template free, responsive theme, fashion store, responsive theme, responsive html theme, Premium website templates, web templates, Multi-Purpose Responsive HTML5 Template">
+    <meta name="keywords" content="bootstrap, ecommerce, fashion, layout, responsive, responsive template, responsive template download, responsive theme, retail, shop, shopping, store, Premium website templates, web templates, Multi-Purpose Responsive HTML5 Template" />
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="@ViewData["MetaKeyword"]">
+    <meta name="keywords" content="@ViewData["MetaDescription"]" />
+    <!-- Mobile specific metas  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicons Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    @*<link href="~/lib/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom/jquery-ui.theme.min.css" rel="stylesheet" />*@
+    <!-- CSS Style -->
+    <link rel="stylesheet" href="~/client-side/style.css">
+    <link href="~/client-side/css/jquery-ui.css" rel="stylesheet" />
+    <link href="~/lib/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/client-side/css/jquery-ui.css" rel="stylesheet" />
+    <link href="~/client-side/css/quick_view_popup.css" rel="stylesheet" />
+    <link href="~/client-side/css/revolution-slider.css" rel="stylesheet" />
+    <link href="~/client-side/css/flexslider.css" rel="stylesheet" />
+    <link href="~/client-side/css/blog.css" rel="stylesheet" />
+    <link href="~/client-side/css/pe-icon-7-stroke.min.css" rel="stylesheet" />
+    <link href="~/client-side/css/owl.carousel.css" rel="stylesheet" />
+    <link href="~/client-side/css/owl.transitions.css" rel="stylesheet" />
+    <link href="~/client-side/custome.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+
+    <style>
+        ul#ui-id-1 {
+            /* width: 500px; */
+            width: 513px;
+        }
+
+        .ui-menu .ui-menu-item {
+            padding: 5px 1em 10px .4em;
+        }
+    </style>
+    @RenderSection("Styles", required: false);
+</head>
+
+<body class="@ViewData["BodyClass"]">
+
+    <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- mobile menu -->
+    @await Component.InvokeAsync("MobileMenu")
+    <!-- end mobile menu -->
+    <div id="page">
+
+        <!-- Header -->
+        @Html.Partial("_Header.cshtml")
+        <!-- end header -->
+
+        <nav>
+            <div class="container">
+                <div class="row">
+                    <div class="mm-toggle-wrap">
+                        <div class="mm-toggle"><i class="fa fa-align-justify"></i> </div>
+                        <span class="mm-label">All Categories</span>
+                    </div>
+                    <div class="col-md-3 col-sm-3 mega-container hidden-xs">
+                        @await Component.InvokeAsync("CategoryMenu")
+                    </div>
+                    <div class="col-md-9 col-sm-9 jtv-megamenu">
+                        @await Component.InvokeAsync("MainMenu")
+                    </div>
+                </div>
+            </div>
+        </nav>
+        @RenderBody();
+        <!-- Footer -->
+
+        @Html.Partial("_Footer.cshtml")
+        <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up"></i></a>
+
+        <!-- End Footer -->
+    </div>
+
+    <!-- JS -->
+    <!-- jquery js -->
+    <script type="text/javascript" src="~/client-side/js/jquery.min.js"></script>
+
+    <script src="~/lib/signalr/signalr.js"></script>
+    <!-- bootstrap js -->
+    <script type="text/javascript" src="~/client-side/js/bootstrap.min.js"></script>
+
+    <!-- owl.carousel.min js -->
+    <script type="text/javascript" src="~/client-side/js/owl.carousel.min.js"></script>
+
+    <!-- jquery.mobile-menu js -->
+    <script type="text/javascript" src="~/client-side/js/mobile-menu.js"></script>
+
+    <!--jquery-ui.min js -->
+    <script type="text/javascript" src="~/client-side/js/jquery-ui.js"></script>
+
+    <script src="~/lib/jquery-ui-1.11.4.custom/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+    <!-- main js -->
+    <script type="text/javascript" src="~/client-side/js/main.js"></script>
+
+    <!-- countdown js -->
+    <script type="text/javascript" src="~/client-side/js/revolution-slider.js"></script>
+    <script src="~/lib/notifyjs/dist/notify.js"></script>
+    <script src="~/client-side/js/cloud-zoom.js"></script>
+    <script src="~/client-side/js/jquery.bxslider.js"></script>
+    <script src="~/lib/mustache/mustache.min.js"></script>
+    <script src="~/lib/twbs-pagination/jquery.twbsPagination.js"></script>
+    <script src="~/client-side/js/jquery.magnifying-zoom.js"></script>
+    <script src="~/client-side/js/jquery.flexslider.js"></script>
+    <script src="~/lib/notifyjs/dist/styles/metro/notify-metro.js"></script>
+    <script src="~/lib/mustache/mustache.js"></script>
+    <script src="~/client-app/shared/localize/resources.@(requestCulture.RequestCulture.Culture.Name).js"></script>
+    <script src="~/client-app/shared/shoponline.js"></script>
+    <script src="~/client-app/controllers/base/index.js"></script>
+    <script src="~/client-side/js/main.js"></script>
+    @*<script src="~/client-app/shared/SignalR.js"></script>*@
+
+
+    <script>
+        var baseObj = new BaseController();
+        baseObj.initialize();
+    </script>
+
+    @RenderSection("Scripts", required: false);
+
+    <script src="~/app/shared/common.js"></script>
+</body>
+</html>

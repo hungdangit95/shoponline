@@ -1,0 +1,84 @@
+﻿@model ShopOnlineApp.Models.ManageViewModels.IndexViewModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData.AddActivePage(ManageNavPages.Index);
+}
+
+@Html.Partial("_StatusMessage", Model.StatusMessage)
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Username"></label>
+                <input asp-for="Username" class="form-control" disabled />
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                @if (Model.IsEmailConfirmed)
+                {
+                    <div class="input-group">
+                        <input asp-for="Email" class="form-control" />
+                        <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
+                    </div>
+                }
+                else
+                {
+                    <input asp-for="Email" class="form-control" />
+                    <button asp-action="SendVerificationEmail" class="btn btn-link">Send verification email</button>
+                }
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PhoneNumber"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="col-xs-12">
+                <label>Gender:</label>
+                <div class="input-text">
+                    <label><input asp-for="Gender" value="true" type="radio" />Male</label>
+                    <span class="d-none">sdsdsdsd</span>
+                    <label><input asp-for="Gender" value="false" type="radio" />Female</label>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <label>Address:</label>
+                <div class="input-text">
+                    <input type="text" asp-for="Address" name="Address" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <label>Image:</label>
+                <div class="input-group">
+                    @if (string.IsNullOrWhiteSpace(Model.Avatar))
+                    {
+                        <span><img id="image_place" src="./client-side/images/default-image.png" width="140px" height="140px"></span>
+                    }
+                    else
+                    {
+                        <span><img id="image_place" src="@Model.Avatar" width="140px" height="140px"></span>
+                    }
+                  
+                    <input type="file" id="fileImages" style="margin-top: 10px;">
+                </div>
+                <input type="hidden" asp-for="Avatar" id="avatar" />
+            </div>
+            <p>&nbsp;</p>
+            <button type="submit" class="btn btn-default">Save</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial");
+    <script src="~/client-app/controllers/account/register.js" asp-append-version="true"></script>
+    <script>
+        $(function() {
+            var register = new registerController();
+            register.initialize();
+        });
+    </script>
+}

@@ -1,0 +1,59 @@
+﻿@using ShopOnlineApp.Application.ViewModels.Rating
+@{
+    var datas = ViewBag.Ratings as List<RatingViewModel>;
+}
+<div class="reviews-content-left">
+    <h2>Customer Reviews</h2>
+
+    @{
+        System.Diagnostics.Debug.Assert(datas != null, nameof(datas) + " != null");
+    }
+    @foreach (var item in datas)
+    {
+    <div class="review-ratting">
+        <p><a href="#">@item.NickName</a> Review by Company</p>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Price</th>
+                    <td>
+                        <div class="rating">
+                            @for (int i = 0; i < item.Price; i++)
+                        {
+                            <i class="fa fa-star"></i>
+                    }
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Value</th>
+                    <td>
+                        <div class="rating">
+                            @for (int i = 0; i < item.Value; i++)
+                        {
+                            <i class="fa fa-star"></i>
+                    }
+
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Quality</th>
+                    <td>
+                        <div class="rating">
+                            @for (int i = 0; i < item.Quantity; i++)
+                        {
+                            <i class="fa fa-star"></i>
+                    }
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <textarea name="message" rows="10" cols="30">@item.Review</textarea>
+        <p class="author"> @item.NickName<small> (Posted on @item.DateCreated.ToShortDateString())</small> </p>
+    </div>
+    }
+  
+
+</div>

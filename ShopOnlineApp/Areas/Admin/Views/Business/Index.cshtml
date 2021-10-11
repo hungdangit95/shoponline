@@ -1,0 +1,107 @@
+﻿@model List<ShopOnlineApp.Application.ViewModels.Business.BusinessViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h2>Danh sách nghiệp vụ</h2>
+@section Scripts{
+    
+    <script src="~/app/controller/business-action/Index.js"></script>
+    <script src="~/app/controller/business/Index.js" asp-append-version="true"></script>
+    <script>
+        var businessObj = new businessController();
+        businessObj.initialize();
+    </script>
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_right">
+
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <input type="text" id="txt-search-keyword" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" id="btn-search" type="button">Search!</button>
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Danh sách nghiêp vụ</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a href="/Admin/Business/UpdateBussiness">Cập nhật</a>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Mã nghiệp vụ</th>
+                            <th>Tên nghiệp vụ</th>
+                            <th width="20%">#</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl-content"></tbody>
+                </table>
+                <div class="row">
+                    <div class="col-sm-7">
+                        <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
+                            <select class="col-sm-2" id="ddlShowPage">
+                                <option value="10" selected="selected">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                            </select>
+                            <span class="item-per-page">
+                                bản ghi/trang.
+                            </span>
+                            Tổng số bản ghi: <strong id="lblTotalRecords"></strong>
+                        </div>
+                    </div><div class="col-sm-12">
+                        <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
+                            <ul id="paginationUL"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("_AddEditModal.cshtml")
+
+<script id="table-template" type="x-tmpl-mustache">
+    <tr>
+        <td>{{Id}}</td>
+        <td>{{Name}}</td>
+        <td>
+            <a href="#" data-id="{{Id}}" class="btn-edit"><i class="fa fa-pencil-square-o"></i></a>
+            <a href="#" data-id="{{Id}}" class="btn-delete"><i class="fa fa-trash-o"></i></a>
+            <a href="/Admin/BusinessAction/Index?businessId={{Id}}" class="btn-list"><i class="fa fa-list" aria-hidden="true"></i></a>
+            @*@if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update)).Succeeded)
+        {
+            <a href="#" data-id="{{Id}}" class="btn-edit"><i class="fa fa-pencil-square-o"></i></a>
+        }*@
+        </td>
+        @*// <td>*@
+        @*@if ((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete)).Succeeded)
+            {
+
+            }*@
+        @*</td>*@
+    </tr>
+</script>

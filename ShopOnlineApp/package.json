@@ -1,0 +1,32 @@
+{
+  "name": "ShopOnline",
+  "version": "1.0.0",
+  "description": "Tedu Core App For Course TEDU-17",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@aspnet/signalr": "1.0.2",
+    "jquery": "2.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DangHung31121995/KLTN.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DangHung31121995/KLTN/issues"
+  },
+  "homepage": "https://github.com/DangHung31121995/KLTN#readme",
+  "devDependencies": {
+    "gulp": "4.0.0",
+    "gulp-concat": "2.6.1",
+    "gulp-cssmin": "0.2.0",
+    "gulp-uglify": "2.0.1",
+    "rimraf": "2.6.1",
+    "uglify-js": "3.4.7"
+  }
+}

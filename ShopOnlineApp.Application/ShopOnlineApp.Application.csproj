@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="EPPlus.Core" Version="1.5.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ShopOnlineApp.Data.EF\ShopOnlineApp.Data.EF.csproj" />
+    <ProjectReference Include="..\ShopOnlineApp.Data\ShopOnlineApp.Data.csproj" />
+    <ProjectReference Include="..\ShopOnlineApp.Utilities\ShopOnlineApp.Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\NewFolder\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,95 @@
+﻿@inject IViewLocalizer Localizer
+<style>
+    .imageClass {
+        width: 20px;
+        height: 20px;
+        padding-right: 3px;
+    }
+</style>
+<header>
+    <div class="header-container">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 col-md-4 col-xs-12">
+                        <!-- Default Welcome Message -->
+                        <!-- Language &amp; Currency wrapper -->
+                        @await Html.PartialAsync("_SelectLanguagePartial")
+                    </div>
+
+                    <!-- top links -->
+                    <div class="headerlinkmenu col-md-8 col-sm-8 col-xs-12">
+                        <span class="phone  hidden-xs hidden-sm">Call Us: +123.456.789</span>
+                        <ul class="links">
+                            <li class="hidden-xs"><a title="Help Center" href="#"><span>@Localizer["HelpCenter"]</span></a></li>
+                            <li><a title="Store Locator" href="#"><span>Store Locator</span></a></li>
+                            <li><a title="Checkout" href="checkout.html"><span>@Localizer["Checkout"]</span></a></li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+
+                                <li>
+                                    <div class="dropdown">
+                                        <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><span>@User.GetSpecificDefault("FullName")</span> <i class="fa fa-angle-down"></i></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="/manage/index">Account</a></li>
+                                            <li><a href="/wishlist.html">Wishlist</a></li>
+                                            <li><a href="/orders-list.html">Order Tracking</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
+                                        <a href="#" onclick="document.getElementById('logoutForm').submit()"><span>Thoát</span></a>
+                                    </form>
+                                </li>
+                            }
+                            else
+                            {
+                                <li><a title="login" href="/login.html"><span>Login</span></a></li>
+                                <li><a title="register" href="/register.html"><span>Register</span></a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- header inner -->
+        <div class="header-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3 col-xs-12 jtv-logo-block">
+
+                        <!-- Header Logo -->
+                        <div class="logo"><a title="e-commerce" href="/"><img alt="ShopMart" title="ShopMart" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcS-XJYI9Q3WWgS6tSSwAHnFXilCO_A505EDQzu9jylkBJwKHRJQ"></a> </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-md-6 jtv-top-search">
+
+                        <div class="top-search">
+                            <div id="search">
+                                <form method="get" action="/search.html">
+                                    <div class="input-group">
+                                        <div><input type="text" id="txtKeyword" class="form-control" placeholder="Enter your product name..." name="keyword"></div>
+                                        <button class="btn-search" type="submit"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- End Search -->
+
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 top-cart">
+                        <div class="link-wishlist">
+                            @await Component.InvokeAsync("WishList")
+                        </div>
+                        <!-- top cart -->
+                        <div class="top-cart-contain">
+                            <vc:header-cart>
+
+                            </vc:header-cart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Scripts{
+
+    <script src="~/app/controller/permisson-grant/Index.js" asp-append-version="true"></script>
+    <script>
+           function getPermissions(action,businessId, usergrant) {
+            $.ajax({
+                method: "GET",
+                url: action,
+                data: {
+                    businessId:businessId,
+                    userId: usergrant
+                },
+                success: function (data) {
+                    $('#listaction').html('');
+                    $.each(data,
+                        (index, value) => {
+                            if (value.isGranted === true)
+                                $('#listaction').append("<input type='CheckBox' checked onchange='updatePermission(" +
+                                    "\"/Admin/PermissionGrant/UpdatePermission\",this.value,\"@ViewBag.UserId\")'value='" +
+                                    value.permissionID +
+                                    "'>" +
+                                    value.description +
+                                    "<br/>");
+                            else
+                                $('#listaction').append("<input type='CheckBox' onchange='updatePermission(" +
+                                    "\"/Admin/PermissionGrant/UpdatePermission\",this.value,\"@ViewBag.UserId\")' value='" +
+                                    value.permissionID +
+                                    "'>" +
+                                    value.description +
+                                    "<br/>");
+                        });
+                }
+            });
+        }
+
+        function updatePermission(action,id, userId) {
+            $.ajax({
+                method: "GET",
+                url:action,
+                data: {
+                    id: id,
+                    userId: userId
+                },
+                success: (message) => {
+                    $('#msg').append(message);
+                    setTimeout(() => {
+                            $('#msg').empty();
+                        },
+                        1000);
+                }
+            });
+        }
+    </script>
+}
+<div id="msg"> </div>
+<div class="col-md-4 col-xs-2">
+    <h4>Danh Sách Nghiệp Vụ</h4>
+    @Html.DropDownList("BusinessController", (IEnumerable<SelectListItem>)ViewBag.items, new
+    {
+        size = 20
+                        ,
+        onchange = "getPermissions('/Admin/PermissionGrant/GetPermissions',this.value,'" + ViewBag.UserId + "');"
+    });
+</div>
+<div class="col-md-4 col-xs-4">
+    <h4>Danh sách Quyền hạn</h4>
+    <div id="listaction"> </div>
+</div>
+

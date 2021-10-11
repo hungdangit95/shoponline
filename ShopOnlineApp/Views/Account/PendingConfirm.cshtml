@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewData["Title"] = "PendingConfirm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+    .text-primary {
+        color: #EB5D13 !important;
+    }
+
+    .text-bold {
+        font-weight: 600;
+    }
+
+    .text-center {
+        text-align: center !important;
+    }
+
+    .text-font-13 {
+        font-size: 13px !important;
+    }
+</style>
+<br />
+<br />
+<div class="d-flex flex-column register-body justify-content-center">
+    <div class="form-register-container">
+        <p class="text-center text-font-13">
+            Chúng tôi đã gửi <span class="text-bold">1 email xác thực</span> tới hòm
+            thư <span class="text-bold text-primary">@ViewBag.email</span> của bạn.
+        </p>
+        <div class="form-group" style="width: 60px;display: block; margin: 0.5rem auto;">
+            <svg viewBox="0 0 512 512.032">
+                <path fill="#ff9601" d="M503.313 177.676L303.8 213.516 334.52 8.546a16.526 16.526 0 0 1 13.144 4.95l150.781 150.785a16.418 16.418 0 0 1 4.868 13.395zm0 0"></path>
+                <path fill="#d64315" d="M503.313 177.676a16.3 16.3 0 0 1-4.868 10.754L245.094 441.867a16.666 16.666 0 0 1-10.84 4.867l5.805-32.43 30.035-167.167 23.039-3.496a8.53 8.53 0 0 0 7.168-7.082l3.5-23.043 166.996-29.95zm0 0"></path>
+                <path fill="#f37c00" d="M470.797 183.566L240.059 414.305l30.035-167.168 23.039-3.496a8.53 8.53 0 0 0 7.168-7.082l3.5-23.043zm0 0"></path>
+                <path fill="#ff9601" d="M270.094 247.137l-35.84 199.597a16.63 16.63 0 0 1-13.313-4.867L70.074 291a16.913 16.913 0 0 1-4.949-13.14zm0 0"></path>
+                <path fill="#fcbf08" d="M334.52 8.547L303.8 213.516l-3.5 23.043a8.53 8.53 0 0 1-7.167 7.082l-23.04 3.496-204.968 30.722a17.148 17.148 0 0 1 4.95-11.007L323.511 13.496a16.566 16.566 0 0 1 11.008-4.95zm0 0"></path>
+                <path d="M353.672 7.43A25.456 25.456 0 0 0 336.16.227c-.144 0-.265-.13-.418-.153a8.298 8.298 0 0 0-3.976.442 25.018 25.018 0 0 0-14.313 6.914L64.016 260.852a25.315 25.315 0 0 0-7.176 14.898 25.482 25.482 0 0 0 7.176 21.309l150.867 150.867a25.515 25.515 0 0 0 18.101 7.484c.383 0 .758-.094 1.133-.11h.145c.113 0 .215-.05.324-.05a25.44 25.44 0 0 0 16.504-7.332L504.53 194.48c9.992-10 9.992-26.203 0-36.199zm138.777 162.918c.153.152.211.367.348.52L313.93 203.02l27.539-183.61s.093.05.125.086zM323.266 25.766l-31.41 209.453L82.37 266.652zM76.106 284.992s-.051-.094-.086-.129l183.578-27.547-32.118 178.88c-.164-.145-.367-.2-.53-.36zm170.07 143.692l31.25-174.036 16.98-2.562A16.859 16.859 0 0 0 308.7 237.8l2.559-16.996 174.082-31.25zm0 0M113.45 386.426l-93.868 93.867c-2.219 2.144-3.11 5.316-2.328 8.3s3.113 5.313 6.094 6.094a8.537 8.537 0 0 0 8.3-2.328l93.868-93.867a8.53 8.53 0 0 0-.106-11.96 8.534 8.534 0 0 0-11.96-.106zm0 0M8.547 392.46a8.53 8.53 0 0 0 6.035-2.5l51.2-51.198a8.534 8.534 0 0 0-12.066-12.066l-51.2 51.199a8.53 8.53 0 0 0-1.852 9.296 8.535 8.535 0 0 0 7.883 5.27zm0 0M121.98 509.426a8.532 8.532 0 0 0 12.067 0l51.2-51.2a8.534 8.534 0 0 0-12.067-12.066l-51.2 51.2a8.532 8.532 0 0 0 0 12.066zm0 0M8.547 443.66a8.53 8.53 0 0 0 6.035-2.5L40.18 415.56a8.534 8.534 0 0 0-.102-11.961 8.538 8.538 0 0 0-11.965-.102L2.516 429.094a8.535 8.535 0 0 0-1.852 9.3 8.538 8.538 0 0 0 7.883 5.266zm0 0M96.383 471.762L70.78 497.359c-2.219 2.145-3.11 5.317-2.328 8.301a8.537 8.537 0 0 0 14.395 3.766l25.601-25.598a8.534 8.534 0 0 0-12.066-12.066zm0 0"></path>
+                <path d="M147.582 236.36a8.532 8.532 0 0 0 12.066 0l42.665-42.665c3.234-3.351 3.19-8.672-.102-11.965a8.534 8.534 0 0 0-11.961-.101l-42.668 42.664a8.532 8.532 0 0 0 0 12.066zm0 0M221.883 170.594a8.52 8.52 0 0 0 6.031-2.5l8.535-8.535a8.534 8.534 0 0 0-.105-11.961 8.534 8.534 0 0 0-11.961-.102l-8.535 8.531a8.535 8.535 0 0 0 6.035 14.567zm0 0"></path>
+            </svg>
+        </div>
+        <div class="form-group">
+            <p class="text-muted text-center text-font-13">
+                Vui lòng kiểm tra hộp thư đến và làm theo hướng dẫn để hoàn tất
+                đăng ký.
+            </p>
+        </div>
+
+        <div class="form-group">
+            <form method="post" class="m-b-50" id="form-resend" action="/Register">
+                <input type="hidden" name="ReturnUrl">
+                <input type="hidden" name="Email" value="abiding@mailinator.com">
+                <p class="text-muted text-bold text-center">
+                    Không nhận được email?
+                    <a href="javascript:void(0)" id="button-resend">Gửi lại</a>
+                </p>
+                <input name="__RequestVerificationToken" type="hidden" value="CfDJ8OAeRciEvJpHgu1qFFiqD5p9e_MOYcqKEeCY2XY3e3Cw0Way3THKT4x9d9ntLo3Vo3OPu6pTybSuLnTXhaS5ZOpI44etms9k1i-y0k8oyvgqI-r3Vg2Kzib4JNMZHb2SSwSf6qHwrN52g9V94w2_0d8">
+            </form>
+            <p class="text-muted text-bold text-center">
+                <a class="btn btn-outline-primary btn--login btn-register text-bold" href="/Account/Login">TRỞ VỀ ĐĂNG NHẬP</a>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    
+    <script>
+        $(function () {
+           
+            $('#button-resend').on('click',
+                () => {
+                    $.ajax({
+                        type: "Get",
+                        url: "/Account/EmailCallback",
+                        data: {
+                           email: "@ViewBag.email",
+                           send: "@ViewBag.send"
+                        },
+                        success: function (path) {
+                        },
+                        error: function () {
+                            shoponline.notify('There was error uploading files!', 'error');
+                        }
+                    });
+                });
+        });
+
+    </script>
+}

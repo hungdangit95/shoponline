@@ -1,0 +1,170 @@
+﻿
+@{
+    ViewData["Title"] = "Information";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+
+    <script src="~/client-app/controllers/account/Index.js" asp-append-version="true"></script>
+    <script>
+        var accountObj = new accountController();
+        accountObj.initialize();
+    </script>
+}
+<style>
+    .form-control {
+        height: 25px !important;
+    }
+
+    .row-action {
+        text-align: center;
+        margin-top: 20px !important;
+    }
+
+    h1.h1-reg {
+        font-family: "Myriad Pro";
+        font-weight: bold;
+        margin-top: 30px;
+    }
+
+    .d-h2 {
+        border-bottom: dotted 1px #666;
+        height: 35px;
+    }
+
+    .main_content {
+        font-family: "Myriad Pro","FontAwesome",sans-serif !important;
+    }
+
+    .input-group .form-control:first-child, .input-group-addon:first-child, .input-group-btn:first-child > .btn, .input-group-btn:first-child > .btn-group > .btn, .input-group-btn:first-child > .dropdown-toggle, .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle), .input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .row-1 {
+        margin-top: 15px !important;
+    }
+
+    label {
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 5px;
+        font-size: 20px;
+        /* font-weight: 600; */
+    }
+
+    .lenght-input {
+        width: 250px;
+    }
+</style>
+<div class="main_content">
+    <div class="container register">
+        <div class="row">
+            <form id="formAccount" method="post" action="">
+                <h1 class="h1-reg" style="text-align: center;">THÔNG TIN CÁ NHÂN</h1>
+                <div class="r-thontin">
+                    <div class="d-h2"><h2>Thông tin tài khoản</h2></div>
+                    <div class="row row-1">
+                        <div class="col-md-3 col-lb">
+                            <label for="email">Ảnh đại diện:</label>
+                        </div>
+                        <div class="col-md-9 col-bl">
+                            <div class="input-group">
+                                <span><img id="image_place" src="./client-side/images/default-image.png" width="168px" height="168px"></span>
+                                <input type="file" id="exampleInputFile" style="margin-top:10px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-1">
+                        <div class="col-md-3 col-lb">
+                            <label for="email">Email:<span style="color:#ff0000;">*</span></label>
+                        </div>
+                        <div class="col-md-9 col-bl">
+                            <div class="input-group" style="padding-top: 5px;">
+                                <input type="hidden" id="hidIdM"/>
+                                <input type="text" style="width: 250px;" id="email" class="form-control" value="hung.dang@cto.edu.vn" disabled="disabled">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-1">
+                        <div class="col-md-3 col-lb">
+                            <label for="email">Họ tên:<span style="color:#ff0000;">*</span></label>
+                        </div>
+                        <div class="col-md-9 col-bl">
+                            <div class="input-group" style="padding-top: 5px;">
+                                <input type="text" style="width: 250px;" id="name" name="nname" class="form-control in" placeholder="" aria-describedby="basic-addon1" value="danghung">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- <div class="row row-1">
+                        <div class="col-md-3 col-lb">
+                            <label for="email">Ngày sinh:</label>
+                        </div>
+                        <div class="col-md-9 col-bl">
+                            <div class="input-group">
+                              <input type="text" class="form-control in2" placeholder="" aria-describedby="basic-addon1" value="26/07/1996">
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="row row-1">
+                        <div class="col-md-3 col-lb">
+                            <label for="email">Giới tính:</label>
+                        </div>
+                        <div class="col-md-9 col-bl">
+                            <div class="input-group">
+                                <label><input id="ckNu" type="radio" name="nsex" >Nữ</label>
+                                <label><input id="ckNam" type="radio" name="nsex"   style="margin-left:25px;">Nam</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-1">
+                        <div class="col-md-3 col-lb">
+                            <label for="level">Cấp Độ:</label>
+                        </div>
+                        <div class="col-md-9 col-bl">
+                            <b style="font-size:24px;">NEW</b>
+                            <span style="color:#ff0000;">*</span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="r-thontin">
+                    <div class="d-h2"><h2>Thông tin liên hệ</h2></div>
+
+                    <div class="row row-1">
+                        <div class="col-md-3 col-lb">
+                            <label for="email">Địa chỉ:</label>
+                        </div>
+                        <div class="col-md-9 col-bl">
+                            <div class="input-group" style="padding-top: 5px;">
+                                <input style="width: 250px;" type="text" id="address" name="naddress" class="form-control in" placeholder="" aria-describedby="basic-addon1" value="250">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row row-1">
+                        <div class="col-md-3 col-lb">
+                            <label for="email">Điện thoại:</label>
+                        </div>
+                        <div class="col-md-9 col-bl">
+                            <div class="input-group" style="padding-top: 5px;">
+                                <input style="width: 250px;" type="text" id="phone" name="nphone" class="form-control in" placeholder="" aria-describedby="basic-addon1" value="09834918127">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-action">
+                        <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="update()">
+                            Lưu
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="clearfix visible-xs-block"></div>
+</div>

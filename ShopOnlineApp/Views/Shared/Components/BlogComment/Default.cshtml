@@ -1,0 +1,16 @@
+﻿@using ShopOnlineApp.Application.ViewModels.BlogComment
+@{
+    var datas = ViewBag.Comments as List<BlogCommentViewModel>;
+}
+
+@foreach (var cmt in datas)
+{
+
+    <li>
+        <div class="avartar"> <img src="~/client-side/images/avatar.png" alt="Avatar"> </div>
+        <div class="comment-body">
+            <div class="comment-meta"> <span class="author"><a href="#">@cmt.Name</a></span> <span class="date">@cmt.DateModified.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)</span> </div>
+            <div class="comment"> @cmt.Message </div>
+        </div>
+    </li>
+}
