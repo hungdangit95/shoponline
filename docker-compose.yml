@@ -17,7 +17,7 @@ services:
     ports:
       - "1433:1433"
   shoponlineapp:
-    image: ${DOCKER_REGISTRY-}shoponlineapp
+    image: hungsmartosc/shoponline:dev
     networks:
       - backend
     environment:
