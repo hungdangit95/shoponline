@@ -17,11 +17,13 @@ services:
     ports:
       - "1433:1433"
   shoponlineapp:
-    image: hungsmartosc/shoponline:dev
+    image: docker.io/hungsmartosc/shoponline:dev
     networks:
       - backend
     environment:
       - DBHOST=mssqlserver
     depends_on:
-      - mssqlserver
-    
+      - mssqlserver 
+    build:
+      context: .
+      dockerfile: ShopOnlineApp/Dockerfile
