@@ -63,7 +63,7 @@ namespace ShopOnlineApp
             //         o.EnableRetryOnFailure();
             //         o.MigrationsAssembly("ShopOnlineApp.Data.EF");
             //     }));
-            var host = Configuration["DBHOST"] ?? "localhost";
+            var host = Configuration["DBHOST"] ?? "mssqlserver";
             var port = Configuration["DBPORT"] ?? "1433";
             var password = Configuration["DBPASSWORD"] ?? "Pa55w0rd2021";
 

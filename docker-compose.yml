@@ -1,6 +1,4 @@
 version: '3.4'
-volumes:
-  shoponline:
 networks:
   backend:
 services:
@@ -9,7 +7,7 @@ services:
     networks:
       - backend
     volumes:
-      - shoponline:/var/lib/mssql
+      - /home/ubuntu/shoponline:/var/lib/mssql
     environment:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: "Pa55w0rd2021"
@@ -27,3 +25,5 @@ services:
     build:
       context: .
       dockerfile: ShopOnlineApp/Dockerfile
+    links:
+     - mssqlserver
