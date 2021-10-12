@@ -23,7 +23,5 @@ services:
     environment:
       - DBHOST=mssqlserver
     depends_on:
-      - mssqlserver 
-    build:
-      context: .
-      dockerfile: ShopOnlineApp/Dockerfile
+      - mssqlserver
+    
