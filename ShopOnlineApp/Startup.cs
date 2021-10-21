@@ -63,19 +63,19 @@ namespace ShopOnlineApp
             //         o.EnableRetryOnFailure();
             //         o.MigrationsAssembly("ShopOnlineApp.Data.EF");
             //     }));
-            var host = "18.188.243.154\\MSSQLSERVER";
+            var host = "18.188.243.154";
             var port = "1433";
             var password = Configuration["DBPASSWORD"] ?? "Pa55w0rd2021";
 
             services.AddDbContext<AppDbContext>(options =>
-               options.UseSqlServer($"server={host},{port};user id=sa;password={password};"
+               options.UseSqlServer($"server={host},{port};Integrated Security=False;user id=sa;password={password};"
                     + $"Database=Products",
                o =>
                {
                    o.MigrationsAssembly("ShopOnlineApp.Data.EF");
                    o.EnableRetryOnFailure();
                }));
-            Console.WriteLine($"connect string to server={host},{port};user id=sa;password={password};"
+            Console.WriteLine($"connect string to server={host},{port};;user id=sa;password={password};"
                     + $"Database=Products");
 
             services.AddIdentity<AppUser, AppRole>()
