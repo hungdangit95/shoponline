@@ -7,7 +7,7 @@ services:
     networks:
       - backend
     volumes:
-      - /home/ubuntu/shoponline:/var/lib/mssql
+      - /home/ubuntu/mssql-data:/var/lib/mssql
     environment:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: "Pa55w0rd2021"
@@ -15,7 +15,6 @@ services:
     ports:
       - "1433:1433"
   shoponlineapp:
-    image: docker.io/hungsmartosc/shoponline:dev
     networks:
       - backend
     environment:
