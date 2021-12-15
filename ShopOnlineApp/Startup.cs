@@ -53,30 +53,27 @@ namespace ShopOnlineApp
         public void ConfigureServices(IServiceCollection services)
         {
 
-            //sservices.AddDbContext<ApplicationDbContext>(options =>
-            //.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<AppDbContext>(options =>
+              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                 o =>
+                 {
+                     o.EnableRetryOnFailure();
+                     o.MigrationsAssembly("ShopOnlineApp.Data.EF");
+                 }));
+            //var host = "18.188.243.154";
+            //var port = "1433";
+            //var password = Configuration["DBPASSWORD"] ?? "Pa55w0rd2021";
 
             //services.AddDbContext<AppDbContext>(options =>
-            //  options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"),
-            //     o =>
-            //     {
-            //         o.EnableRetryOnFailure();
-            //         o.MigrationsAssembly("ShopOnlineApp.Data.EF");
-            //     }));
-            var host = "18.188.243.154";
-            var port = "1433";
-            var password = Configuration["DBPASSWORD"] ?? "Pa55w0rd2021";
-
-            services.AddDbContext<AppDbContext>(options =>
-               options.UseSqlServer($"server={host},{port};Integrated Security=False;user id=sa;password={password};"
-                    + $"Database=Products",
-               o =>
-               {
-                   o.MigrationsAssembly("ShopOnlineApp.Data.EF");
-                   o.EnableRetryOnFailure();
-               }));
-            Console.WriteLine($"connect string to server={host},{port};;user id=sa;password={password};"
-                    + $"Database=Products");
+            //   options.UseSqlServer($"server={host},{port};Integrated Security=False;user id=sa;password={password};"
+            //        + $"Database=Products",
+            //   o =>
+            //   {
+            //       o.MigrationsAssembly("ShopOnlineApp.Data.EF");
+            //       o.EnableRetryOnFailure();
+            //   }));
+            //Console.WriteLine($"connect string to server={host},{port};;user id=sa;password={password};"
+            //        + $"Database=Products");
 
             services.AddIdentity<AppUser, AppRole>()
                .AddEntityFrameworkStores<AppDbContext>()

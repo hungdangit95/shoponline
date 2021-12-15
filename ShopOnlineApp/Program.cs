@@ -11,7 +11,7 @@ namespace ShopOnlineApp
         public static void Main(string[] args)
         {
             BuildWebHost(args)
-            .AutoInit()
+            //.AutoInit()
             .Run();
         }
 

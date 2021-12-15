@@ -7,7 +7,7 @@ services:
     networks:
       - backend
     volumes:
-      - /home/ubuntu/mssql-data:/var/lib/mssql
+      - mssql-data:/var/lib/mssql
     environment:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: "Pa55w0rd2021"
@@ -26,3 +26,7 @@ services:
       dockerfile: ShopOnlineApp/Dockerfile
     links:
      - mssqlserver
+     
+volumes:
+   mssql-data:
+    external: true
