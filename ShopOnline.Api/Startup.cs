@@ -1,6 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -8,36 +5,32 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json.Serialization;
-using PaulMiami.AspNetCore.Mvc.Recaptcha;
+using Microsoft.OpenApi.Models;
+using ShopOnline.Api.Authorization;
+using ShopOnline.Api.Helper;
+using ShopOnline.Api.Initialization;
 using ShopOnline.Application.Dapper.Implements;
 using ShopOnline.Application.Dapper.Interfaces;
-using ShopOnlineApp.Application.Filter;
+using ShopOnlineApp.Application.AutoMapper;
 using ShopOnlineApp.Application.Implementation;
 using ShopOnlineApp.Application.Interfaces;
-using ShopOnlineApp.Areas.Admin.Controllers;
-using ShopOnlineApp.Authorization;
 using ShopOnlineApp.Data.EF;
 using ShopOnlineApp.Data.EF.Repositories;
 using ShopOnlineApp.Data.Entities;
 using ShopOnlineApp.Data.IRepositories;
-using ShopOnlineApp.Helper;
 using ShopOnlineApp.Infrastructure.Interfaces;
-using ShopOnlineApp.Initialization;
-using ShopOnlineApp.Models;
-using ShopOnlineApp.Services;
 using ShopOnlineApp.Utilities.Mvc.Filters;
-//using ShopOnlineApp.Utilities.Mvc.Filters;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
 
-namespace ShopOnlineApp
+namespace ShopOnline.Api
 {
     public class Startup
     {
@@ -51,23 +44,12 @@ namespace ShopOnlineApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            //sservices.AddDbContext<ApplicationDbContext>(options =>
-            //.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
-
-            //services.AddDbContext<AppDbContext>(options =>
-            //  options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"),
-            //     o =>
-            //     {
-            //         o.EnableRetryOnFailure();
-            //         o.MigrationsAssembly("ShopOnlineApp.Data.EF");
-            //     }));
             var host = "mssqlserver";
             var port = "1433";
             var password = Configuration["DBPASSWORD"] ?? "Pa55w0rd2021";
 
             services.AddDbContext<AppDbContext>(options =>
-               options.UseSqlServer($"server={host},{port};Integrated Security=False;user id=sa;password={password};"
+               options.UseSqlServer($"server={host},{port};user id=sa;password={password};"
                     + $"Database=Products",
                o =>
                {
@@ -77,10 +59,10 @@ namespace ShopOnlineApp
 
             Console.WriteLine($"connect string to server={host},{port};user id=sa;password={password};"
                     + $"Database=Products");
-
             services.AddIdentity<AppUser, AppRole>()
                .AddEntityFrameworkStores<AppDbContext>()
                .AddDefaultTokenProviders();
+          //  services.Configure<CloudinaryImage>(Configuration.GetSection("CloudinarySettings"));
 
             services.AddSession(options =>
             {
@@ -105,69 +87,22 @@ namespace ShopOnlineApp
                 // User settings
                 options.User.RequireUniqueEmail = true;
             });
-            //services.AddDistributedRedisCache(options =>
-            //{
-            //    options.InstanceName = Configuration.GetValue<string>("Redis:Name");
-            //    options.Configuration = Configuration.GetValue<string>("Redis:Host");
-            //});
-
             services.AddAuthentication();
-            //.AddFacebook(facebookOpts =>
-            //{
-            //    facebookOpts.AppId = Configuration["Authentication:Facebook:AppId"];
-            //    facebookOpts.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
-            //})
-            //.AddGoogle(googleOpts => {
-            //    googleOpts.ClientId = Configuration["Authentication:Google:ClientId"];
-            //    googleOpts.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-            //});
-
-            services.AddRecaptcha(new RecaptchaOptions
-            {
-                SiteKey = Configuration["Recaptcha:SiteKey"],
-                SecretKey = Configuration["Recaptcha:SecretKey"]
-            });
-
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddMemoryCache();
+            services.AddAutoMapper(typeof(Startup));
+            //services.AddMemoryCache();
             // Add application services.
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
 
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
-
-            services.AddTransient<IEmailSender, EmailSender>();
+           // services.AddSingleton(AutoMapperConfig.Config.CreateMapper() );
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddInitializationStages();
-            services.AddMvc(options =>
-                {
-                    options.CacheProfiles.Add("Default",
-                        new CacheProfile
-                        {
-                            Duration = 60
-                        });
-                    options.CacheProfiles.Add("Never",
-                        new CacheProfile
-                        {
-                            Location = ResponseCacheLocation.None,
-                            NoStore = true
-                        });
-                }).AddViewLocalization(
-                    LanguageViewLocationExpanderFormat.Suffix,
-                    opts => { opts.ResourcesPath = "Resources"; })
-                .AddDataAnnotationsLocalization()
-                .AddApplicationPart(typeof(BlogController).Assembly);
-
             services.AddControllers(options =>
             {
                 options.Filters.Add<ExceptionHandler>();
-            }).AddNewtonsoftJson(options =>
-            {
-
-                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
             });
-
-            services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
+            services.AddDistributedMemoryCache();
 
             services.Configure<RequestLocalizationOptions>(
                 opts =>
@@ -235,7 +170,7 @@ namespace ShopOnlineApp
             services.AddTransient<IGrantPermissionService, GrantPermissionService>();
             services.AddTransient<IBlogService, BlogService>();
             services.AddTransient<ICommonService, CommonService>();
-            services.AddTransient<IViewRenderService, ViewRenderService>();
+            //services.AddTransient<IViewRenderService, ViewRenderService>();
             services.AddTransient<IContactService, ContactService>();
             services.AddTransient<IFeedbackService, FeedbackService>();
             services.AddTransient<IPageService, PageService>();
@@ -247,51 +182,50 @@ namespace ShopOnlineApp
             services.AddTransient<IBlogCommentService, BlogCommentService>();
             services.AddTransient<ISlideService, SlideService>();
             services.AddTransient<IProductQuantityService, ProductQuantityService>();
-            services.ConfigureApplicationCookie(options => options.LoginPath = "/admin-login");
-            //services.Configure<IdentityOptions>(opt =>
-            //{
-            //    opt.Cookies.ApplicationCookie.LoginPath = new PathString("/login");
-            //});
-
-            //Config system
-            //services.AddCors(options => options.AddPolicy("CorsPolicy", builder => { builder.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:44344", "http://localhost:3000", "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html", "https://merchant.vnpay.vn/merchant_webapi/merchant.html").AllowCredentials(); }));
-
-            //services.AddMvc(options=> {
-            //    options.Filters.Add<ExceptionHandler>();
-            //});
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
-            services.AddTransient<EnsureProductExistsFilter>();
+            //.AddNewtonsoftJson(options =>
+            //{
 
-            services.AddSignalR();
+            //    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+            //});
+
+            services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "ShopOnline API",
+                    Version = "v1",
+                    Description = "An API to perform ShopOnline operations",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "hungdh",
+                        Email = "hungdangit95@gmail.com",
+                    }
+                });
+            });
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostEnvironment env, ILoggerFactory logger)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory logger)
         {
-            logger.AddFile("Logs/shoponline-{Date}.txt");
+            //logger.add("Logs/shoponline-{Date}.txt");
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); });
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //app.UseBrowserLink();
-                //app.UseDatabaseErrorPage();
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
             }
-
-            app.UseSession();
-            app.UseStaticFiles();
-
-
             var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(options.Value);
-
-            //app.UseCors(
-            //    optionss => optionss.WithOrigins("http://sandbox.vnpayment.vn/paymentv2/vpcpay.html").AllowAnyMethod()
-            //);
-
-            //app.UseCors("CorsPolicy");
 
             app.UseCors(opts =>
             {
@@ -301,22 +235,24 @@ namespace ShopOnlineApp
                 opts.SetIsOriginAllowed(origin => true);
             });
 
+
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+
             app.UseAuthentication();
             app.UseRouting();
             app.UseAuthorization();
 
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
-                endpoints.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapControllerRoute("login", "{area:exists}/{controller=Login}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("api", "api/v1/{controller=Home}");
             });
 
-            app.UseCookiePolicy();
-
             app.UseCors(MyAllowSpecificOrigins);
-            //app.UseSignalR(routes => { routes.MapHub<OnlineShopHub>("/onlineShopHub"); });
 
         }
+
     }
 }

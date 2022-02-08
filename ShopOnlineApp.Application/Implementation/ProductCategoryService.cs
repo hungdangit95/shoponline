@@ -91,7 +91,7 @@ namespace ShopOnlineApp.Application.Implementation
         public async Task<List<ProductCategoryViewModel>> GetHomeCategories(int top)
         {
             var categories = new ProductCategoryViewModel().Map((await _productCategoryRepository
-                .FindAll(x => x.HomeFlag == true, c => c.Products)).AsNoTracking().AsParallel().AsOrdered()
+                .FindAll(x => x.HomeFlag == true, c => c.Products))
                 .OrderBy(x => x.HomeOrder)
                 .Take(top)).ToList();
 
