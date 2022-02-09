@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
-using ShopOnline.Share.ChainableResultExtension;
+using SharedKernel.Extensions;
 
 namespace ShopOnline.Api.Servers.Portal
 {
@@ -56,7 +56,7 @@ namespace ShopOnline.Api.Servers.Portal
             }
         }
 
-        protected IActionResult Result<T>(Result<T> result)
+        protected new IActionResult Response<T>(Result<T> result)
         {
             if (result.IsSuccess)
             {
@@ -66,7 +66,7 @@ namespace ShopOnline.Api.Servers.Portal
             return BadRequest(_localizer[result.Error]);
         }
 
-        protected IActionResult Result(Result result)
+        protected new IActionResult Response(Result result)
         {
             if (result.IsSuccess)
             {

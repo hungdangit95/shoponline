@@ -160,7 +160,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ShopOnline.Share\ShopOnline.Share.csproj" />
     <ProjectReference Include="..\ShopOnline.Application.Dapper\ShopOnline.Application.Dapper.csproj" />
     <ProjectReference Include="..\ShopOnlineApp.Application\ShopOnlineApp.Application.csproj" />
     <ProjectReference Include="..\ShopOnlineApp.Data.EF\ShopOnlineApp.Data.EF.csproj" />

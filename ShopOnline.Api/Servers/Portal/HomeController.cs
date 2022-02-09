@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using SharedKernel.Extensions;
 using ShopOnlineApp.Application.Interfaces;
 using ShopOnlineApp.Models;
 using System;
@@ -39,7 +40,7 @@ namespace ShopOnline.Api.Servers.Portal
             homeVm.TopRateProducts = await _productService.GetRatingProducts(3);
             homeVm.LastestBlogs = await _blogService.GetLastest(5);
             homeVm.HomeSlides = await _commonService.GetSlides("top");
-            return Ok(homeVm);
+            return Response(Result.Success(homeVm));
         }
 
         //public IActionResult About()
