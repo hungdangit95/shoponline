@@ -19,8 +19,6 @@ namespace ShopOnlineApp.Utilities.Mvc.Filters
             _logger = logger;
             _hostingEnvironment = hostingEnvironment;
         }
-
-
         public override void OnException(ExceptionContext context)
         {
             switch (context.Exception)

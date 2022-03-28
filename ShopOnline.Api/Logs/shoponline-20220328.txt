@@ -1,0 +1,17 @@
+2022-03-28T04:59:01.4843884+00:00 0HMGGEUKJ6LAC:00000007 [ERR] Get home data model (bf9d7322)
+2022-03-28T08:12:30.1105293+00:00 0HMGGIAJB0IQC:00000007 [INF] Entity Framework Core "5.0.6" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShopOnlineApp.Data.EF " (9958f5bb)
+2022-03-28T08:12:30.1976172+00:00 0HMGGIAJB0IQC:00000007 [INF] Executed DbCommand ("26"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[DateCreated], [p].[DateModified], [p].[Description], [p].[HomeFlag], [p].[HomeOrder], [p].[Image], [p].[Name], [p].[ParentId], [p].[SeoAlias], [p].[SeoDescription], [p].[SeoKeywords], [p].[SeoPageTitle], [p].[SortOrder], [p].[Status]
+FROM [ProductCategories] AS [p]" (0723d8ff)
+2022-03-28T08:12:30.4729248+00:00 0HMGGIAJB0IQC:00000007 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[CategoryId], [p].[Content], [p].[DateCreated], [p].[DateModified], [p].[Description], [p].[HomeFlag], [p].[HotFlag], [p].[Image], [p].[Name], [p].[OriginalPrice], [p].[Price], [p].[PromotionPrice], [p].[SeoAlias], [p].[SeoDescription], [p].[SeoKeywords], [p].[SeoPageTitle], [p].[Status], [p].[Tags], [p].[Unit], [p].[ViewCount]
+FROM [Products] AS [p]" (0723d8ff)
+2022-03-28T08:12:30.7067986+00:00 0HMGGIAJB0IQC:00000007 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [r].[Id], [r].[DateCreated], [r].[DateModified], [r].[NickName], [r].[Price], [r].[ProductId], [r].[Quantity], [r].[Review], [r].[Summary], [r].[Value]
+FROM [Ratings] AS [r]" (0723d8ff)
+2022-03-28T08:12:31.7022927+00:00 0HMGGIAJB0IQC:00000007 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [b].[Id], [b].[BlogCategoryId], [b].[Content], [b].[DateCreated], [b].[DateModified], [b].[Description], [b].[HomeFlag], [b].[HotFlag], [b].[Image], [b].[Name], [b].[SeoAlias], [b].[SeoDescription], [b].[SeoKeywords], [b].[SeoPageTitle], [b].[Status], [b].[Tags], [b].[ViewCount]
+FROM [Blogs] AS [b]" (0723d8ff)
+2022-03-28T08:12:31.7253857+00:00 0HMGGIAJB0IQC:00000007 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [s].[Id], [s].[Content], [s].[Description], [s].[DisplayOrder], [s].[GroupAlias], [s].[Image], [s].[Name], [s].[Status], [s].[Url]
+FROM [Slides] AS [s]" (0723d8ff)

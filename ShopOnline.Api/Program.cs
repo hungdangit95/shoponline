@@ -24,6 +24,10 @@ namespace ShopOnline.Api
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration(Configuration)
+                .ConfigureLogging((context, builder)=> {
+                    builder.ClearProviders();
+                    builder.AddConsole();
+                })
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
                 .Build();

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Logging;
 using SharedKernel.Extensions;
 using ShopOnlineApp.Application.Interfaces;
 using ShopOnlineApp.Models;
@@ -17,11 +18,9 @@ namespace ShopOnline.Api.Servers.Portal
         private readonly IProductCategoryService _productCategoryService;
         private readonly IBlogService _blogService;
         private readonly ICommonService _commonService;
-       
-
         public HomeController(IProductService productService,
             IBlogService blogService, ICommonService commonService,
-            IProductCategoryService productCategoryService, IStringLocalizer<HomeController> localizer):base(localizer)
+            IProductCategoryService productCategoryService, IStringLocalizer<HomeController> localizer, ILoggerFactory factory) : base(localizer)
         {
             _blogService = blogService;
             _commonService = commonService;
@@ -31,7 +30,6 @@ namespace ShopOnline.Api.Servers.Portal
         [HttpGet("index")]
         public async Task<IActionResult> Index()
         {
-
             var homeVm = new HomeViewModel();
             homeVm.HomeCategories = await _productCategoryService.GetHomeCategories(5);
             homeVm.HotProducts = await _productService.GetHotProduct(5);
