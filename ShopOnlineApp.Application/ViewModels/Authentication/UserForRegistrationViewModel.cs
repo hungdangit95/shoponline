@@ -1,9 +1,15 @@
-﻿using System;
+﻿using ShopOnlineApp.Application.Common;
+using ShopOnlineApp.Data.Entities;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ShopOnline.Service.DataModel.AccountViewModels
+namespace ShopOnlineApp.Application.ViewModels.Authentication
 {
-    public class RegisterViewModel
+    public class UserForRegistrationViewModel : ViewModelBase<UserForRegistrationViewModel, AppUser>
     {
         [Required(ErrorMessage = "Full name required", AllowEmptyStrings = false)]
         [Display(Name = "Full name")]
@@ -35,7 +41,13 @@ namespace ShopOnline.Service.DataModel.AccountViewModels
 
         [Display(Name = "Avatar")]
         public string Avatar { get; set; }
-        [Display(Name="Gender")]
+        [Display(Name = "Gender")]
         public bool Gender { get; set; }
+
+        public IEnumerable<string> Roles { get; set; }
+
+        [Required]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
     }
 }

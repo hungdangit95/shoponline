@@ -1,17 +1,21 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using ShopOnline.Api.ActionFilter;
 using ShopOnline.Api.Authorization;
 using ShopOnline.Api.Helper;
 using ShopOnline.Api.Initialization;
@@ -30,6 +34,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Text;
 
 namespace ShopOnline.Api
 {
@@ -58,12 +63,20 @@ namespace ShopOnline.Api
                    o.EnableRetryOnFailure();
                }));
 
-            Console.WriteLine($"connect string to server={host},{port};user id=sa;password={password};"
-                    + $"Database=Products");
-            services.AddIdentity<AppUser, AppRole>()
+
+            services.AddIdentity<AppUser, AppRole>(o =>
+            {
+                o.Password.RequireDigit = true;
+                o.Password.RequireLowercase = false;
+                o.Password.RequireUppercase = false;
+                o.Password.RequireNonAlphanumeric = false;
+                o.Password.RequiredLength = 8;
+                o.User.RequireUniqueEmail = true;
+
+            })
                .AddEntityFrameworkStores<AppDbContext>()
                .AddDefaultTokenProviders();
-          //  services.Configure<CloudinaryImage>(Configuration.GetSection("CloudinarySettings"));
+            //  services.Configure<CloudinaryImage>(Configuration.GetSection("CloudinarySettings"));
 
             services.AddSession(options =>
             {
@@ -88,7 +101,25 @@ namespace ShopOnline.Api
                 // User settings
                 options.User.RequireUniqueEmail = true;
             });
-            services.AddAuthentication();
+            var jwtSettings = Configuration.GetSection("JwtSettings");
+            services.AddAuthentication(opt =>
+            {
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+             .AddJwtBearer(options =>
+             {
+                 options.TokenValidationParameters = new TokenValidationParameters
+                 {
+                     ValidateIssuer = true,
+                     ValidateAudience = true,
+                     ValidateLifetime = true,
+                     ValidateIssuerSigningKey = true,
+                     ValidIssuer = jwtSettings["validIssuer"],
+                     ValidAudience = jwtSettings["validAudience"],
+                     IssuerSigningKey = new SymmetricSecurityKey(Base64UrlEncoder.DecodeBytes("sddddddddwewewewwwwwwwwwwwwwwwwrerevvasasaawqw"))
+                 };
+             });
             services.AddAutoMapper(typeof(Startup));
             //services.AddMemoryCache();
             // Add application services.
@@ -96,12 +127,17 @@ namespace ShopOnline.Api
             services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
 
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
-           // services.AddSingleton(AutoMapperConfig.Config.CreateMapper() );
+            // services.AddSingleton(AutoMapperConfig.Config.CreateMapper() );
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddInitializationStages();
             services.AddControllers(options =>
             {
                 options.Filters.Add<ExceptionHandler>();
+            });
+            services.AddScoped<ValidationFilterAttribute>();
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
             });
             services.AddDistributedMemoryCache();
 
@@ -184,6 +220,7 @@ namespace ShopOnline.Api
             services.AddTransient<ISlideService, SlideService>();
             services.AddTransient<IProductQuantityService, ProductQuantityService>();
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
+            services.AddTransient<IOAuthenticationService, OAuthenticationService>();
             //.AddNewtonsoftJson(options =>
             //{
 
@@ -204,18 +241,41 @@ namespace ShopOnline.Api
                         Email = "hungdangit95@gmail.com",
                     }
                 });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Place to add JWT with Bearer",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                     {
+                        {
+                        new OpenApiSecurityScheme
+                        {
+                        Reference = new OpenApiReference
+                        {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                        },
+                        Name = "Bearer",
+                        },
+                        new List<string>()
+                        }
+                });
             });
-            services.AddControllers(config =>
-            {
-                config.RespectBrowserAcceptHeader = true;
-                config.ReturnHttpNotAcceptable = true;
-            }).AddXmlDataContractSerializerFormatters();
+            //services.AddControllers(config =>
+            //{
+            //    config.RespectBrowserAcceptHeader = true;
+            //    config.ReturnHttpNotAcceptable = true;
+            //}).AddXmlDataContractSerializerFormatters();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory logger)
         {
-            logger.AddFile("Logs/shoponline-{Date}.txt");
+            //logger.AddFile("Logs/shoponline-{Date}.txt");
             app.UseSwagger();
 
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); });

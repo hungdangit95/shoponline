@@ -37,6 +37,7 @@ namespace ShopOnlineApp.Utilities.Mvc.Filters
                             StatusCode = StatusCodes.Status400BadRequest
                         };
                         context.ExceptionHandled = true;
+                        _logger.LogError($"ArgumentException : {argumentException.Message}");
                         return;
                     }
 
@@ -49,6 +50,7 @@ namespace ShopOnlineApp.Utilities.Mvc.Filters
                             StatusCode = StatusCodes.Status400BadRequest,
                         };
                         context.ExceptionHandled = true;
+                        _logger.LogError($"Invalid Exception : {invalidOperationException.Message}");
                         return;
                     }
 
@@ -75,16 +77,16 @@ namespace ShopOnlineApp.Utilities.Mvc.Filters
 
                         context.Result = new JsonResult(ex.Message);
                         context.HttpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+                        _logger.LogError($"Invalid Exception : {notFoundException.Message}");
                         return;
                     }
                 case BadRequestException badRequestException:
                     {
-
+                        context.HttpContext.Response.StatusCode = StatusCodes.Status404NotFound;
                         return;
                     }
                 case UnauthorizedAccessException unauthorizedAccessException:
                     {
-
                         return;
                     }
 

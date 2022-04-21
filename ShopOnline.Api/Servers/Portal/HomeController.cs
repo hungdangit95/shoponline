@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using SharedKernel.Extensions;
+using ShopOnline.Api.ModelBinders;
 using ShopOnlineApp.Application.Interfaces;
 using ShopOnlineApp.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ShopOnline.Api.Servers.Portal
@@ -18,16 +19,19 @@ namespace ShopOnline.Api.Servers.Portal
         private readonly IProductCategoryService _productCategoryService;
         private readonly IBlogService _blogService;
         private readonly ICommonService _commonService;
+        private readonly ILogger<HomeController> _logger;
         public HomeController(IProductService productService,
             IBlogService blogService, ICommonService commonService,
-            IProductCategoryService productCategoryService, IStringLocalizer<HomeController> localizer, ILoggerFactory factory) : base(localizer)
+            IProductCategoryService productCategoryService, IStringLocalizer<HomeController> localizer, ILogger<HomeController> logger) : base(localizer)
         {
             _blogService = blogService;
             _commonService = commonService;
             _productService = productService;
             _productCategoryService = productCategoryService;
+            _logger = logger;
         }
         [HttpGet("index")]
+        [Authorize(Roles = "Customer")]
         public async Task<IActionResult> Index()
         {
             var homeVm = new HomeViewModel();
@@ -38,9 +42,15 @@ namespace ShopOnline.Api.Servers.Portal
             homeVm.TopRateProducts = await _productService.GetRatingProducts(3);
             homeVm.LastestBlogs = await _blogService.GetLastest(5);
             homeVm.HomeSlides = await _commonService.GetSlides("top");
+            _logger.LogError("hung test");
             return Response(Result.Success(homeVm));
         }
 
+        [HttpGet("getbyids/({ids})", Name = "CompanyCollection")]
+        public IActionResult GetCompanyCollection([ModelBinder(BinderType = typeof(ArrayModelBinder))] IEnumerable<Guid> ids)
+        {
+            return Response(Result.Success(ids));
+        }
         //public IActionResult About()
         //{
         //    ViewData["Message"] = "Your application description page.";
@@ -70,5 +80,7 @@ namespace ShopOnline.Api.Servers.Portal
 
         //    return LocalRedirect(returnUrl);
         //}
+
+       
     }
 }

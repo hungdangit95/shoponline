@@ -163,10 +163,9 @@ namespace ShopOnlineApp
                 options.Filters.Add<ExceptionHandler>();
             }).AddNewtonsoftJson(options =>
             {
-
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
             });
-
+           
             services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
 
             services.Configure<RequestLocalizationOptions>(
@@ -260,7 +259,7 @@ namespace ShopOnlineApp
             //    options.Filters.Add<ExceptionHandler>();
             //});
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
-            services.AddTransient<EnsureProductExistsFilter>();
+           // services.AddTransient<EnsureProductExistsFilter>();
 
             services.AddSignalR();
             services.AddLogging();

@@ -27,6 +27,7 @@ namespace ShopOnline.Api
                 .ConfigureLogging((context, builder)=> {
                     builder.ClearProviders();
                     builder.AddConsole();
+                    builder.AddFile("Logs/shoponline-{Date}.txt");
                 })
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()

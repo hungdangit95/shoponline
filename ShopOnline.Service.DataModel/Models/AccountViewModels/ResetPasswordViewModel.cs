@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ShopOnline.Service.DataModel.AccountViewModels
+namespace ShopOnlineApp.Models.AccountViewModels
 {
     public class ResetPasswordViewModel
     {

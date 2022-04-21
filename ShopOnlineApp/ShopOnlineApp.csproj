@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Server\**" />
+    <Content Remove="Server\**" />
+    <EmbeddedResource Remove="Server\**" />
+    <None Remove="Server\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\lib\jquery\jquery\dist\core.js" />
     <Content Remove="wwwroot\lib\jquery\jquery\dist\jquery.js" />
     <Content Remove="wwwroot\lib\jquery\jquery\dist\jquery.min.js" />
@@ -171,7 +178,6 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\RestApi\" />
-    <Folder Include="Server\" />
     <Folder Include="node_modules\" />
     <Folder Include="Resources\Controllers\" />
     <Folder Include="Resources\Models\AccountViewModels\" />
