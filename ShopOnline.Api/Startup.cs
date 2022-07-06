@@ -156,7 +156,7 @@ namespace ShopOnline.Api
             services.AddTransient<IBlogCategoryRepository, BlogCategoryRepository>();
             services.AddTransient<IBlogCommentRepository, BlogCommentRepository>();
             services.AddTransient<IAnnouncementService, AnnouncementService>();
-            services.AddTransient<IAppUserRoleRepository, AppUserRoleRepository>();
+            //services.AddTransient<IAppUserRoleRepository, AppUserRoleRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //service
             services.AddTransient<IFunctionService, FunctionService>();

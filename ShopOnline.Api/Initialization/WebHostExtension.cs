@@ -11,8 +11,6 @@ namespace ShopOnline.Api.Initialization
         {
             using (var scope = webHost.Services.CreateScope())
             {
-                var configuration = scope.ServiceProvider.GetRequiredService<IConfiguration>();
-
                 foreach (var stage in scope.ServiceProvider.GetServices<IStage>().OrderBy(t => t.Order))
                 {
                     stage.ExecuteAsync().Wait();
