@@ -13,36 +13,34 @@ namespace ShopOnline.Application.Dapper.Implements
     public class ReportService : IReportService
     {
         private readonly IConfiguration _configuration;
-
         public ReportService(IConfiguration configuration)
         {
             _configuration = configuration;
         }
         public async Task<IEnumerable<RevenueReportViewModel>> GetReportAsync(string fromDate, string toDate)
         {
-            return null;
-            //using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
-            //{
-            //    await sqlConnection.OpenAsync();
-            //    var dynamicParameters = new DynamicParameters();
-            //    var now = DateTime.Now;
 
-            //    var firstDayOfMonth = new DateTime(now.Year, now.Month, 1);
-            //    var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+                var now = DateTime.Now;
 
-            //    dynamicParameters.Add("@fromDate", string.IsNullOrEmpty(fromDate) ? firstDayOfMonth.ToString("MM/dd/yyyy") : fromDate);
-            //    dynamicParameters.Add("@toDate", string.IsNullOrEmpty(toDate) ? lastDayOfMonth.ToString("MM/dd/yyyy") : toDate);
+                var firstDayOfMonth = new DateTime(now.Year, now.Month, 1);
+                var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
 
-            //    try
-            //    {
-            //        return await sqlConnection.QueryAsync<RevenueReportViewModel>(
-            //            "GetRevenueDaily", dynamicParameters, commandType: CommandType.StoredProcedure);
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        throw;
-            //    }
-            //}
+                dynamicParameters.Add("@fromDate", string.IsNullOrEmpty(fromDate) ? firstDayOfMonth.ToString("MM/dd/yyyy") : fromDate);
+                dynamicParameters.Add("@toDate", string.IsNullOrEmpty(toDate) ? lastDayOfMonth.ToString("MM/dd/yyyy") : toDate);
+
+                try
+                {
+                    return await sqlConnection.QueryAsync<RevenueReportViewModel>("GetRevenueDaily", dynamicParameters, commandType: CommandType.StoredProcedure);
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
         }
     }
 }

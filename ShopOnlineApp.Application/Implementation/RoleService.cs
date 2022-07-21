@@ -73,6 +73,7 @@ namespace ShopOnlineApp.Application.Implementation
             //            || p.CanRead && action == "Read")
             //            select p;
             //return await query.AnyAsync();
+            await Task.CompletedTask;
             return true;
         }
 

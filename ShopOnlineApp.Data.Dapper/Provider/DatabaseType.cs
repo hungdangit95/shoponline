@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopOnline.Application.Dapper.Provider
+namespace ShopOnlineApp.Data.Dapper
 {
     public enum DatabaseType
     {
         Mssql,
         Mysql,
-        Oracle
+        Oracle,
+        Postgre
     }
 }

@@ -285,12 +285,6 @@ namespace ShopOnlineApp
             var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(options.Value);
 
-            //app.UseCors(
-            //    optionss => optionss.WithOrigins("http://sandbox.vnpayment.vn/paymentv2/vpcpay.html").AllowAnyMethod()
-            //);
-
-            //app.UseCors("CorsPolicy");
-
             app.UseCors(opts =>
             {
                 opts.AllowAnyHeader();

@@ -19,6 +19,7 @@ namespace ShopOnlineApp.Areas.Admin.Controllers
     {
         private readonly IBillService _billService;
         private readonly IHostingEnvironment _hostingEnvironment;
+
         public BillController(IBillService billService, IHostingEnvironment hostingEnvironment)
         {
             _billService = billService;

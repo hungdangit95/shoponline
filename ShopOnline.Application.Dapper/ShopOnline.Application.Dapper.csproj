@@ -5,14 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dapper" Version="2.0.90" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+    <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
+    <PackageReference Include="SqlKata" Version="2.3.7" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Provider\Context\" />
     <Folder Include="SqlCommand\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ShopOnlineApp.Data.Dapper\ShopOnlineApp.Data.Dapper.csproj" />
   </ItemGroup>
 
 </Project>

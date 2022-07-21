@@ -17,5 +17,5 @@ BEGIN
                 group by b.DateCreated
 END
 
-EXEC dbo.GetRevenueDaily @fromDate = '02/10/2021',
-                         @toDate = '02/16/2022' 
+EXEC dbo.GetRevenueDaily @fromDate = '02/10/2019',
+                         @toDate = '02/16/2019' 

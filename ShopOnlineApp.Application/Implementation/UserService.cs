@@ -113,7 +113,7 @@ namespace ShopOnlineApp.Application.Implementation
                 Message = Message.Success,
                 Status = (int) QueryStatus.Success
             };
-            
+            await Task.CompletedTask;
             return result;
         }
 

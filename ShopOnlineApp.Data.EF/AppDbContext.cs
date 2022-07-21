@@ -110,22 +110,22 @@ namespace ShopOnlineApp.Data.EF
 
 
     }
-        
-    //public class MyDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
-    //{
-    //    AppDbContext IDesignTimeDbContextFactory<AppDbContext>.CreateDbContext(string[] args)
-    //    {
-    //        IConfigurationRoot configuration = new ConfigurationBuilder()
-    //            .SetBasePath(Directory.GetCurrentDirectory())
-    //            .AddJsonFile("appsettings.json")
-    //            .Build();
 
-    //        var builder = new DbContextOptionsBuilder<AppDbContext>();
-    //        var connectionString = configuration.GetConnectionString("DefaultConnection");
+    public class MyDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
+    {
+        AppDbContext IDesignTimeDbContextFactory<AppDbContext>.CreateDbContext(string[] args)
+        {
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
 
-    //        //builder.UseNpgsql(connectionString);
+            var builder = new DbContextOptionsBuilder<AppDbContext>();
+            var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-    //        return new AppDbContext(builder.Options);
-    //    }
-    //}
+            //builder.UseNpgsql(connectionString);
+
+            return new AppDbContext(builder.Options);
+        }
+    }
 }

@@ -2,10 +2,11 @@
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
-namespace ShopOnline.Application.Dapper.Helper
+namespace ShopOnlineApp.Data.Dapper
 {
     public static class Connection
     {
@@ -13,18 +14,19 @@ namespace ShopOnline.Application.Dapper.Helper
         private static IConfiguration _keyConfig;
         private static string _oracleConn;
         private static string _redisConn;
+        private static string _sqlConn;
         public static void InitSetting()
         {
-            //var builder = new ConfigurationBuilder()
-            //           .SetBasePath(Directory.GetCurrentDirectory())
-            //           .AddJsonFile("appsettings.json");
+            var builder = new ConfigurationBuilder()
+                       .SetBasePath(Directory.GetCurrentDirectory())
+                       .AddJsonFile("appsettings.json");
 
             //IConfigurationRoot configuration = new ConfigurationBuilder()
             //    .SetBasePath(Directory.GetCurrentDirectory())
             //    .AddJsonFile("appsettings.json")
             //    .Build();
 
-            //Configuration = builder.Build();
+            Configuration = builder.Build();
         }
 
         public static string RedisConn
@@ -50,6 +52,19 @@ namespace ShopOnline.Application.Dapper.Helper
                     _oracleConn = Configuration.GetConnectionString("OracleConnectionString");
                 }
                 return _oracleConn;
+            }
+        }
+
+        public  static string SqlConn
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_sqlConn))
+                {
+                    InitSetting();
+                    _sqlConn = Configuration.GetConnectionString("DefaultConnection");
+                }
+                return _sqlConn;
             }
         }
 
