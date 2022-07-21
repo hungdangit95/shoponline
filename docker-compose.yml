@@ -11,7 +11,6 @@ services:
     environment:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: "Pa55w0rd2021"
-      MSSQL_PID: Express
     ports:
       - "1433:1433"
   shoponlineapp:
@@ -20,7 +19,7 @@ services:
     environment:
       - DBHOST=mssqlserver
     depends_on:
-      - mssqlserver 
+      - mssqlserver     
     build:
       context: .
       dockerfile: ShopOnlineApp/Dockerfile

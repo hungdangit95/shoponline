@@ -34,7 +34,6 @@ using ShopOnlineApp.Infrastructure.Interfaces;
 using ShopOnlineApp.Initialization;
 using ShopOnlineApp.Models;
 using ShopOnlineApp.Services;
-using ShopOnlineApp.SignalR;
 using ShopOnlineApp.Utilities.Mvc.Filters;
 //using ShopOnlineApp.Utilities.Mvc.Filters;
 
@@ -78,7 +77,6 @@ namespace ShopOnlineApp
             services.AddIdentity<AppUser, AppRole>()
                .AddEntityFrameworkStores<AppDbContext>()
                .AddDefaultTokenProviders();
-            services.Configure<CloudinaryImage>(Configuration.GetSection("CloudinarySettings"));
 
             services.AddSession(options =>
             {
@@ -126,7 +124,7 @@ namespace ShopOnlineApp
                 SecretKey = Configuration["Recaptcha:SecretKey"]
             });
 
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddAutoMapper(typeof(Startup));
             services.AddMemoryCache();
             // Add application services.
             services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
@@ -161,10 +159,9 @@ namespace ShopOnlineApp
                 options.Filters.Add<ExceptionHandler>();
             }).AddNewtonsoftJson(options =>
             {
-
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
             });
-
+           
             services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
 
             services.Configure<RequestLocalizationOptions>(
@@ -218,7 +215,7 @@ namespace ShopOnlineApp
             services.AddTransient<IBlogCategoryRepository, BlogCategoryRepository>();
             services.AddTransient<IBlogCommentRepository, BlogCommentRepository>();
             services.AddTransient<IAnnouncementService, AnnouncementService>();
-            services.AddTransient<IAppUserRoleRepository, AppUserRoleRepository>();
+           // services.AddTransient<IAppUserRoleRepository, AppUserRoleRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //service
             services.AddTransient<IFunctionService, FunctionService>();
@@ -258,9 +255,10 @@ namespace ShopOnlineApp
             //    options.Filters.Add<ExceptionHandler>();
             //});
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
-            services.AddTransient<EnsureProductExistsFilter>();
+           // services.AddTransient<EnsureProductExistsFilter>();
 
             services.AddSignalR();
+            services.AddLogging();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

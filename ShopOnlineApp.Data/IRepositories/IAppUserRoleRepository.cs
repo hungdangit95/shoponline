@@ -4,7 +4,7 @@ using ShopOnlineApp.Infrastructure.Interfaces;
 
 namespace ShopOnlineApp.Data.IRepositories
 {
-    public interface IAppUserRoleRepository : IRepository<AppRole, Guid>
+    public interface IAppUserRoleRepository : IRepository<AppUserRole, int>
     {
     }
 }

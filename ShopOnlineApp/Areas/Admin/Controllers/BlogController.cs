@@ -38,10 +38,12 @@ namespace ShopOnlineApp.Areas.Admin.Controllers
             _billService = billService;
         }
         #endregion
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
+        [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             //var dataReturn = await _BlogService.GetAll();

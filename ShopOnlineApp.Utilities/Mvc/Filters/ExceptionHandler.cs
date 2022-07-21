@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ShopOnlineApp.Utilities.Mvc.Filters.Exceptions;
 
 namespace ShopOnlineApp.Utilities.Mvc.Filters
 {
@@ -18,8 +19,6 @@ namespace ShopOnlineApp.Utilities.Mvc.Filters
             _logger = logger;
             _hostingEnvironment = hostingEnvironment;
         }
-       
-
         public override void OnException(ExceptionContext context)
         {
             switch (context.Exception)
@@ -38,6 +37,7 @@ namespace ShopOnlineApp.Utilities.Mvc.Filters
                             StatusCode = StatusCodes.Status400BadRequest
                         };
                         context.ExceptionHandled = true;
+                        _logger.LogError($"ArgumentException : {argumentException.Message}");
                         return;
                     }
 
@@ -50,6 +50,7 @@ namespace ShopOnlineApp.Utilities.Mvc.Filters
                             StatusCode = StatusCodes.Status400BadRequest,
                         };
                         context.ExceptionHandled = true;
+                        _logger.LogError($"Invalid Exception : {invalidOperationException.Message}");
                         return;
                     }
 
@@ -67,6 +68,25 @@ namespace ShopOnlineApp.Utilities.Mvc.Filters
                             StatusCode = StatusCodes.Status400BadRequest
                         };
                         context.ExceptionHandled = true;
+                        return;
+                    }
+                case NotFoundException notFoundException:
+                    {
+                        var ex = context.Exception as NotFoundException;
+                        context.Exception = null;
+
+                        context.Result = new JsonResult(ex.Message);
+                        context.HttpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+                        _logger.LogError($"Invalid Exception : {notFoundException.Message}");
+                        return;
+                    }
+                case BadRequestException badRequestException:
+                    {
+                        context.HttpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+                        return;
+                    }
+                case UnauthorizedAccessException unauthorizedAccessException:
+                    {
                         return;
                     }
 

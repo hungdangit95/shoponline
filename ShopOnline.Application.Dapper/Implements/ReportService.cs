@@ -12,6 +12,7 @@ namespace ShopOnline.Application.Dapper.Implements
 {
     public class ReportService : IReportService
     {
+
         private readonly IConfiguration _configuration;
         public ReportService(IConfiguration configuration)
         {

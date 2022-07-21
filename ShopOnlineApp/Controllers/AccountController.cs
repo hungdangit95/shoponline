@@ -524,4 +524,5 @@ namespace ShopOnlineApp.Controllers
 
         #endregion
     }
+    public record ClassDto(string Name, string Address);
 }

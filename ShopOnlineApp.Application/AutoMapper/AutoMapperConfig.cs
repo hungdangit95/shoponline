@@ -2,6 +2,7 @@
 using AutoMapper;
 using ShopOnlineApp.Application.ViewModels;
 using ShopOnlineApp.Application.ViewModels.Annoucement;
+using ShopOnlineApp.Application.ViewModels.Authentication;
 using ShopOnlineApp.Application.ViewModels.Bill;
 using ShopOnlineApp.Application.ViewModels.BlogComment;
 using ShopOnlineApp.Application.ViewModels.Blogs;
@@ -207,6 +208,11 @@ namespace ShopOnlineApp.Application.AutoMapper
 
                 cfg.CreateMap<AnnouncementViewModel, Announcement>();
 
+                #endregion
+                cfg.CreateMap<UserForRegistrationViewModel, AppUser>();
+
+                cfg.CreateMap<AppUser, UserForRegistrationViewModel>();
+                #region UserForRegistor
                 #endregion
 
             }

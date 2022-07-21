@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Server\**" />
+    <Content Remove="Server\**" />
+    <EmbeddedResource Remove="Server\**" />
+    <None Remove="Server\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\lib\jquery\jquery\dist\core.js" />
     <Content Remove="wwwroot\lib\jquery\jquery\dist\jquery.js" />
     <Content Remove="wwwroot\lib\jquery\jquery\dist\jquery.min.js" />
@@ -150,6 +157,7 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.6" />
     <PackageReference Include="PaulMiami.AspNetCore.Mvc.Recaptcha" Version="1.2.2" />
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="2.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -169,6 +177,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\RestApi\" />
     <Folder Include="node_modules\" />
     <Folder Include="Resources\Controllers\" />
     <Folder Include="Resources\Models\AccountViewModels\" />
