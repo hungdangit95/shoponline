@@ -39,8 +39,7 @@ namespace ShopOnline.Api.Servers.Portal
             homeVm.HotProducts = await _productService.GetHotProduct(5);
             homeVm.TopSellProducts = await _productService.GetLastest(5);
             homeVm.NewProducts = await _productService.GetLastest(6);
-            homeVm.TopRateProducts = await _productService.GetRatingProducts(3);
-            homeVm.LastestBlogs = await _blogService.GetLastest(5);
+            homeVm.TopRateProducts = await _productService.GetRatingProducts(3);  
             homeVm.HomeSlides = await _commonService.GetSlides("top");
             _logger.LogError("hung test");
             return Response(Result.Success(homeVm));

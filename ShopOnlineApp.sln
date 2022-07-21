@@ -35,6 +35,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopOnline.Api", "ShopOnlin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopOnline.Service.DataModel", "ShopOnline.Service.DataModel\ShopOnline.Service.DataModel.csproj", "{41E047ED-6568-49EA-ABE1-7F786A45D940}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopOnlineApp.Dapper", "..\ShopOnlineApp.Dapper\ShopOnlineApp.Dapper.csproj", "{477FB656-9952-46AA-AC09-E01AB6458A14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +87,10 @@ Global
 		{41E047ED-6568-49EA-ABE1-7F786A45D940}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41E047ED-6568-49EA-ABE1-7F786A45D940}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41E047ED-6568-49EA-ABE1-7F786A45D940}.Release|Any CPU.Build.0 = Release|Any CPU
+		{477FB656-9952-46AA-AC09-E01AB6458A14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{477FB656-9952-46AA-AC09-E01AB6458A14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{477FB656-9952-46AA-AC09-E01AB6458A14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{477FB656-9952-46AA-AC09-E01AB6458A14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +106,7 @@ Global
 		{4EA6B9C6-1DAA-435D-8781-3E076FC7D9C9} = {690B2394-B282-4A6B-A17E-0F0BBCFEA514}
 		{ABC824E2-28A4-44B3-B7D9-556DB427CFA3} = {9B9CE55E-D9E6-4C52-B697-C4FBAB581793}
 		{41E047ED-6568-49EA-ABE1-7F786A45D940} = {844DB236-20AF-4F85-AC1F-A9A90BC3F6DC}
+		{477FB656-9952-46AA-AC09-E01AB6458A14} = {307E923C-AA3A-4D88-B04E-E45EBA0322E9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BDD37A10-3F44-4006-96E9-0F63F1506ACC}

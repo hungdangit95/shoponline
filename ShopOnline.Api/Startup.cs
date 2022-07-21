@@ -1,4 +1,5 @@
 using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -265,11 +266,16 @@ namespace ShopOnline.Api
                         }
                 });
             });
+
+            services.AddMediatR(typeof(AssemblyReference).Assembly);
             //services.AddControllers(config =>
             //{
             //    config.RespectBrowserAcceptHeader = true;
             //    config.ReturnHttpNotAcceptable = true;
             //}).AddXmlDataContractSerializerFormatters();
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -278,7 +284,10 @@ namespace ShopOnline.Api
             //logger.AddFile("Logs/shoponline-{Date}.txt");
             app.UseSwagger();
 
-            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); });
+            app.UseSwaggerUI(c => { 
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = "docs";
+            });
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
