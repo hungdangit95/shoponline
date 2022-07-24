@@ -13,7 +13,7 @@ namespace ShopOnlineApp.Application.Implementation
 {
     public class ReportService : IReportService
     {
-        
+
         private readonly IConfiguration _configuration;
         private readonly IReportRepository _reportRepository;
         public ReportService(IConfiguration configuration, IReportRepository reportRepository)
@@ -38,9 +38,7 @@ namespace ShopOnlineApp.Application.Implementation
 
                 try
                 {
-                    var response  = await _reportRepository.ExcuteManyAsync("dbo", "GetRevenueDaily", dynamicParameters);
-                    return response;
-                    //return await sqlConnection.QueryAsync<RevenueReportViewModel>("GetRevenueDaily", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return await _reportRepository.ExcuteManyAsync("dbo", "GetRevenueDaily", dynamicParameters);
                 }
                 catch (Exception ex)
                 {
