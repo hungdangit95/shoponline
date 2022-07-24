@@ -1,16 +1,17 @@
 version: '3.4'
-networks:
-  backend:
 services:
   mssqlserver:
     image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
     networks:
       - backend
     volumes:
-      - mssql-data:/var/lib/mssql
+      - mssql_data:/var/opt/mssql/data
+      - mssql_log:/var/opt/mssql/log
+      - mssql_backup:/var/opt/mssql/backup
     environment:
-      ACCEPT_EULA: "Y"
-      SA_PASSWORD: "Pa55w0rd2021"
+      - SA_PASSWORD=Pa55w0rd2021
+      - ACCEPT_EULA=Y
+    restart: always
     ports:
       - "1433:1433"
   shoponlineapp:
@@ -24,8 +25,12 @@ services:
       context: .
       dockerfile: ShopOnlineApp/Dockerfile
     links:
-     - mssqlserver
+      - mssqlserver
      
 volumes:
-   mssql-data:
-    external: true
+   mssql_data:
+   mssql_log:
+   mssql_backup:
+
+networks:
+  backend:

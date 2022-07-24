@@ -6,19 +6,18 @@ namespace ShopOnlineApp.Data.Dapper
 {
     public class SessionFactory
     {
+        private static IDbConnection conn;
         private static IDbConnection CreateConnection(DatabaseType dataType = DatabaseType.Mssql, string connStrKey = "")
         {
             try
             {
-                IDbConnection conn;
-
                 // string connectionString = GetConnectionString(connStrKey);
-                string connectionString = Connection.OracleConn;
+                string connectionString = Connection.SqlConn;
 
                 switch (dataType)
                 {
                     case DatabaseType.Oracle:
-                       // conn = new OracleConnection(connectionString);
+                        // conn = new OracleConnection(connectionString);
                         break;
                     case DatabaseType.Mssql:
                         conn = new SqlConnection(connectionString);
@@ -32,9 +31,7 @@ namespace ShopOnlineApp.Data.Dapper
                         break;
                 }
 
-                //conn.Open();
-
-                return null;
+                return conn;
             }
             catch (Exception e)
             {

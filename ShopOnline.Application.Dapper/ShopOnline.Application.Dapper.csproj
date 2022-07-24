@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ShopOnlineApp.Data.Dapper\ShopOnlineApp.Data.Dapper.csproj" />
     <ProjectReference Include="..\ShopOnlineApp.Data.Dapper\ShopOnlineApp.Data.Dapper.csproj" />
   </ItemGroup>
 

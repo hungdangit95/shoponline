@@ -1,0 +1,1027 @@
+2022-07-24T09:13:45.3413895+00:00  [WRN] Storing keys in a directory '"/root/.aspnet/DataProtection-Keys"' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed. (96807dbc)
+2022-07-24T09:13:45.3452345+00:00  [INF] User profile is available. Using '"/root/.aspnet/DataProtection-Keys"' as key repository; keys will not be encrypted at rest. (a162847e)
+2022-07-24T09:13:46.0893907+00:00  [WRN] No type was specified for the decimal property '"Balance"' on entity type '"AppUser"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType()', specify precision and scale using 'HasPrecision()' or configure a value converter using 'HasConversion()'. (5c92c1c4)
+2022-07-24T09:13:46.0896131+00:00  [WRN] No type was specified for the decimal property '"Price"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType()', specify precision and scale using 'HasPrecision()' or configure a value converter using 'HasConversion()'. (5c92c1c4)
+2022-07-24T09:13:46.0897003+00:00  [WRN] No type was specified for the decimal property '"OriginalPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType()', specify precision and scale using 'HasPrecision()' or configure a value converter using 'HasConversion()'. (5c92c1c4)
+2022-07-24T09:13:46.0897268+00:00  [WRN] No type was specified for the decimal property '"Price"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType()', specify precision and scale using 'HasPrecision()' or configure a value converter using 'HasConversion()'. (5c92c1c4)
+2022-07-24T09:13:46.0897614+00:00  [WRN] No type was specified for the decimal property '"PromotionPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType()', specify precision and scale using 'HasPrecision()' or configure a value converter using 'HasConversion()'. (5c92c1c4)
+2022-07-24T09:13:46.0898138+00:00  [WRN] No type was specified for the decimal property '"Value5"' on entity type '"SystemConfig"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType()', specify precision and scale using 'HasPrecision()' or configure a value converter using 'HasConversion()'. (5c92c1c4)
+2022-07-24T09:13:46.0898407+00:00  [WRN] No type was specified for the decimal property '"Price"' on entity type '"WholePrice"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType()', specify precision and scale using 'HasPrecision()' or configure a value converter using 'HasConversion()'. (5c92c1c4)
+2022-07-24T09:13:46.2367092+00:00  [INF] Entity Framework Core "5.0.6" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShopOnlineApp.Data.EF " (9958f5bb)
+2022-07-24T09:13:48.0568763+00:00  [INF] Executed DbCommand ("692"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [Products];" (0723d8ff)
+2022-07-24T09:13:48.2954594+00:00  [INF] Executed DbCommand ("236"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [Products] SET READ_COMMITTED_SNAPSHOT ON;
+END;" (0723d8ff)
+2022-07-24T09:13:48.3753353+00:00  [INF] Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2022-07-24T09:13:48.4648189+00:00  [INF] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);" (0723d8ff)
+2022-07-24T09:13:48.5117923+00:00  [INF] Executed DbCommand ("43"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2022-07-24T09:13:48.5413820+00:00  [INF] Executed DbCommand ("22"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2022-07-24T09:13:48.5496056+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2022-07-24T09:13:48.5675895+00:00  [INF] Applying migration '"20211008094227_initial"'. (0e2ac64d)
+2022-07-24T09:13:48.6951833+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AdvertistmentPages] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_AdvertistmentPages] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.6981458+00:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AppRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] uniqueidentifier NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AppRoleClaims] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.7014337+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AppRoles] (
+    [Id] uniqueidentifier NOT NULL,
+    [Description] nvarchar(250) NULL,
+    [Name] nvarchar(max) NULL,
+    [NormalizedName] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_AppRoles] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.7054521+00:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AppUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] uniqueidentifier NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AppUserClaims] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.7113498+00:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AppUserLogins] (
+    [UserId] uniqueidentifier NOT NULL,
+    [LoginProvider] nvarchar(max) NULL,
+    [ProviderKey] nvarchar(max) NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    CONSTRAINT [PK_AppUserLogins] PRIMARY KEY ([UserId])
+);" (0723d8ff)
+2022-07-24T09:13:48.7146785+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AppUserRoles] (
+    [UserId] uniqueidentifier NOT NULL,
+    [RoleId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_AppUserRoles] PRIMARY KEY ([RoleId], [UserId])
+);" (0723d8ff)
+2022-07-24T09:13:48.7186133+00:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AppUsers] (
+    [Id] uniqueidentifier NOT NULL,
+    [FullName] nvarchar(max) NULL,
+    [BirthDay] datetime2 NULL,
+    [Balance] decimal(18,2) NOT NULL,
+    [Avatar] nvarchar(max) NULL,
+    [DateCreated] datetime2 NOT NULL,
+    [DateModified] datetime2 NOT NULL,
+    [Status] int NOT NULL,
+    [Address] nvarchar(max) NULL,
+    [Gender] bit NOT NULL,
+    [UserName] nvarchar(max) NULL,
+    [NormalizedUserName] nvarchar(max) NULL,
+    [Email] nvarchar(max) NULL,
+    [NormalizedEmail] nvarchar(max) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    CONSTRAINT [PK_AppUsers] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.7220483+00:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AppUserTokens] (
+    [UserId] uniqueidentifier NOT NULL,
+    [LoginProvider] nvarchar(max) NULL,
+    [Name] nvarchar(max) NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AppUserTokens] PRIMARY KEY ([UserId])
+);" (0723d8ff)
+2022-07-24T09:13:48.7269743+00:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [BlogCategories] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    [Description] nvarchar(max) NULL,
+    [ParentId] int NULL,
+    [HomeOrder] int NULL,
+    [Image] nvarchar(max) NULL,
+    [HomeFlag] bit NULL,
+    [DateCreated] datetime2 NOT NULL,
+    [DateModified] datetime2 NOT NULL,
+    [SortOrder] int NOT NULL,
+    [Status] int NOT NULL,
+    [SeoPageTitle] nvarchar(max) NULL,
+    [SeoAlias] nvarchar(max) NULL,
+    [SeoKeywords] nvarchar(max) NULL,
+    [SeoDescription] nvarchar(max) NULL,
+    CONSTRAINT [PK_BlogCategories] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.7377210+00:00  [INF] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Business] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Business] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.7406007+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Colors] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(250) NULL,
+    [Code] nvarchar(250) NULL,
+    CONSTRAINT [PK_Colors] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.7446127+00:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [ContactDetails] (
+    [Id] nvarchar(255) NOT NULL,
+    [Name] nvarchar(250) NOT NULL,
+    [Phone] nvarchar(50) NULL,
+    [Email] nvarchar(250) NULL,
+    [Website] nvarchar(250) NULL,
+    [Address] nvarchar(250) NULL,
+    [Other] nvarchar(max) NULL,
+    [Lat] float NULL,
+    [Lng] float NULL,
+    [Status] int NOT NULL,
+    CONSTRAINT [PK_ContactDetails] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.7479098+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Feedbacks] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(250) NOT NULL,
+    [Email] nvarchar(250) NULL,
+    [Message] nvarchar(500) NULL,
+    [Status] int NOT NULL,
+    [DateCreated] datetime2 NOT NULL,
+    [DateModified] datetime2 NOT NULL,
+    CONSTRAINT [PK_Feedbacks] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.7545927+00:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Footers] (
+    [Id] varchar(255) NOT NULL,
+    [Content] nvarchar(max) NOT NULL,
+    CONSTRAINT [PK_Footers] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.7592993+00:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Functions] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(128) NOT NULL,
+    [URL] nvarchar(250) NOT NULL,
+    [ParentId] nvarchar(128) NULL,
+    [IconCss] nvarchar(max) NULL,
+    [SortOrder] int NOT NULL,
+    [Status] int NOT NULL,
+    CONSTRAINT [PK_Functions] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.7625145+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Languages] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(128) NOT NULL,
+    [IsDefault] bit NOT NULL,
+    [Resources] nvarchar(max) NULL,
+    [Status] int NOT NULL,
+    CONSTRAINT [PK_Languages] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.7648995+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Pages] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(256) NOT NULL,
+    [Alias] nvarchar(256) NOT NULL,
+    [Content] nvarchar(max) NULL,
+    [Status] int NOT NULL,
+    CONSTRAINT [PK_Pages] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.7665281+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [ProductCategories] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    [Description] nvarchar(max) NULL,
+    [ParentId] int NULL,
+    [HomeOrder] int NULL,
+    [Image] nvarchar(max) NULL,
+    [HomeFlag] bit NULL,
+    [DateCreated] datetime2 NOT NULL,
+    [DateModified] datetime2 NOT NULL,
+    [SortOrder] int NOT NULL,
+    [Status] int NOT NULL,
+    [SeoPageTitle] nvarchar(max) NULL,
+    [SeoAlias] nvarchar(max) NULL,
+    [SeoKeywords] nvarchar(max) NULL,
+    [SeoDescription] nvarchar(max) NULL,
+    CONSTRAINT [PK_ProductCategories] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.7680717+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Ratings] (
+    [Id] int NOT NULL IDENTITY,
+    [ProductId] int NOT NULL,
+    [Quantity] int NOT NULL,
+    [Price] int NOT NULL,
+    [Value] int NOT NULL,
+    [NickName] nvarchar(max) NULL,
+    [Summary] nvarchar(max) NULL,
+    [Review] nvarchar(max) NULL,
+    [DateCreated] datetime2 NOT NULL,
+    [DateModified] datetime2 NOT NULL,
+    CONSTRAINT [PK_Ratings] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.7756986+00:00  [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Sizes] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(250) NULL,
+    CONSTRAINT [PK_Sizes] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.7783995+00:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Slides] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(250) NOT NULL,
+    [Description] nvarchar(250) NULL,
+    [Image] nvarchar(250) NOT NULL,
+    [Url] nvarchar(250) NULL,
+    [DisplayOrder] int NULL,
+    [Status] bit NOT NULL,
+    [Content] nvarchar(max) NULL,
+    [GroupAlias] nvarchar(25) NOT NULL,
+    CONSTRAINT [PK_Slides] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.7817721+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [SystemConfigs] (
+    [Id] nvarchar(255) NOT NULL,
+    [Name] nvarchar(128) NOT NULL,
+    [Value1] nvarchar(max) NULL,
+    [Value2] int NULL,
+    [Value3] bit NULL,
+    [Value4] datetime2 NULL,
+    [Value5] decimal(18,2) NULL,
+    [Status] int NOT NULL,
+    CONSTRAINT [PK_SystemConfigs] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.7872751+00:00  [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Tags] (
+    [Id] varchar(50) NOT NULL,
+    [Name] nvarchar(50) NOT NULL,
+    [Type] nvarchar(50) NOT NULL,
+    CONSTRAINT [PK_Tags] PRIMARY KEY ([Id])
+);" (0723d8ff)
+2022-07-24T09:13:48.7894639+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AdvertistmentPositions] (
+    [Id] nvarchar(20) NOT NULL,
+    [PageId] nvarchar(450) NULL,
+    [Name] nvarchar(250) NULL,
+    CONSTRAINT [PK_AdvertistmentPositions] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AdvertistmentPositions_AdvertistmentPages_PageId] FOREIGN KEY ([PageId]) REFERENCES [AdvertistmentPages] ([Id]) ON DELETE NO ACTION
+);" (0723d8ff)
+2022-07-24T09:13:48.7914321+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Announcements] (
+    [Id] nvarchar(450) NOT NULL,
+    [Title] nvarchar(250) NOT NULL,
+    [Content] nvarchar(250) NULL,
+    [UserId] uniqueidentifier NOT NULL,
+    [DateCreated] datetime2 NOT NULL,
+    [DateModified] datetime2 NOT NULL,
+    [Status] int NOT NULL,
+    CONSTRAINT [PK_Announcements] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Announcements_AppUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AppUsers] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2022-07-24T09:13:48.7946049+00:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Bills] (
+    [Id] int NOT NULL IDENTITY,
+    [CustomerName] nvarchar(256) NOT NULL,
+    [CustomerAddress] nvarchar(256) NOT NULL,
+    [CustomerMobile] nvarchar(50) NOT NULL,
+    [CustomerMessage] nvarchar(256) NOT NULL,
+    [PaymentMethod] int NOT NULL,
+    [BillStatus] int NOT NULL,
+    [DateCreated] datetime2 NOT NULL,
+    [DateModified] datetime2 NOT NULL,
+    [Status] int NOT NULL,
+    [CustomerId] uniqueidentifier NULL,
+    CONSTRAINT [PK_Bills] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Bills_AppUsers_CustomerId] FOREIGN KEY ([CustomerId]) REFERENCES [AppUsers] ([Id]) ON DELETE NO ACTION
+);" (0723d8ff)
+2022-07-24T09:13:48.8030078+00:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Blogs] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(256) NOT NULL,
+    [Image] nvarchar(256) NULL,
+    [Description] nvarchar(500) NULL,
+    [Content] nvarchar(max) NULL,
+    [HomeFlag] bit NULL,
+    [HotFlag] bit NULL,
+    [ViewCount] int NULL,
+    [Tags] nvarchar(max) NULL,
+    [DateCreated] datetime2 NOT NULL,
+    [DateModified] datetime2 NOT NULL,
+    [Status] int NOT NULL,
+    [BlogCategoryId] int NOT NULL,
+    [SeoPageTitle] nvarchar(256) NULL,
+    [SeoAlias] nvarchar(256) NULL,
+    [SeoKeywords] nvarchar(256) NULL,
+    [SeoDescription] nvarchar(256) NULL,
+    CONSTRAINT [PK_Blogs] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Blogs_BlogCategories_BlogCategoryId] FOREIGN KEY ([BlogCategoryId]) REFERENCES [BlogCategories] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2022-07-24T09:13:48.8114065+00:00  [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [BusinessAction] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    [Description] nvarchar(max) NULL,
+    [BusinessId] nvarchar(450) NULL,
+    CONSTRAINT [PK_BusinessAction] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_BusinessAction_Business_BusinessId] FOREIGN KEY ([BusinessId]) REFERENCES [Business] ([Id]) ON DELETE NO ACTION
+);" (0723d8ff)
+2022-07-24T09:13:48.8155201+00:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Permissions] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] uniqueidentifier NOT NULL,
+    [FunctionId] nvarchar(450) NOT NULL,
+    [CanCreate] bit NOT NULL,
+    [CanRead] bit NOT NULL,
+    [CanUpdate] bit NOT NULL,
+    [CanDelete] bit NOT NULL,
+    CONSTRAINT [PK_Permissions] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Permissions_AppRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AppRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Permissions_Functions_FunctionId] FOREIGN KEY ([FunctionId]) REFERENCES [Functions] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2022-07-24T09:13:48.8194694+00:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Products] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(255) NOT NULL,
+    [CategoryId] int NOT NULL,
+    [Image] nvarchar(255) NULL,
+    [Price] decimal(18,2) NOT NULL,
+    [PromotionPrice] decimal(18,2) NULL,
+    [OriginalPrice] decimal(18,2) NOT NULL,
+    [Description] nvarchar(255) NULL,
+    [Content] nvarchar(max) NULL,
+    [HomeFlag] bit NULL,
+    [HotFlag] bit NULL,
+    [ViewCount] int NULL,
+    [Tags] nvarchar(255) NULL,
+    [Unit] nvarchar(255) NULL,
+    [SeoPageTitle] nvarchar(max) NULL,
+    [SeoAlias] nvarchar(255) NULL,
+    [SeoKeywords] nvarchar(255) NULL,
+    [SeoDescription] nvarchar(255) NULL,
+    [DateCreated] datetime2 NOT NULL,
+    [DateModified] datetime2 NOT NULL,
+    [Status] int NOT NULL,
+    CONSTRAINT [PK_Products] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Products_ProductCategories_CategoryId] FOREIGN KEY ([CategoryId]) REFERENCES [ProductCategories] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2022-07-24T09:13:48.8221535+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [Advertistments] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(250) NULL,
+    [Description] nvarchar(250) NULL,
+    [Image] nvarchar(250) NULL,
+    [Url] nvarchar(250) NULL,
+    [PositionId] nvarchar(20) NULL,
+    [Status] int NOT NULL,
+    [DateCreated] datetime2 NOT NULL,
+    [DateModified] datetime2 NOT NULL,
+    [SortOrder] int NOT NULL,
+    CONSTRAINT [PK_Advertistments] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Advertistments_AdvertistmentPositions_PositionId] FOREIGN KEY ([PositionId]) REFERENCES [AdvertistmentPositions] ([Id]) ON DELETE NO ACTION
+);" (0723d8ff)
+2022-07-24T09:13:48.8242584+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AnnouncementUsers] (
+    [Id] int NOT NULL IDENTITY,
+    [AnnouncementId] nvarchar(450) NOT NULL,
+    [UserId] uniqueidentifier NOT NULL,
+    [HasRead] bit NULL,
+    CONSTRAINT [PK_AnnouncementUsers] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AnnouncementUsers_Announcements_AnnouncementId] FOREIGN KEY ([AnnouncementId]) REFERENCES [Announcements] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2022-07-24T09:13:48.8267065+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [BlogComment] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    [Email] nvarchar(max) NULL,
+    [Message] nvarchar(max) NULL,
+    [BlogId] int NOT NULL,
+    [DateCreated] datetime2 NOT NULL,
+    [DateModified] datetime2 NOT NULL,
+    CONSTRAINT [PK_BlogComment] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_BlogComment_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2022-07-24T09:13:48.8371881+00:00  [INF] Executed DbCommand ("10"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [BlogTags] (
+    [Id] int NOT NULL IDENTITY,
+    [BlogId] int NOT NULL,
+    [TagId] varchar(50) NOT NULL,
+    CONSTRAINT [PK_BlogTags] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_BlogTags_Blogs_BlogId] FOREIGN KEY ([BlogId]) REFERENCES [Blogs] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_BlogTags_Tags_TagId] FOREIGN KEY ([TagId]) REFERENCES [Tags] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2022-07-24T09:13:48.8412825+00:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [GrantPermission] (
+    [Id] int NOT NULL IDENTITY,
+    [BusinessActionId] int NOT NULL,
+    [UserId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_GrantPermission] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_GrantPermission_AppUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AppUsers] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_GrantPermission_BusinessAction_BusinessActionId] FOREIGN KEY ([BusinessActionId]) REFERENCES [BusinessAction] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2022-07-24T09:13:48.8456049+00:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [BillDetails] (
+    [Id] int NOT NULL IDENTITY,
+    [BillId] int NOT NULL,
+    [ProductId] int NOT NULL,
+    [Quantity] int NOT NULL,
+    [Price] decimal(18,2) NOT NULL,
+    [ColorId] int NOT NULL,
+    [SizeId] int NOT NULL,
+    CONSTRAINT [PK_BillDetails] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_BillDetails_Bills_BillId] FOREIGN KEY ([BillId]) REFERENCES [Bills] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_BillDetails_Colors_ColorId] FOREIGN KEY ([ColorId]) REFERENCES [Colors] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_BillDetails_Products_ProductId] FOREIGN KEY ([ProductId]) REFERENCES [Products] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_BillDetails_Sizes_SizeId] FOREIGN KEY ([SizeId]) REFERENCES [Sizes] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2022-07-24T09:13:48.8494521+00:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [ProductImages] (
+    [Id] int NOT NULL IDENTITY,
+    [ProductId] int NOT NULL,
+    [Path] nvarchar(250) NULL,
+    [Caption] nvarchar(250) NULL,
+    CONSTRAINT [PK_ProductImages] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ProductImages_Products_ProductId] FOREIGN KEY ([ProductId]) REFERENCES [Products] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2022-07-24T09:13:48.8571510+00:00  [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [ProductQuantities] (
+    [Id] int NOT NULL IDENTITY,
+    [ProductId] int NOT NULL,
+    [SizeId] int NOT NULL,
+    [ColorId] int NOT NULL,
+    [Quantity] int NOT NULL,
+    CONSTRAINT [PK_ProductQuantities] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ProductQuantities_Colors_ColorId] FOREIGN KEY ([ColorId]) REFERENCES [Colors] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_ProductQuantities_Products_ProductId] FOREIGN KEY ([ProductId]) REFERENCES [Products] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_ProductQuantities_Sizes_SizeId] FOREIGN KEY ([SizeId]) REFERENCES [Sizes] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2022-07-24T09:13:48.8593893+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [ProductTags] (
+    [Id] int NOT NULL IDENTITY,
+    [ProductId] int NOT NULL,
+    [TagId] varchar(50) NOT NULL,
+    CONSTRAINT [PK_ProductTags] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ProductTags_Products_ProductId] FOREIGN KEY ([ProductId]) REFERENCES [Products] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_ProductTags_Tags_TagId] FOREIGN KEY ([TagId]) REFERENCES [Tags] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2022-07-24T09:13:48.8638976+00:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [WholePrices] (
+    [Id] int NOT NULL IDENTITY,
+    [ProductId] int NOT NULL,
+    [FromQuantity] int NOT NULL,
+    [ToQuantity] int NOT NULL,
+    [Price] decimal(18,2) NOT NULL,
+    CONSTRAINT [PK_WholePrices] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_WholePrices_Products_ProductId] FOREIGN KEY ([ProductId]) REFERENCES [Products] ([Id]) ON DELETE CASCADE
+);" (0723d8ff)
+2022-07-24T09:13:48.8649164+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AdvertistmentPositions_PageId] ON [AdvertistmentPositions] ([PageId]);" (0723d8ff)
+2022-07-24T09:13:48.8668624+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Advertistments_PositionId] ON [Advertistments] ([PositionId]);" (0723d8ff)
+2022-07-24T09:13:48.8682949+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Announcements_UserId] ON [Announcements] ([UserId]);" (0723d8ff)
+2022-07-24T09:13:48.8697326+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_AnnouncementUsers_AnnouncementId] ON [AnnouncementUsers] ([AnnouncementId]);" (0723d8ff)
+2022-07-24T09:13:48.8713511+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_BillDetails_BillId] ON [BillDetails] ([BillId]);" (0723d8ff)
+2022-07-24T09:13:48.8922444+00:00  [INF] Executed DbCommand ("21"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_BillDetails_ColorId] ON [BillDetails] ([ColorId]);" (0723d8ff)
+2022-07-24T09:13:48.8934933+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_BillDetails_ProductId] ON [BillDetails] ([ProductId]);" (0723d8ff)
+2022-07-24T09:13:48.8949245+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_BillDetails_SizeId] ON [BillDetails] ([SizeId]);" (0723d8ff)
+2022-07-24T09:13:48.8961808+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Bills_CustomerId] ON [Bills] ([CustomerId]);" (0723d8ff)
+2022-07-24T09:13:48.8976732+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_BlogComment_BlogId] ON [BlogComment] ([BlogId]);" (0723d8ff)
+2022-07-24T09:13:48.8993386+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Blogs_BlogCategoryId] ON [Blogs] ([BlogCategoryId]);" (0723d8ff)
+2022-07-24T09:13:48.9008674+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_BlogTags_BlogId] ON [BlogTags] ([BlogId]);" (0723d8ff)
+2022-07-24T09:13:48.9019682+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_BlogTags_TagId] ON [BlogTags] ([TagId]);" (0723d8ff)
+2022-07-24T09:13:48.9030255+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_BusinessAction_BusinessId] ON [BusinessAction] ([BusinessId]);" (0723d8ff)
+2022-07-24T09:13:48.9042740+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_GrantPermission_BusinessActionId] ON [GrantPermission] ([BusinessActionId]);" (0723d8ff)
+2022-07-24T09:13:48.9065334+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_GrantPermission_UserId] ON [GrantPermission] ([UserId]);" (0723d8ff)
+2022-07-24T09:13:48.9089623+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Permissions_FunctionId] ON [Permissions] ([FunctionId]);" (0723d8ff)
+2022-07-24T09:13:48.9109198+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Permissions_RoleId] ON [Permissions] ([RoleId]);" (0723d8ff)
+2022-07-24T09:13:48.9130273+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_ProductImages_ProductId] ON [ProductImages] ([ProductId]);" (0723d8ff)
+2022-07-24T09:13:48.9148292+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_ProductQuantities_ColorId] ON [ProductQuantities] ([ColorId]);" (0723d8ff)
+2022-07-24T09:13:48.9158158+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_ProductQuantities_ProductId] ON [ProductQuantities] ([ProductId]);" (0723d8ff)
+2022-07-24T09:13:48.9182180+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_ProductQuantities_SizeId] ON [ProductQuantities] ([SizeId]);" (0723d8ff)
+2022-07-24T09:13:48.9200940+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_Products_CategoryId] ON [Products] ([CategoryId]);" (0723d8ff)
+2022-07-24T09:13:48.9222406+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_ProductTags_ProductId] ON [ProductTags] ([ProductId]);" (0723d8ff)
+2022-07-24T09:13:48.9242131+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_ProductTags_TagId] ON [ProductTags] ([TagId]);" (0723d8ff)
+2022-07-24T09:13:48.9263074+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE INDEX [IX_WholePrices_ProductId] ON [WholePrices] ([ProductId]);" (0723d8ff)
+2022-07-24T09:13:48.9291486+00:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20211008094227_initial', N'5.0.6');" (0723d8ff)
+2022-07-24T09:13:49.1343885+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:13:49.3210233+00:00  [INF] Executed DbCommand ("44"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Description], [a].[Name], [a].[NormalizedName]
+FROM [AppRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2022-07-24T09:13:49.4795819+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 250), @p3='?' (Size = 4000), @p4='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AppRoles] ([Id], [ConcurrencyStamp], [Description], [Name], [NormalizedName])
+VALUES (@p0, @p1, @p2, @p3, @p4);" (0723d8ff)
+2022-07-24T09:13:49.5252412+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Description], [a].[Name], [a].[NormalizedName]
+FROM [AppRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2022-07-24T09:13:49.5540784+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 250), @p3='?' (Size = 4000), @p4='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AppRoles] ([Id], [ConcurrencyStamp], [Description], [Name], [NormalizedName])
+VALUES (@p0, @p1, @p2, @p3, @p4);" (0723d8ff)
+2022-07-24T09:13:49.6660490+00:00  [INF] Executed DbCommand ("63"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Description], [a].[Name], [a].[NormalizedName]
+FROM [AppRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2022-07-24T09:13:49.6914099+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 250), @p3='?' (Size = 4000), @p4='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AppRoles] ([Id], [ConcurrencyStamp], [Description], [Name], [NormalizedName])
+VALUES (@p0, @p1, @p2, @p3, @p4);" (0723d8ff)
+2022-07-24T09:13:49.7187574+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:13:49.7709300+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[Avatar], [a].[Balance], [a].[BirthDay], [a].[ConcurrencyStamp], [a].[DateCreated], [a].[DateModified], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Status], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AppUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2022-07-24T09:13:49.7882158+00:00  [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[Avatar], [a].[Balance], [a].[BirthDay], [a].[ConcurrencyStamp], [a].[DateCreated], [a].[DateModified], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Status], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AppUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2022-07-24T09:13:49.8791740+00:00  [INF] Executed DbCommand ("5"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p5='?' (DbType = DateTime2), @p6='?' (Size = 4000), @p7='?' (DbType = DateTime2), @p8='?' (DbType = DateTime2), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (DbType = Boolean), @p14='?' (DbType = DateTimeOffset), @p15='?' (Size = 4000), @p16='?' (Size = 4000), @p17='?' (Size = 4000), @p18='?' (Size = 4000), @p19='?' (DbType = Boolean), @p20='?' (Size = 4000), @p21='?' (DbType = Int32), @p22='?' (DbType = Boolean), @p23='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AppUsers] ([Id], [AccessFailedCount], [Address], [Avatar], [Balance], [BirthDay], [ConcurrencyStamp], [DateCreated], [DateModified], [Email], [EmailConfirmed], [FullName], [Gender], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [Status], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23);" (0723d8ff)
+2022-07-24T09:13:49.9180879+00:00  [INF] Executed DbCommand ("27"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[Avatar], [a].[Balance], [a].[BirthDay], [a].[ConcurrencyStamp], [a].[DateCreated], [a].[DateModified], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Status], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AppUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2022-07-24T09:13:49.9415689+00:00  [INF] Executed DbCommand ("7"ms) [Parameters=["@__normalizedRoleName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Description], [a].[Name], [a].[NormalizedName]
+FROM [AppRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0" (0723d8ff)
+2022-07-24T09:13:50.0011032+00:00  [INF] Executed DbCommand ("3"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid), @__get_Item_1='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[RoleId], [a].[UserId]
+FROM [AppUserRoles] AS [a]
+WHERE ([a].[RoleId] = @__get_Item_0) AND ([a].[UserId] = @__get_Item_1)" (0723d8ff)
+2022-07-24T09:13:50.0067403+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedRoleName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Description], [a].[Name], [a].[NormalizedName]
+FROM [AppRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0" (0723d8ff)
+2022-07-24T09:13:50.0230801+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[Avatar], [a].[Balance], [a].[BirthDay], [a].[ConcurrencyStamp], [a].[DateCreated], [a].[DateModified], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Status], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AppUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2022-07-24T09:13:50.0279259+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedEmail_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[Avatar], [a].[Balance], [a].[BirthDay], [a].[ConcurrencyStamp], [a].[DateCreated], [a].[DateModified], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[Gender], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[Status], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AppUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0" (0723d8ff)
+2022-07-24T09:13:50.0877462+00:00  [INF] Executed DbCommand ("23"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AppUserRoles] ([RoleId], [UserId])
+VALUES (@p0, @p1);" (0723d8ff)
+2022-07-24T09:13:50.0963838+00:00  [INF] Executed DbCommand ("5"ms) [Parameters=["@p23='?' (DbType = Guid), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (DbType = DateTime2), @p8='?' (Size = 4000), @p9='?' (DbType = Boolean), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (DbType = Boolean), @p13='?' (DbType = DateTimeOffset), @p14='?' (Size = 4000), @p15='?' (Size = 4000), @p16='?' (Size = 4000), @p17='?' (Size = 4000), @p18='?' (DbType = Boolean), @p19='?' (Size = 4000), @p20='?' (DbType = Int32), @p21='?' (DbType = Boolean), @p22='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [AppUsers] SET [AccessFailedCount] = @p0, [Address] = @p1, [Avatar] = @p2, [Balance] = @p3, [BirthDay] = @p4, [ConcurrencyStamp] = @p5, [DateCreated] = @p6, [DateModified] = @p7, [Email] = @p8, [EmailConfirmed] = @p9, [FullName] = @p10, [Gender] = @p11, [LockoutEnabled] = @p12, [LockoutEnd] = @p13, [NormalizedEmail] = @p14, [NormalizedUserName] = @p15, [PasswordHash] = @p16, [PhoneNumber] = @p17, [PhoneNumberConfirmed] = @p18, [SecurityStamp] = @p19, [Status] = @p20, [TwoFactorEnabled] = @p21, [UserName] = @p22
+WHERE [Id] = @p23;
+SELECT @@ROWCOUNT;" (0723d8ff)
+2022-07-24T09:13:50.1090610+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ContactDetails] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:13:50.1339425+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:13:50.1616805+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [f]
+WHERE [f].[Id] = 'DefaultFooterId'" (0723d8ff)
+2022-07-24T09:13:50.1924824+00:00  [INF] Executed DbCommand ("7"ms) [Parameters=["@p0='?' (Size = 255), @p1='?' (Size = 250), @p2='?' (Size = 250), @p3='?' (DbType = Double), @p4='?' (DbType = Double), @p5='?' (Size = 250), @p6='?' (Size = 4000), @p7='?' (Size = 50), @p8='?' (DbType = Int32), @p9='?' (Size = 250), @p10='?' (Size = 255) (DbType = AnsiString), @p11='?' (Size = 4000), @p12='?' (Size = 450), @p13='?' (Size = 4000), @p14='?' (Size = 128), @p15='?' (Size = 128), @p16='?' (DbType = Int32), @p17='?' (DbType = Int32), @p18='?' (Size = 250), @p19='?' (Size = 450), @p20='?' (Size = 4000), @p21='?' (Size = 128), @p22='?' (Size = 128), @p23='?' (DbType = Int32), @p24='?' (DbType = Int32), @p25='?' (Size = 250), @p26='?' (Size = 450), @p27='?' (Size = 4000), @p28='?' (Size = 128), @p29='?' (Size = 128), @p30='?' (DbType = Int32), @p31='?' (DbType = Int32), @p32='?' (Size = 250), @p33='?' (Size = 450), @p34='?' (Size = 4000), @p35='?' (Size = 128), @p36='?' (Size = 128), @p37='?' (DbType = Int32), @p38='?' (DbType = Int32), @p39='?' (Size = 250), @p40='?' (Size = 450), @p41='?' (Size = 4000), @p42='?' (Size = 128), @p43='?' (Size = 128), @p44='?' (DbType = Int32), @p45='?' (DbType = Int32), @p46='?' (Size = 250), @p47='?' (Size = 450), @p48='?' (Size = 4000), @p49='?' (Size = 128), @p50='?' (Size = 128), @p51='?' (DbType = Int32), @p52='?' (DbType = Int32), @p53='?' (Size = 250), @p54='?' (Size = 450), @p55='?' (Size = 4000), @p56='?' (Size = 128), @p57='?' (Size = 128), @p58='?' (DbType = Int32), @p59='?' (DbType = Int32), @p60='?' (Size = 250), @p61='?' (Size = 450), @p62='?' (Size = 4000), @p63='?' (Size = 128), @p64='?' (Size = 128), @p65='?' (DbType = Int32), @p66='?' (DbType = Int32), @p67='?' (Size = 250), @p68='?' (Size = 450), @p69='?' (Size = 4000), @p70='?' (Size = 128), @p71='?' (Size = 128), @p72='?' (DbType = Int32), @p73='?' (DbType = Int32), @p74='?' (Size = 250), @p75='?' (Size = 450), @p76='?' (Size = 4000), @p77='?' (Size = 128), @p78='?' (Size = 128), @p79='?' (DbType = Int32), @p80='?' (DbType = Int32), @p81='?' (Size = 250), @p82='?' (Size = 450), @p83='?' (Size = 4000), @p84='?' (Size = 128), @p85='?' (Size = 128), @p86='?' (DbType = Int32), @p87='?' (DbType = Int32), @p88='?' (Size = 250), @p89='?' (Size = 450), @p90='?' (Size = 4000), @p91='?' (Size = 128), @p92='?' (Size = 128), @p93='?' (DbType = Int32), @p94='?' (DbType = Int32), @p95='?' (Size = 250), @p96='?' (Size = 450), @p97='?' (Size = 4000), @p98='?' (Size = 128), @p99='?' (Size = 128), @p100='?' (DbType = Int32), @p101='?' (DbType = Int32), @p102='?' (Size = 250), @p103='?' (Size = 450), @p104='?' (Size = 4000), @p105='?' (Size = 128), @p106='?' (Size = 128), @p107='?' (DbType = Int32), @p108='?' (DbType = Int32), @p109='?' (Size = 250), @p110='?' (Size = 450), @p111='?' (Size = 4000), @p112='?' (Size = 128), @p113='?' (Size = 128), @p114='?' (DbType = Int32), @p115='?' (DbType = Int32), @p116='?' (Size = 250), @p117='?' (Size = 450), @p118='?' (Size = 4000), @p119='?' (Size = 128), @p120='?' (Size = 128), @p121='?' (DbType = Int32), @p122='?' (DbType = Int32), @p123='?' (Size = 250), @p124='?' (Size = 450), @p125='?' (Size = 4000), @p126='?' (Size = 128), @p127='?' (Size = 128), @p128='?' (DbType = Int32), @p129='?' (DbType = Int32), @p130='?' (Size = 250), @p131='?' (Size = 450), @p132='?' (Size = 4000), @p133='?' (Size = 128), @p134='?' (Size = 128), @p135='?' (DbType = Int32), @p136='?' (DbType = Int32), @p137='?' (Size = 250), @p138='?' (Size = 450), @p139='?' (Size = 4000), @p140='?' (Size = 128), @p141='?' (Size = 128), @p142='?' (DbType = Int32), @p143='?' (DbType = Int32), @p144='?' (Size = 250), @p145='?' (Size = 450), @p146='?' (Size = 4000), @p147='?' (Size = 128), @p148='?' (Size = 128), @p149='?' (DbType = Int32), @p150='?' (DbType = Int32), @p151='?' (Size = 250), @p152='?' (Size = 450), @p153='?' (Size = 4000), @p154='?' (Size = 128), @p155='?' (Size = 128), @p156='?' (DbType = Int32), @p157='?' (DbType = Int32), @p158='?' (Size = 250), @p159='?' (Size = 450), @p160='?' (Size = 4000), @p161='?' (Size = 128), @p162='?' (Size = 128), @p163='?' (DbType = Int32), @p164='?' (DbType = Int32), @p165='?' (Size = 250), @p166='?' (Size = 450), @p167='?' (Size = 4000), @p168='?' (Size = 128), @p169='?' (Size = 128), @p170='?' (DbType = Int32), @p171='?' (DbType = Int32), @p172='?' (Size = 250), @p173='?' (Size = 450), @p174='?' (Size = 4000), @p175='?' (Size = 128), @p176='?' (Size = 128), @p177='?' (DbType = Int32), @p178='?' (DbType = Int32), @p179='?' (Size = 250), @p180='?' (Size = 450), @p181='?' (Size = 4000), @p182='?' (Size = 128), @p183='?' (Size = 128), @p184='?' (DbType = Int32), @p185='?' (DbType = Int32), @p186='?' (Size = 250)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [ContactDetails] ([Id], [Address], [Email], [Lat], [Lng], [Name], [Other], [Phone], [Status], [Website])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+INSERT INTO [Footers] ([Id], [Content])
+VALUES (@p10, @p11);
+INSERT INTO [Functions] ([Id], [IconCss], [Name], [ParentId], [SortOrder], [Status], [URL])
+VALUES (@p12, @p13, @p14, @p15, @p16, @p17, @p18),
+(@p19, @p20, @p21, @p22, @p23, @p24, @p25),
+(@p26, @p27, @p28, @p29, @p30, @p31, @p32),
+(@p33, @p34, @p35, @p36, @p37, @p38, @p39),
+(@p40, @p41, @p42, @p43, @p44, @p45, @p46),
+(@p47, @p48, @p49, @p50, @p51, @p52, @p53),
+(@p54, @p55, @p56, @p57, @p58, @p59, @p60),
+(@p61, @p62, @p63, @p64, @p65, @p66, @p67),
+(@p68, @p69, @p70, @p71, @p72, @p73, @p74),
+(@p75, @p76, @p77, @p78, @p79, @p80, @p81),
+(@p82, @p83, @p84, @p85, @p86, @p87, @p88),
+(@p89, @p90, @p91, @p92, @p93, @p94, @p95),
+(@p96, @p97, @p98, @p99, @p100, @p101, @p102),
+(@p103, @p104, @p105, @p106, @p107, @p108, @p109),
+(@p110, @p111, @p112, @p113, @p114, @p115, @p116),
+(@p117, @p118, @p119, @p120, @p121, @p122, @p123),
+(@p124, @p125, @p126, @p127, @p128, @p129, @p130),
+(@p131, @p132, @p133, @p134, @p135, @p136, @p137),
+(@p138, @p139, @p140, @p141, @p142, @p143, @p144),
+(@p145, @p146, @p147, @p148, @p149, @p150, @p151),
+(@p152, @p153, @p154, @p155, @p156, @p157, @p158),
+(@p159, @p160, @p161, @p162, @p163, @p164, @p165),
+(@p166, @p167, @p168, @p169, @p170, @p171, @p172),
+(@p173, @p174, @p175, @p176, @p177, @p178, @p179),
+(@p180, @p181, @p182, @p183, @p184, @p185, @p186);" (0723d8ff)
+2022-07-24T09:13:50.2086961+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Colors] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:13:50.2301326+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AdvertistmentPages] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:13:50.2619764+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Slides] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:13:50.2833292+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Sizes] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:13:50.2974224+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductCategories] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:13:50.3761360+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [s]
+        WHERE [s].[Id] = N'HomeTitle') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:13:50.3955498+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [s]
+        WHERE [s].[Id] = N'HomeMetaKeyword') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:13:50.4016150+00:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [s]
+        WHERE [s].[Id] = N'HomeMetaDescription') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:13:50.4703239+00:00  [INF] Executed DbCommand ("32"ms) [Parameters=["@p0='?' (Size = 450), @p1='?' (Size = 4000), @p2='?' (Size = 450), @p3='?' (Size = 4000), @p4='?' (Size = 450), @p5='?' (Size = 4000), @p6='?' (Size = 250), @p7='?' (Size = 250), @p8='?' (Size = 250), @p9='?' (Size = 250), @p10='?' (Size = 250), @p11='?' (Size = 250), @p12='?' (Size = 250), @p13='?' (Size = 250), @p14='?' (DbType = DateTime2), @p15='?' (DbType = DateTime2), @p16='?' (Size = 4000), @p17='?', @p18='?' (DbType = Int32), @p19='?' (Size = 4000), @p20='?' (Size = 4000), @p21='?' (DbType = Int32), @p22='?' (Size = 4000), @p23='?' (Size = 4000), @p24='?' (Size = 4000), @p25='?' (Size = 4000), @p26='?' (DbType = Int32), @p27='?' (DbType = Int32), @p28='?' (DbType = DateTime2), @p29='?' (DbType = DateTime2), @p30='?' (Size = 4000), @p31='?', @p32='?' (DbType = Int32), @p33='?' (Size = 4000), @p34='?' (Size = 4000), @p35='?' (DbType = Int32), @p36='?' (Size = 4000), @p37='?' (Size = 4000), @p38='?' (Size = 4000), @p39='?' (Size = 4000), @p40='?' (DbType = Int32), @p41='?' (DbType = Int32), @p42='?' (DbType = DateTime2), @p43='?' (DbType = DateTime2), @p44='?' (Size = 4000), @p45='?', @p46='?' (DbType = Int32), @p47='?' (Size = 4000), @p48='?' (Size = 4000), @p49='?' (DbType = Int32), @p50='?' (Size = 4000), @p51='?' (Size = 4000), @p52='?' (Size = 4000), @p53='?' (Size = 4000), @p54='?' (DbType = Int32), @p55='?' (DbType = Int32), @p56='?' (DbType = DateTime2), @p57='?' (DbType = DateTime2), @p58='?' (Size = 4000), @p59='?', @p60='?' (DbType = Int32), @p61='?' (Size = 4000), @p62='?' (Size = 4000), @p63='?' (DbType = Int32), @p64='?' (Size = 4000), @p65='?' (Size = 4000), @p66='?' (Size = 4000), @p67='?' (Size = 4000), @p68='?' (DbType = Int32), @p69='?' (DbType = Int32), @p70='?' (Size = 250), @p71='?' (Size = 250), @p72='?' (Size = 250), @p73='?' (Size = 250), @p74='?' (Size = 250), @p75='?' (Size = 250), @p76='?' (Size = 4000), @p77='?' (Size = 250), @p78='?' (DbType = Int32), @p79='?' (Size = 25), @p80='?' (Size = 250), @p81='?' (Size = 250), @p82='?' (DbType = Boolean), @p83='?' (Size = 250), @p84='?' (Size = 4000), @p85='?' (Size = 250), @p86='?' (DbType = Int32), @p87='?' (Size = 25), @p88='?' (Size = 250), @p89='?' (Size = 250), @p90='?' (DbType = Boolean), @p91='?' (Size = 250), @p92='?' (Size = 4000), @p93='?' (Size = 250), @p94='?' (DbType = Int32), @p95='?' (Size = 25), @p96='?' (Size = 250), @p97='?' (Size = 250), @p98='?' (DbType = Boolean), @p99='?' (Size = 250), @p100='?' (Size = 4000), @p101='?' (Size = 250), @p102='?' (DbType = Int32), @p103='?' (Size = 25), @p104='?' (Size = 250), @p105='?' (Size = 250), @p106='?' (DbType = Boolean), @p107='?' (Size = 250), @p108='?' (Size = 4000), @p109='?' (Size = 250), @p110='?' (DbType = Int32), @p111='?' (Size = 25), @p112='?' (Size = 250), @p113='?' (Size = 250), @p114='?' (DbType = Boolean), @p115='?' (Size = 250), @p116='?' (Size = 4000), @p117='?' (Size = 250), @p118='?' (DbType = Int32), @p119='?' (Size = 25), @p120='?' (Size = 250), @p121='?' (Size = 250), @p122='?' (DbType = Boolean), @p123='?' (Size = 250), @p124='?' (Size = 4000), @p125='?' (Size = 250), @p126='?' (DbType = Int32), @p127='?' (Size = 25), @p128='?' (Size = 250), @p129='?' (Size = 250), @p130='?' (DbType = Boolean), @p131='?' (Size = 250), @p132='?' (Size = 4000), @p133='?' (Size = 250), @p134='?' (DbType = Int32), @p135='?' (Size = 25), @p136='?' (Size = 250), @p137='?' (Size = 250), @p138='?' (DbType = Boolean), @p139='?' (Size = 250), @p140='?' (Size = 4000), @p141='?' (Size = 250), @p142='?' (DbType = Int32), @p143='?' (Size = 25), @p144='?' (Size = 250), @p145='?' (Size = 250), @p146='?' (DbType = Boolean), @p147='?' (Size = 250), @p148='?' (Size = 4000), @p149='?' (Size = 250), @p150='?' (DbType = Int32), @p151='?' (Size = 25), @p152='?' (Size = 250), @p153='?' (Size = 250), @p154='?' (DbType = Boolean), @p155='?' (Size = 250), @p156='?' (Size = 4000), @p157='?' (Size = 250), @p158='?' (DbType = Int32), @p159='?' (Size = 25), @p160='?' (Size = 250), @p161='?' (Size = 250), @p162='?' (DbType = Boolean), @p163='?' (Size = 250), @p164='?' (Size = 4000), @p165='?' (Size = 250), @p166='?' (DbType = Int32), @p167='?' (Size = 25), @p168='?' (Size = 250), @p169='?' (Size = 250), @p170='?' (DbType = Boolean), @p171='?' (Size = 250), @p172='?' (Size = 4000), @p173='?' (Size = 250), @p174='?' (DbType = Int32), @p175='?' (Size = 25), @p176='?' (Size = 250), @p177='?' (Size = 250), @p178='?' (DbType = Boolean), @p179='?' (Size = 250), @p180='?' (Size = 4000), @p181='?' (Size = 250), @p182='?' (DbType = Int32), @p183='?' (Size = 25), @p184='?' (Size = 250), @p185='?' (Size = 250), @p186='?' (DbType = Boolean), @p187='?' (Size = 250), @p188='?' (Size = 255), @p189='?' (Size = 128), @p190='?' (DbType = Int32), @p191='?' (Size = 4000), @p192='?' (DbType = Int32), @p193='?', @p194='?' (DbType = DateTime2), @p195='?' (Precision = 18) (Scale = 2), @p196='?' (Size = 255), @p197='?' (Size = 128), @p198='?' (DbType = Int32), @p199='?' (Size = 4000), @p200='?' (DbType = Int32), @p201='?', @p202='?' (DbType = DateTime2), @p203='?' (Precision = 18) (Scale = 2), @p204='?' (Size = 255), @p205='?' (Size = 128), @p206='?' (DbType = Int32), @p207='?' (Size = 4000), @p208='?' (DbType = Int32), @p209='?', @p210='?' (DbType = DateTime2), @p211='?' (Precision = 18) (Scale = 2)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AdvertistmentPages] ([Id], [Name])
+VALUES (@p0, @p1),
+(@p2, @p3),
+(@p4, @p5);
+DECLARE @inserted3 TABLE ([Id] int, [_Position] [int]);
+MERGE [Colors] USING (
+VALUES (@p6, @p7, 0),
+(@p8, @p9, 1),
+(@p10, @p11, 2),
+(@p12, @p13, 3)) AS i ([Code], [Name], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Code], [Name])
+VALUES (i.[Code], i.[Name])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted3;
+
+SELECT [t].[Id] FROM [Colors] t
+INNER JOIN @inserted3 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+
+DECLARE @inserted7 TABLE ([Id] int, [_Position] [int]);
+MERGE [ProductCategories] USING (
+VALUES (@p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, 0),
+(@p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, @p36, @p37, @p38, @p39, @p40, @p41, 1),
+(@p42, @p43, @p44, @p45, @p46, @p47, @p48, @p49, @p50, @p51, @p52, @p53, @p54, @p55, 2),
+(@p56, @p57, @p58, @p59, @p60, @p61, @p62, @p63, @p64, @p65, @p66, @p67, @p68, @p69, 3)) AS i ([DateCreated], [DateModified], [Description], [HomeFlag], [HomeOrder], [Image], [Name], [ParentId], [SeoAlias], [SeoDescription], [SeoKeywords], [SeoPageTitle], [SortOrder], [Status], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([DateCreated], [DateModified], [Description], [HomeFlag], [HomeOrder], [Image], [Name], [ParentId], [SeoAlias], [SeoDescription], [SeoKeywords], [SeoPageTitle], [SortOrder], [Status])
+VALUES (i.[DateCreated], i.[DateModified], i.[Description], i.[HomeFlag], i.[HomeOrder], i.[Image], i.[Name], i.[ParentId], i.[SeoAlias], i.[SeoDescription], i.[SeoKeywords], i.[SeoPageTitle], i.[SortOrder], i.[Status])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted7;
+
+SELECT [t].[Id] FROM [ProductCategories] t
+INNER JOIN @inserted7 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+
+DECLARE @inserted11 TABLE ([Id] int, [_Position] [int]);
+MERGE [Sizes] USING (
+VALUES (@p70, 0),
+(@p71, 1),
+(@p72, 2),
+(@p73, 3),
+(@p74, 4),
+(@p75, 5)) AS i ([Name], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Name])
+VALUES (i.[Name])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted11;
+
+SELECT [t].[Id] FROM [Sizes] t
+INNER JOIN @inserted11 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+
+DECLARE @inserted17 TABLE ([Id] int, [_Position] [int]);
+MERGE [Slides] USING (
+VALUES (@p76, @p77, @p78, @p79, @p80, @p81, @p82, @p83, 0),
+(@p84, @p85, @p86, @p87, @p88, @p89, @p90, @p91, 1),
+(@p92, @p93, @p94, @p95, @p96, @p97, @p98, @p99, 2),
+(@p100, @p101, @p102, @p103, @p104, @p105, @p106, @p107, 3),
+(@p108, @p109, @p110, @p111, @p112, @p113, @p114, @p115, 4),
+(@p116, @p117, @p118, @p119, @p120, @p121, @p122, @p123, 5),
+(@p124, @p125, @p126, @p127, @p128, @p129, @p130, @p131, 6),
+(@p132, @p133, @p134, @p135, @p136, @p137, @p138, @p139, 7),
+(@p140, @p141, @p142, @p143, @p144, @p145, @p146, @p147, 8),
+(@p148, @p149, @p150, @p151, @p152, @p153, @p154, @p155, 9),
+(@p156, @p157, @p158, @p159, @p160, @p161, @p162, @p163, 10),
+(@p164, @p165, @p166, @p167, @p168, @p169, @p170, @p171, 11),
+(@p172, @p173, @p174, @p175, @p176, @p177, @p178, @p179, 12),
+(@p180, @p181, @p182, @p183, @p184, @p185, @p186, @p187, 13)) AS i ([Content], [Description], [DisplayOrder], [GroupAlias], [Image], [Name], [Status], [Url], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([Content], [Description], [DisplayOrder], [GroupAlias], [Image], [Name], [Status], [Url])
+VALUES (i.[Content], i.[Description], i.[DisplayOrder], i.[GroupAlias], i.[Image], i.[Name], i.[Status], i.[Url])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted17;
+
+SELECT [t].[Id] FROM [Slides] t
+INNER JOIN @inserted17 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];
+
+INSERT INTO [SystemConfigs] ([Id], [Name], [Status], [Value1], [Value2], [Value3], [Value4], [Value5])
+VALUES (@p188, @p189, @p190, @p191, @p192, @p193, @p194, @p195),
+(@p196, @p197, @p198, @p199, @p200, @p201, @p202, @p203),
+(@p204, @p205, @p206, @p207, @p208, @p209, @p210, @p211);" (0723d8ff)
+2022-07-24T09:13:50.5453132+00:00  [INF] Executed DbCommand ("34"ms) [Parameters=["@p212='?' (Size = 20), @p213='?' (Size = 250), @p214='?' (Size = 450), @p215='?' (Size = 20), @p216='?' (Size = 250), @p217='?' (Size = 450), @p218='?' (Size = 20), @p219='?' (Size = 250), @p220='?' (Size = 450), @p221='?' (DbType = Int32), @p222='?' (Size = 4000), @p223='?' (DbType = DateTime2), @p224='?' (DbType = DateTime2), @p225='?' (Size = 255), @p226='?', @p227='?', @p228='?' (Size = 255), @p229='?' (Size = 255), @p230='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p231='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p232='?' (Precision = 18) (Scale = 2), @p233='?' (Size = 255), @p234='?' (Size = 255), @p235='?' (Size = 255), @p236='?' (Size = 4000), @p237='?' (DbType = Int32), @p238='?' (Size = 255), @p239='?' (Size = 255), @p240='?' (DbType = Int32), @p241='?' (DbType = Int32), @p242='?' (Size = 4000), @p243='?' (DbType = DateTime2), @p244='?' (DbType = DateTime2), @p245='?' (Size = 255), @p246='?', @p247='?', @p248='?' (Size = 255), @p249='?' (Size = 255), @p250='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p251='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p252='?' (Precision = 18) (Scale = 2), @p253='?' (Size = 255), @p254='?' (Size = 255), @p255='?' (Size = 255), @p256='?' (Size = 4000), @p257='?' (DbType = Int32), @p258='?' (Size = 255), @p259='?' (Size = 255), @p260='?' (DbType = Int32), @p261='?' (DbType = Int32), @p262='?' (Size = 4000), @p263='?' (DbType = DateTime2), @p264='?' (DbType = DateTime2), @p265='?' (Size = 255), @p266='?', @p267='?', @p268='?' (Size = 255), @p269='?' (Size = 255), @p270='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p271='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p272='?' (Precision = 18) (Scale = 2), @p273='?' (Size = 255), @p274='?' (Size = 255), @p275='?' (Size = 255), @p276='?' (Size = 4000), @p277='?' (DbType = Int32), @p278='?' (Size = 255), @p279='?' (Size = 255), @p280='?' (DbType = Int32), @p281='?' (DbType = Int32), @p282='?' (Size = 4000), @p283='?' (DbType = DateTime2), @p284='?' (DbType = DateTime2), @p285='?' (Size = 255), @p286='?', @p287='?', @p288='?' (Size = 255), @p289='?' (Size = 255), @p290='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p291='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p292='?' (Precision = 18) (Scale = 2), @p293='?' (Size = 255), @p294='?' (Size = 255), @p295='?' (Size = 255), @p296='?' (Size = 4000), @p297='?' (DbType = Int32), @p298='?' (Size = 255), @p299='?' (Size = 255), @p300='?' (DbType = Int32), @p301='?' (DbType = Int32), @p302='?' (Size = 4000), @p303='?' (DbType = DateTime2), @p304='?' (DbType = DateTime2), @p305='?' (Size = 255), @p306='?', @p307='?', @p308='?' (Size = 255), @p309='?' (Size = 255), @p310='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p311='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p312='?' (Precision = 18) (Scale = 2), @p313='?' (Size = 255), @p314='?' (Size = 255), @p315='?' (Size = 255), @p316='?' (Size = 4000), @p317='?' (DbType = Int32), @p318='?' (Size = 255), @p319='?' (Size = 255), @p320='?' (DbType = Int32), @p321='?' (DbType = Int32), @p322='?' (Size = 4000), @p323='?' (DbType = DateTime2), @p324='?' (DbType = DateTime2), @p325='?' (Size = 255), @p326='?', @p327='?', @p328='?' (Size = 255), @p329='?' (Size = 255), @p330='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p331='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p332='?' (Precision = 18) (Scale = 2), @p333='?' (Size = 255), @p334='?' (Size = 255), @p335='?' (Size = 255), @p336='?' (Size = 4000), @p337='?' (DbType = Int32), @p338='?' (Size = 255), @p339='?' (Size = 255), @p340='?' (DbType = Int32), @p341='?' (DbType = Int32), @p342='?' (Size = 4000), @p343='?' (DbType = DateTime2), @p344='?' (DbType = DateTime2), @p345='?' (Size = 255), @p346='?', @p347='?', @p348='?' (Size = 255), @p349='?' (Size = 255), @p350='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p351='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p352='?' (Precision = 18) (Scale = 2), @p353='?' (Size = 255), @p354='?' (Size = 255), @p355='?' (Size = 255), @p356='?' (Size = 4000), @p357='?' (DbType = Int32), @p358='?' (Size = 255), @p359='?' (Size = 255), @p360='?' (DbType = Int32), @p361='?' (DbType = Int32), @p362='?' (Size = 4000), @p363='?' (DbType = DateTime2), @p364='?' (DbType = DateTime2), @p365='?' (Size = 255), @p366='?', @p367='?', @p368='?' (Size = 255), @p369='?' (Size = 255), @p370='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p371='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p372='?' (Precision = 18) (Scale = 2), @p373='?' (Size = 255), @p374='?' (Size = 255), @p375='?' (Size = 255), @p376='?' (Size = 4000), @p377='?' (DbType = Int32), @p378='?' (Size = 255), @p379='?' (Size = 255), @p380='?' (DbType = Int32), @p381='?' (DbType = Int32), @p382='?' (Size = 4000), @p383='?' (DbType = DateTime2), @p384='?' (DbType = DateTime2), @p385='?' (Size = 255), @p386='?', @p387='?', @p388='?' (Size = 255), @p389='?' (Size = 255), @p390='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p391='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p392='?' (Precision = 18) (Scale = 2), @p393='?' (Size = 255), @p394='?' (Size = 255), @p395='?' (Size = 255), @p396='?' (Size = 4000), @p397='?' (DbType = Int32), @p398='?' (Size = 255), @p399='?' (Size = 255), @p400='?' (DbType = Int32), @p401='?' (DbType = Int32), @p402='?' (Size = 4000), @p403='?' (DbType = DateTime2), @p404='?' (DbType = DateTime2), @p405='?' (Size = 255), @p406='?', @p407='?', @p408='?' (Size = 255), @p409='?' (Size = 255), @p410='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p411='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p412='?' (Precision = 18) (Scale = 2), @p413='?' (Size = 255), @p414='?' (Size = 255), @p415='?' (Size = 255), @p416='?' (Size = 4000), @p417='?' (DbType = Int32), @p418='?' (Size = 255), @p419='?' (Size = 255), @p420='?' (DbType = Int32), @p421='?' (DbType = Int32), @p422='?' (Size = 4000), @p423='?' (DbType = DateTime2), @p424='?' (DbType = DateTime2), @p425='?' (Size = 255), @p426='?', @p427='?', @p428='?' (Size = 255), @p429='?' (Size = 255), @p430='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p431='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p432='?' (Precision = 18) (Scale = 2), @p433='?' (Size = 255), @p434='?' (Size = 255), @p435='?' (Size = 255), @p436='?' (Size = 4000), @p437='?' (DbType = Int32), @p438='?' (Size = 255), @p439='?' (Size = 255), @p440='?' (DbType = Int32), @p441='?' (DbType = Int32), @p442='?' (Size = 4000), @p443='?' (DbType = DateTime2), @p444='?' (DbType = DateTime2), @p445='?' (Size = 255), @p446='?', @p447='?', @p448='?' (Size = 255), @p449='?' (Size = 255), @p450='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p451='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p452='?' (Precision = 18) (Scale = 2), @p453='?' (Size = 255), @p454='?' (Size = 255), @p455='?' (Size = 255), @p456='?' (Size = 4000), @p457='?' (DbType = Int32), @p458='?' (Size = 255), @p459='?' (Size = 255), @p460='?' (DbType = Int32), @p461='?' (DbType = Int32), @p462='?' (Size = 4000), @p463='?' (DbType = DateTime2), @p464='?' (DbType = DateTime2), @p465='?' (Size = 255), @p466='?', @p467='?', @p468='?' (Size = 255), @p469='?' (Size = 255), @p470='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p471='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p472='?' (Precision = 18) (Scale = 2), @p473='?' (Size = 255), @p474='?' (Size = 255), @p475='?' (Size = 255), @p476='?' (Size = 4000), @p477='?' (DbType = Int32), @p478='?' (Size = 255), @p479='?' (Size = 255), @p480='?' (DbType = Int32), @p481='?' (DbType = Int32), @p482='?' (Size = 4000), @p483='?' (DbType = DateTime2), @p484='?' (DbType = DateTime2), @p485='?' (Size = 255), @p486='?', @p487='?', @p488='?' (Size = 255), @p489='?' (Size = 255), @p490='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p491='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p492='?' (Precision = 18) (Scale = 2), @p493='?' (Size = 255), @p494='?' (Size = 255), @p495='?' (Size = 255), @p496='?' (Size = 4000), @p497='?' (DbType = Int32), @p498='?' (Size = 255), @p499='?' (Size = 255), @p500='?' (DbType = Int32), @p501='?' (DbType = Int32), @p502='?' (Size = 4000), @p503='?' (DbType = DateTime2), @p504='?' (DbType = DateTime2), @p505='?' (Size = 255), @p506='?', @p507='?', @p508='?' (Size = 255), @p509='?' (Size = 255), @p510='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p511='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p512='?' (Precision = 18) (Scale = 2), @p513='?' (Size = 255), @p514='?' (Size = 255), @p515='?' (Size = 255), @p516='?' (Size = 4000), @p517='?' (DbType = Int32), @p518='?' (Size = 255), @p519='?' (Size = 255), @p520='?' (DbType = Int32), @p521='?' (DbType = Int32), @p522='?' (Size = 4000), @p523='?' (DbType = DateTime2), @p524='?' (DbType = DateTime2), @p525='?' (Size = 255), @p526='?', @p527='?', @p528='?' (Size = 255), @p529='?' (Size = 255), @p530='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p531='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p532='?' (Precision = 18) (Scale = 2), @p533='?' (Size = 255), @p534='?' (Size = 255), @p535='?' (Size = 255), @p536='?' (Size = 4000), @p537='?' (DbType = Int32), @p538='?' (Size = 255), @p539='?' (Size = 255), @p540='?' (DbType = Int32), @p541='?' (DbType = Int32), @p542='?' (Size = 4000), @p543='?' (DbType = DateTime2), @p544='?' (DbType = DateTime2), @p545='?' (Size = 255), @p546='?', @p547='?', @p548='?' (Size = 255), @p549='?' (Size = 255), @p550='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p551='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p552='?' (Precision = 18) (Scale = 2), @p553='?' (Size = 255), @p554='?' (Size = 255), @p555='?' (Size = 255), @p556='?' (Size = 4000), @p557='?' (DbType = Int32), @p558='?' (Size = 255), @p559='?' (Size = 255), @p560='?' (DbType = Int32), @p561='?' (DbType = Int32), @p562='?' (Size = 4000), @p563='?' (DbType = DateTime2), @p564='?' (DbType = DateTime2), @p565='?' (Size = 255), @p566='?', @p567='?', @p568='?' (Size = 255), @p569='?' (Size = 255), @p570='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p571='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p572='?' (Precision = 18) (Scale = 2), @p573='?' (Size = 255), @p574='?' (Size = 255), @p575='?' (Size = 255), @p576='?' (Size = 4000), @p577='?' (DbType = Int32), @p578='?' (Size = 255), @p579='?' (Size = 255), @p580='?' (DbType = Int32), @p581='?' (DbType = Int32), @p582='?' (Size = 4000), @p583='?' (DbType = DateTime2), @p584='?' (DbType = DateTime2), @p585='?' (Size = 255), @p586='?', @p587='?', @p588='?' (Size = 255), @p589='?' (Size = 255), @p590='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p591='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p592='?' (Precision = 18) (Scale = 2), @p593='?' (Size = 255), @p594='?' (Size = 255), @p595='?' (Size = 255), @p596='?' (Size = 4000), @p597='?' (DbType = Int32), @p598='?' (Size = 255), @p599='?' (Size = 255), @p600='?' (DbType = Int32), @p601='?' (DbType = Int32), @p602='?' (Size = 4000), @p603='?' (DbType = DateTime2), @p604='?' (DbType = DateTime2), @p605='?' (Size = 255), @p606='?', @p607='?', @p608='?' (Size = 255), @p609='?' (Size = 255), @p610='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p611='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p612='?' (Precision = 18) (Scale = 2), @p613='?' (Size = 255), @p614='?' (Size = 255), @p615='?' (Size = 255), @p616='?' (Size = 4000), @p617='?' (DbType = Int32), @p618='?' (Size = 255), @p619='?' (Size = 255), @p620='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AdvertistmentPositions] ([Id], [Name], [PageId])
+VALUES (@p212, @p213, @p214),
+(@p215, @p216, @p217),
+(@p218, @p219, @p220);
+DECLARE @inserted3 TABLE ([Id] int, [_Position] [int]);
+MERGE [Products] USING (
+VALUES (@p221, @p222, @p223, @p224, @p225, @p226, @p227, @p228, @p229, @p230, @p231, @p232, @p233, @p234, @p235, @p236, @p237, @p238, @p239, @p240, 0),
+(@p241, @p242, @p243, @p244, @p245, @p246, @p247, @p248, @p249, @p250, @p251, @p252, @p253, @p254, @p255, @p256, @p257, @p258, @p259, @p260, 1),
+(@p261, @p262, @p263, @p264, @p265, @p266, @p267, @p268, @p269, @p270, @p271, @p272, @p273, @p274, @p275, @p276, @p277, @p278, @p279, @p280, 2),
+(@p281, @p282, @p283, @p284, @p285, @p286, @p287, @p288, @p289, @p290, @p291, @p292, @p293, @p294, @p295, @p296, @p297, @p298, @p299, @p300, 3),
+(@p301, @p302, @p303, @p304, @p305, @p306, @p307, @p308, @p309, @p310, @p311, @p312, @p313, @p314, @p315, @p316, @p317, @p318, @p319, @p320, 4),
+(@p321, @p322, @p323, @p324, @p325, @p326, @p327, @p328, @p329, @p330, @p331, @p332, @p333, @p334, @p335, @p336, @p337, @p338, @p339, @p340, 5),
+(@p341, @p342, @p343, @p344, @p345, @p346, @p347, @p348, @p349, @p350, @p351, @p352, @p353, @p354, @p355, @p356, @p357, @p358, @p359, @p360, 6),
+(@p361, @p362, @p363, @p364, @p365, @p366, @p367, @p368, @p369, @p370, @p371, @p372, @p373, @p374, @p375, @p376, @p377, @p378, @p379, @p380, 7),
+(@p381, @p382, @p383, @p384, @p385, @p386, @p387, @p388, @p389, @p390, @p391, @p392, @p393, @p394, @p395, @p396, @p397, @p398, @p399, @p400, 8),
+(@p401, @p402, @p403, @p404, @p405, @p406, @p407, @p408, @p409, @p410, @p411, @p412, @p413, @p414, @p415, @p416, @p417, @p418, @p419, @p420, 9),
+(@p421, @p422, @p423, @p424, @p425, @p426, @p427, @p428, @p429, @p430, @p431, @p432, @p433, @p434, @p435, @p436, @p437, @p438, @p439, @p440, 10),
+(@p441, @p442, @p443, @p444, @p445, @p446, @p447, @p448, @p449, @p450, @p451, @p452, @p453, @p454, @p455, @p456, @p457, @p458, @p459, @p460, 11),
+(@p461, @p462, @p463, @p464, @p465, @p466, @p467, @p468, @p469, @p470, @p471, @p472, @p473, @p474, @p475, @p476, @p477, @p478, @p479, @p480, 12),
+(@p481, @p482, @p483, @p484, @p485, @p486, @p487, @p488, @p489, @p490, @p491, @p492, @p493, @p494, @p495, @p496, @p497, @p498, @p499, @p500, 13),
+(@p501, @p502, @p503, @p504, @p505, @p506, @p507, @p508, @p509, @p510, @p511, @p512, @p513, @p514, @p515, @p516, @p517, @p518, @p519, @p520, 14),
+(@p521, @p522, @p523, @p524, @p525, @p526, @p527, @p528, @p529, @p530, @p531, @p532, @p533, @p534, @p535, @p536, @p537, @p538, @p539, @p540, 15),
+(@p541, @p542, @p543, @p544, @p545, @p546, @p547, @p548, @p549, @p550, @p551, @p552, @p553, @p554, @p555, @p556, @p557, @p558, @p559, @p560, 16),
+(@p561, @p562, @p563, @p564, @p565, @p566, @p567, @p568, @p569, @p570, @p571, @p572, @p573, @p574, @p575, @p576, @p577, @p578, @p579, @p580, 17),
+(@p581, @p582, @p583, @p584, @p585, @p586, @p587, @p588, @p589, @p590, @p591, @p592, @p593, @p594, @p595, @p596, @p597, @p598, @p599, @p600, 18),
+(@p601, @p602, @p603, @p604, @p605, @p606, @p607, @p608, @p609, @p610, @p611, @p612, @p613, @p614, @p615, @p616, @p617, @p618, @p619, @p620, 19)) AS i ([CategoryId], [Content], [DateCreated], [DateModified], [Description], [HomeFlag], [HotFlag], [Image], [Name], [OriginalPrice], [Price], [PromotionPrice], [SeoAlias], [SeoDescription], [SeoKeywords], [SeoPageTitle], [Status], [Tags], [Unit], [ViewCount], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([CategoryId], [Content], [DateCreated], [DateModified], [Description], [HomeFlag], [HotFlag], [Image], [Name], [OriginalPrice], [Price], [PromotionPrice], [SeoAlias], [SeoDescription], [SeoKeywords], [SeoPageTitle], [Status], [Tags], [Unit], [ViewCount])
+VALUES (i.[CategoryId], i.[Content], i.[DateCreated], i.[DateModified], i.[Description], i.[HomeFlag], i.[HotFlag], i.[Image], i.[Name], i.[OriginalPrice], i.[Price], i.[PromotionPrice], i.[SeoAlias], i.[SeoDescription], i.[SeoKeywords], i.[SeoPageTitle], i.[Status], i.[Tags], i.[Unit], i.[ViewCount])
+OUTPUT INSERTED.[Id], i._Position
+INTO @inserted3;
+
+SELECT [t].[Id] FROM [Products] t
+INNER JOIN @inserted3 i ON ([t].[Id] = [i].[Id])
+ORDER BY [i].[_Position];" (0723d8ff)
+2022-07-24T09:13:50.7922151+00:00  [INF] Creating key {f5dd74c5-4ec5-49fe-91da-e14bc04aca35} with creation date 2022-07-24 09:13:50Z, activation date 2022-07-24 09:13:50Z, and expiration date 2022-10-22 09:13:50Z. (77afce94)
+2022-07-24T09:13:50.8028263+00:00  [WRN] No XML encryptor configured. Key {f5dd74c5-4ec5-49fe-91da-e14bc04aca35} may be persisted to storage in unencrypted form. (9ca7e61e)
+2022-07-24T09:13:50.8078084+00:00  [INF] Writing data to file '"/root/.aspnet/DataProtection-Keys/key-f5dd74c5-4ec5-49fe-91da-e14bc04aca35.xml"'. (da22a8b1)
+2022-07-24T09:13:51.7351160+00:00 0HMJDAJ9JQ0G2:00000001 [INF] Request starting HTTP/2 GET https://localhost:32772/ - - (ca22a1cb)
+2022-07-24T09:13:52.1394332+00:00 0HMJDAJ9JQ0G2:00000001 [INF] Request finished HTTP/2 GET https://localhost:32772/ - - - 404 0 - 408.2818ms (791a596a)
+2022-07-24T09:15:00.3838390+00:00 0HMJDAJ9JQ0G2:00000003 [INF] Request starting HTTP/2 GET https://localhost:32772/swagger/v1/swagger.json - - (ca22a1cb)
+2022-07-24T09:15:00.5061818+00:00 0HMJDAJ9JQ0G2:00000003 [INF] Request finished HTTP/2 GET https://localhost:32772/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 122.3546ms (791a596a)
+2022-07-24T09:15:00.5985844+00:00 0HMJDAJ9JQ0G2:00000005 [INF] Request starting HTTP/2 GET https://localhost:32772/favicon.ico - - (ca22a1cb)
+2022-07-24T09:15:00.6235087+00:00 0HMJDAJ9JQ0G2:00000005 [INF] Request finished HTTP/2 GET https://localhost:32772/favicon.ico - - - 404 0 - 24.9373ms (791a596a)
+2022-07-24T09:18:39.0804531+00:00 0HMJDAJ9JQ0G2:00000007 [INF] Request starting HTTP/2 GET https://localhost:32772/swagger-ui - - (ca22a1cb)
+2022-07-24T09:18:39.0887109+00:00 0HMJDAJ9JQ0G2:00000007 [INF] Request finished HTTP/2 GET https://localhost:32772/swagger-ui - - - 404 0 - 8.2229ms (791a596a)
+2022-07-24T09:18:46.6011901+00:00 0HMJDAJ9JQ0G2:00000009 [INF] Request starting HTTP/2 GET https://localhost:32772/swagger/index.html - - (ca22a1cb)
+2022-07-24T09:18:46.6021194+00:00 0HMJDAJ9JQ0G2:00000009 [INF] Request finished HTTP/2 GET https://localhost:32772/swagger/index.html - - - 404 0 - 0.9215ms (791a596a)
+2022-07-24T09:18:55.7665150+00:00 0HMJDAJ9JQ0G2:0000000B [INF] Request starting HTTP/2 GET https://localhost:32772/swagger/v1/swagger.html - - (ca22a1cb)
+2022-07-24T09:18:55.7691126+00:00 0HMJDAJ9JQ0G2:0000000B [INF] Request finished HTTP/2 GET https://localhost:32772/swagger/v1/swagger.html - - - 200 - application/json;charset=utf-8 2.5901ms (791a596a)
+2022-07-24T09:19:09.2953650+00:00 0HMJDAJ9JQ0G2:0000000D [INF] Request starting HTTP/2 GET https://localhost:32772/swagger-ui - - (ca22a1cb)
+2022-07-24T09:19:09.2990272+00:00 0HMJDAJ9JQ0G2:0000000D [INF] Request finished HTTP/2 GET https://localhost:32772/swagger-ui - - - 404 0 - 3.6498ms (791a596a)
+2022-07-24T09:20:07.9067369+00:00 0HMJDAJ9JQ0G2:0000000F [INF] Request starting HTTP/2 GET https://localhost:32772/swagger - - (ca22a1cb)
+2022-07-24T09:20:07.9073149+00:00 0HMJDAJ9JQ0G2:0000000F [INF] Request finished HTTP/2 GET https://localhost:32772/swagger - - - 404 0 - 0.6038ms (791a596a)
+2022-07-24T09:21:23.3226326+00:00 0HMJDAJ9JQ0G2:00000011 [INF] Request starting HTTP/2 GET https://localhost:32772/swagger/index.html - - (ca22a1cb)
+2022-07-24T09:21:23.3230815+00:00 0HMJDAJ9JQ0G2:00000011 [INF] Request finished HTTP/2 GET https://localhost:32772/swagger/index.html - - - 404 0 - 0.4587ms (791a596a)
+2022-07-24T09:21:41.7020393+00:00  [WRN] Storing keys in a directory '"/root/.aspnet/DataProtection-Keys"' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed. (96807dbc)
+2022-07-24T09:21:41.7058984+00:00  [INF] User profile is available. Using '"/root/.aspnet/DataProtection-Keys"' as key repository; keys will not be encrypted at rest. (a162847e)
+2022-07-24T09:21:42.2652406+00:00  [WRN] No type was specified for the decimal property '"Balance"' on entity type '"AppUser"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType()', specify precision and scale using 'HasPrecision()' or configure a value converter using 'HasConversion()'. (5c92c1c4)
+2022-07-24T09:21:42.2656030+00:00  [WRN] No type was specified for the decimal property '"Price"' on entity type '"BillDetail"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType()', specify precision and scale using 'HasPrecision()' or configure a value converter using 'HasConversion()'. (5c92c1c4)
+2022-07-24T09:21:42.2659286+00:00  [WRN] No type was specified for the decimal property '"OriginalPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType()', specify precision and scale using 'HasPrecision()' or configure a value converter using 'HasConversion()'. (5c92c1c4)
+2022-07-24T09:21:42.2662867+00:00  [WRN] No type was specified for the decimal property '"Price"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType()', specify precision and scale using 'HasPrecision()' or configure a value converter using 'HasConversion()'. (5c92c1c4)
+2022-07-24T09:21:42.2666107+00:00  [WRN] No type was specified for the decimal property '"PromotionPrice"' on entity type '"Product"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType()', specify precision and scale using 'HasPrecision()' or configure a value converter using 'HasConversion()'. (5c92c1c4)
+2022-07-24T09:21:42.2669767+00:00  [WRN] No type was specified for the decimal property '"Value5"' on entity type '"SystemConfig"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType()', specify precision and scale using 'HasPrecision()' or configure a value converter using 'HasConversion()'. (5c92c1c4)
+2022-07-24T09:21:42.2673910+00:00  [WRN] No type was specified for the decimal property '"Price"' on entity type '"WholePrice"'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType()', specify precision and scale using 'HasPrecision()' or configure a value converter using 'HasConversion()'. (5c92c1c4)
+2022-07-24T09:21:42.3692260+00:00  [INF] Entity Framework Core "5.0.6" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShopOnlineApp.Data.EF " (9958f5bb)
+2022-07-24T09:21:42.9001396+00:00  [INF] Executed DbCommand ("28"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2022-07-24T09:21:42.9367989+00:00  [INF] Executed DbCommand ("22"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2022-07-24T09:21:42.9494622+00:00  [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT 1" (0723d8ff)
+2022-07-24T09:21:42.9522832+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT OBJECT_ID(N'[__EFMigrationsHistory]');" (0723d8ff)
+2022-07-24T09:21:42.9639281+00:00  [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];" (0723d8ff)
+2022-07-24T09:21:42.9854094+00:00  [INF] No migrations were applied. The database is already up to date. (503cba9d)
+2022-07-24T09:21:43.1927862+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppRoles] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:21:43.2139324+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AppUsers] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:21:43.2220415+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ContactDetails] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:21:43.2288735+00:00  [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:21:43.2656028+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Footers] AS [f]
+WHERE [f].[Id] = 'DefaultFooterId'" (0723d8ff)
+2022-07-24T09:21:43.2715518+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Colors] AS [c]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:21:43.2765789+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AdvertistmentPages] AS [a]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:21:43.2806284+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Slides] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:21:43.2851432+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Sizes] AS [s]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:21:43.2928285+00:00  [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [ProductCategories] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:21:43.2988474+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [s]
+        WHERE [s].[Id] = N'HomeTitle') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:21:43.3013920+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [s]
+        WHERE [s].[Id] = N'HomeMetaKeyword') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:21:43.3071102+00:00  [INF] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [SystemConfigs] AS [s]
+        WHERE [s].[Id] = N'HomeMetaDescription') THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END" (0723d8ff)
+2022-07-24T09:21:44.1892479+00:00 0HMJDANMEN621:00000001 [INF] Request starting HTTP/2 GET https://localhost:32772/ - - (ca22a1cb)
+2022-07-24T09:21:44.3533375+00:00 0HMJDANMEN621:00000001 [INF] Request finished HTTP/2 GET https://localhost:32772/ - - - 404 0 - 165.7684ms (791a596a)
+2022-07-24T09:22:06.0661625+00:00 0HMJDANMEN621:00000003 [INF] Request starting HTTP/2 GET https://localhost:32772/swagger/index/html - - (ca22a1cb)
+2022-07-24T09:22:06.0933170+00:00 0HMJDANMEN621:00000003 [INF] Request finished HTTP/2 GET https://localhost:32772/swagger/index/html - - - 404 0 - 51.4296ms (791a596a)
+2022-07-24T09:23:13.4410214+00:00 0HMJDANMEN621:00000005 [INF] Request starting HTTP/2 GET https://localhost:32772/swagger/index.html - - (ca22a1cb)
+2022-07-24T09:23:13.4442301+00:00 0HMJDANMEN621:00000005 [INF] Request finished HTTP/2 GET https://localhost:32772/swagger/index.html - - - 404 0 - 3.1918ms (791a596a)
+2022-07-24T09:23:19.3425568+00:00 0HMJDANMEN621:00000007 [INF] Request starting HTTP/2 GET https://localhost:32772/swagger/Index.html - - (ca22a1cb)
+2022-07-24T09:23:19.3435710+00:00 0HMJDANMEN621:00000007 [INF] Request finished HTTP/2 GET https://localhost:32772/swagger/Index.html - - - 404 0 - 1.0129ms (791a596a)
+2022-07-24T09:23:47.4624499+00:00 0HMJDANMEN621:00000009 [INF] Request starting HTTP/2 GET https://localhost:32772/swagge/v1r/Index.html - - (ca22a1cb)
+2022-07-24T09:23:47.4630371+00:00 0HMJDANMEN621:00000009 [INF] Request finished HTTP/2 GET https://localhost:32772/swagge/v1r/Index.html - - - 404 0 - 0.5939ms (791a596a)
+2022-07-24T09:23:54.3173597+00:00 0HMJDANMEN621:0000000B [INF] Request starting HTTP/2 GET https://localhost:32772/swagger/v1/Index.html - - (ca22a1cb)
+2022-07-24T09:23:54.3178281+00:00 0HMJDANMEN621:0000000B [INF] Request finished HTTP/2 GET https://localhost:32772/swagger/v1/Index.html - - - 404 0 - 0.4907ms (791a596a)
+2022-07-24T09:26:12.4721233+00:00 0HMJDANMEN621:0000000D [INF] Request starting HTTP/2 GET https://localhost:32772/swagger/v1/Index.html - - (ca22a1cb)
+2022-07-24T09:26:12.4724314+00:00 0HMJDANMEN621:0000000D [INF] Request finished HTTP/2 GET https://localhost:32772/swagger/v1/Index.html - - - 404 0 - 0.3096ms (791a596a)
+2022-07-24T09:26:18.9122337+00:00 0HMJDANMEN621:0000000F [INF] Request starting HTTP/2 GET https://localhost:32772/swagger - - (ca22a1cb)
+2022-07-24T09:26:18.9127600+00:00 0HMJDANMEN621:0000000F [INF] Request finished HTTP/2 GET https://localhost:32772/swagger - - - 404 0 - 0.9521ms (791a596a)
+2022-07-24T09:26:26.2026591+00:00 0HMJDANMEN621:00000011 [INF] Request starting HTTP/2 GET https://localhost:32772/swagger/index.html - - (ca22a1cb)
+2022-07-24T09:26:26.2032966+00:00 0HMJDANMEN621:00000011 [INF] Request finished HTTP/2 GET https://localhost:32772/swagger/index.html - - - 404 0 - 0.6942ms (791a596a)
+2022-07-24T09:26:53.8904468+00:00 0HMJDANMEN621:00000013 [INF] Request starting HTTP/2 GET https://localhost:32772/swagger - - (ca22a1cb)
+2022-07-24T09:26:53.9122941+00:00 0HMJDANMEN621:00000013 [INF] Request finished HTTP/2 GET https://localhost:32772/swagger - - - 404 0 - 21.8528ms (791a596a)
+2022-07-24T09:26:59.1056243+00:00 0HMJDANMEN621:00000015 [INF] Request starting HTTP/2 GET https://localhost:32772/swagger/v1/swagger.json - - (ca22a1cb)
+2022-07-24T09:26:59.2027696+00:00 0HMJDANMEN621:00000015 [INF] Request finished HTTP/2 GET https://localhost:32772/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 97.1466ms (791a596a)
+2022-07-24T09:26:59.2446824+00:00 0HMJDANMEN621:00000017 [INF] Request starting HTTP/2 GET https://localhost:32772/favicon.ico - - (ca22a1cb)
+2022-07-24T09:26:59.2451703+00:00 0HMJDANMEN621:00000017 [INF] Request finished HTTP/2 GET https://localhost:32772/favicon.ico - - - 404 0 - 0.8864ms (791a596a)
+2022-07-24T09:27:16.7705940+00:00 0HMJDANMEN621:00000019 [INF] Request starting HTTP/2 GET https://localhost:32772/api/v1/Home/index - - (ca22a1cb)
+2022-07-24T09:27:16.7851304+00:00 0HMJDANMEN621:00000019 [INF] Authorization failed. "These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Customer)" (d3883ae7)
+2022-07-24T09:27:16.7913121+00:00 0HMJDANMEN621:00000019 [INF] AuthenticationScheme: "Bearer" was challenged. (d45f1f38)
+2022-07-24T09:27:16.7919196+00:00 0HMJDANMEN621:00000019 [INF] Request finished HTTP/2 GET https://localhost:32772/api/v1/Home/index - - - 401 0 - 21.4043ms (791a596a)

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ShopOnline.Application.Dapper.Interfaces;
+using ShopOnlineApp.Application.Interfaces;
 using ShopOnlineApp.Extensions;
 
 namespace ShopOnlineApp.Areas.Admin.Controllers
@@ -20,6 +20,8 @@ namespace ShopOnlineApp.Areas.Admin.Controllers
         }
         public async Task<IActionResult> GetRevenue(string fromDate, string toDate)
         {
+            fromDate = "02/10/2019";
+            toDate = "02/16/2019";
             if (!string.IsNullOrWhiteSpace(fromDate) && !string.IsNullOrWhiteSpace(toDate))
             {
                 return new OkObjectResult(await _reportService.GetReportAsync(fromDate, toDate));

@@ -18,13 +18,12 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Serialization;
 using PaulMiami.AspNetCore.Mvc.Recaptcha;
-using ShopOnline.Application.Dapper.Implements;
-using ShopOnline.Application.Dapper.Interfaces;
-using ShopOnlineApp.Application.Filter;
 using ShopOnlineApp.Application.Implementation;
 using ShopOnlineApp.Application.Interfaces;
 using ShopOnlineApp.Areas.Admin.Controllers;
 using ShopOnlineApp.Authorization;
+using ShopOnlineApp.Data.Dapper.Implements;
+using ShopOnlineApp.Data.Dapper.Interfaces;
 using ShopOnlineApp.Data.EF;
 using ShopOnlineApp.Data.EF.Repositories;
 using ShopOnlineApp.Data.Entities;
@@ -32,7 +31,6 @@ using ShopOnlineApp.Data.IRepositories;
 using ShopOnlineApp.Helper;
 using ShopOnlineApp.Infrastructure.Interfaces;
 using ShopOnlineApp.Initialization;
-using ShopOnlineApp.Models;
 using ShopOnlineApp.Services;
 using ShopOnlineApp.Utilities.Mvc.Filters;
 //using ShopOnlineApp.Utilities.Mvc.Filters;
@@ -51,28 +49,19 @@ namespace ShopOnlineApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var host = "mssqlserver";
+            var port = "1433";
+            var password = Configuration["DBPASSWORD"] ?? "Pa55w0rd2021";
 
             services.AddDbContext<AppDbContext>(options =>
-              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-                 o =>
-                 {
-                     o.EnableRetryOnFailure();
-                     o.MigrationsAssembly("ShopOnlineApp.Data.EF");
-                 }));
-            //var host = "18.188.243.154";
-            //var port = "1433";
-            //var password = Configuration["DBPASSWORD"] ?? "Pa55w0rd2021";
+               options.UseSqlServer($"server={host},{port};user id=sa;password={password};"
+                    + $"Database=Products",
+               o =>
+               {
+                   o.MigrationsAssembly("ShopOnlineApp.Data.EF");
+                   o.EnableRetryOnFailure();
+               }));
 
-            //services.AddDbContext<AppDbContext>(options =>
-            //   options.UseSqlServer($"server={host},{port};Integrated Security=False;user id=sa;password={password};"
-            //        + $"Database=Products",
-            //   o =>
-            //   {
-            //       o.MigrationsAssembly("ShopOnlineApp.Data.EF");
-            //       o.EnableRetryOnFailure();
-            //   }));
-            //Console.WriteLine($"connect string to server={host},{port};;user id=sa;password={password};"
-            //        + $"Database=Products");
 
             services.AddIdentity<AppUser, AppRole>()
                .AddEntityFrameworkStores<AppDbContext>()
@@ -161,7 +150,7 @@ namespace ShopOnlineApp
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
             });
-           
+
             services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
 
             services.Configure<RequestLocalizationOptions>(
@@ -215,7 +204,7 @@ namespace ShopOnlineApp
             services.AddTransient<IBlogCategoryRepository, BlogCategoryRepository>();
             services.AddTransient<IBlogCommentRepository, BlogCommentRepository>();
             services.AddTransient<IAnnouncementService, AnnouncementService>();
-           // services.AddTransient<IAppUserRoleRepository, AppUserRoleRepository>();
+            // services.AddTransient<IAppUserRoleRepository, AppUserRoleRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //service
             services.AddTransient<IFunctionService, FunctionService>();
@@ -234,6 +223,7 @@ namespace ShopOnlineApp
             services.AddTransient<IContactService, ContactService>();
             services.AddTransient<IFeedbackService, FeedbackService>();
             services.AddTransient<IPageService, PageService>();
+            services.AddTransient<IReportRepository, ReportRepository>();
             services.AddTransient<IReportService, ReportService>();
             services.AddTransient<IRatingService, RatingService>();
             services.AddTransient<IColorService, ColorService>();
@@ -255,7 +245,7 @@ namespace ShopOnlineApp
             //    options.Filters.Add<ExceptionHandler>();
             //});
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationHandler>();
-           // services.AddTransient<EnsureProductExistsFilter>();
+            // services.AddTransient<EnsureProductExistsFilter>();
 
             services.AddSignalR();
             services.AddLogging();
