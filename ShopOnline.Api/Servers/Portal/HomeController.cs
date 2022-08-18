@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace ShopOnline.Api.Servers.Portal
 {
+  
     public class HomeController : V1Controller
     {
         private readonly IProductService _productService;

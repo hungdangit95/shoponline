@@ -20,17 +20,31 @@ services:
     environment:
       - DBHOST=mssqlserver
     depends_on:
-      - mssqlserver     
+      - mssqlserver
+      - redis
     build:
       context: .
-      dockerfile: ShopOnlineApp/Dockerfile
+      dockerfile: ShopOnline.Api/Dockerfile
     links:
       - mssqlserver
-     
+  redis: 
+    image: 'redis:latest'
+    container_name: redis_db
+    restart: always
+    environment:
+       - Redis__Port=6379
+       - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+       - "6379:6379"
+    expose:
+       - "6379"
+    networks:
+       - backend
+
 volumes:
    mssql_data:
    mssql_log:
    mssql_backup:
-
+   
 networks:
   backend:
