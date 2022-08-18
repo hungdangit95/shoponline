@@ -9,7 +9,7 @@ using ShopOnlineApp.Infrastructure.SharedKernel;
 
 namespace ShopOnlineApp.Data.EF
 {
-    public class EFRepository<T, K> : IRepository<T, K>, IDisposable where T : DomainEntity<K>
+    public abstract class EFRepository<T, K> : IRepository<T, K>, IDisposable where T : DomainEntity<K>
     {
         protected AppDbContext _context;
 
@@ -17,7 +17,7 @@ namespace ShopOnlineApp.Data.EF
         {
             _context = context ?? throw new ArgumentException(null, nameof(context)); ;
         }
-        public async Task Add(T entity)
+        public virtual async Task Add(T entity)
         {
             await _context.AddAsync(entity);
         }
