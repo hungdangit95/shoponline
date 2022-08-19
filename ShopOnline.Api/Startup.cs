@@ -265,6 +265,12 @@ namespace ShopOnline.Api
             });
 
             services.AddMediatR(typeof(AssemblyReference).Assembly);
+
+            services.AddStackExchangeRedisCache(options => {
+                options.Configuration = "127.0.0.1:6379";
+                options.InstanceName = "ShopOnline.Api";
+            });
+
             //services.AddControllers(config =>
             //{
             //    config.RespectBrowserAcceptHeader = true;
@@ -283,7 +289,7 @@ namespace ShopOnline.Api
 
             app.UseSwaggerUI(c => { 
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-                c.RoutePrefix = "docs";
+                c.RoutePrefix = "";
             });
             if (env.IsDevelopment())
             {
