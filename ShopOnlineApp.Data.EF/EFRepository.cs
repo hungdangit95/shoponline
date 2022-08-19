@@ -9,7 +9,7 @@ using ShopOnlineApp.Infrastructure.SharedKernel;
 
 namespace ShopOnlineApp.Data.EF
 {
-    public abstract class EFRepository<T, K> : IRepository<T, K>, IDisposable where T : DomainEntity<K>
+    public class EFRepository<T, K> : IRepository<T, K>, IDisposable where T : DomainEntity<K>
     {
         protected AppDbContext _context;
 

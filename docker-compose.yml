@@ -27,6 +27,7 @@ services:
       dockerfile: ShopOnline.Api/Dockerfile
     links:
       - mssqlserver
+      - redis
   redis: 
     image: 'redis:latest'
     container_name: redis_db

@@ -267,8 +267,7 @@ namespace ShopOnline.Api
             services.AddMediatR(typeof(AssemblyReference).Assembly);
 
             services.AddStackExchangeRedisCache(options => {
-                options.Configuration = "127.0.0.1:6379";
-                options.InstanceName = "ShopOnline.Api";
+                options.Configuration = "redis:6379,abortConnect=False";
             });
 
             //services.AddControllers(config =>
