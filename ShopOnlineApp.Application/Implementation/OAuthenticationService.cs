@@ -21,7 +21,7 @@ namespace ShopOnlineApp.Application.Implementation
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<AppRole> _roleManager;
         private readonly IConfiguration _configuration;
-
+        private readonly IConfigurationSection jwtSettings;
         private AppUser _user;
         public OAuthenticationService(ILogger<AuthenticationService> logger, UserManager<AppUser> userManager,
             RoleManager<AppRole> roleManager, IConfiguration configuration)
@@ -30,6 +30,7 @@ namespace ShopOnlineApp.Application.Implementation
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
+            jwtSettings = _configuration.GetSection("JwtSettings");
         }
 
 
@@ -73,7 +74,7 @@ namespace ShopOnlineApp.Application.Implementation
 
         private SigningCredentials GetSigningCredentials()
         {
-            var key = Base64UrlEncoder.DecodeBytes("sddddddddwewewewwwwwwwwwwwwwwwwrerevvasasaawqw");
+            var key = Base64UrlEncoder.DecodeBytes(jwtSettings["key"]);
             var secret = new SymmetricSecurityKey(key);
             return new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
         }
@@ -82,7 +83,8 @@ namespace ShopOnlineApp.Application.Implementation
         {
             var claims = new List<Claim>
             {
-            new Claim(ClaimTypes.Name, _user.UserName)
+                new Claim(ClaimTypes.Name, _user.UserName),
+                new Claim("Id", _user.Id.ToString())
             };
             var roles = await _userManager.GetRolesAsync(_user);
             foreach (var role in roles)
@@ -94,7 +96,7 @@ namespace ShopOnlineApp.Application.Implementation
 
         private JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials, List<Claim> claims)
         {
-            var jwtSettings = _configuration.GetSection("JwtSettings");
+
             var tokenOptions = new JwtSecurityToken
             (
             issuer: jwtSettings["validIssuer"],

@@ -20,6 +20,7 @@ using ShopOnline.Api.ActionFilter;
 using ShopOnline.Api.Authorization;
 using ShopOnline.Api.Helper;
 using ShopOnline.Api.Initialization;
+using ShopOnline.Api.MiddleWare;
 using ShopOnlineApp.Application.Implementation;
 using ShopOnlineApp.Application.Interfaces;
 using ShopOnlineApp.Data.EF;
@@ -115,7 +116,7 @@ namespace ShopOnline.Api
                      ValidateIssuerSigningKey = true,
                      ValidIssuer = jwtSettings["validIssuer"],
                      ValidAudience = jwtSettings["validAudience"],
-                     IssuerSigningKey = new SymmetricSecurityKey(Base64UrlEncoder.DecodeBytes("sddddddddwewewewwwwwwwwwwwwwwwwrerevvasasaawqw"))
+                     IssuerSigningKey = new SymmetricSecurityKey(Base64UrlEncoder.DecodeBytes(jwtSettings["key"]))
                  };
              });
             services.AddAutoMapper(typeof(Startup));
@@ -195,7 +196,6 @@ namespace ShopOnline.Api
             //service
             services.AddTransient<IFunctionService, FunctionService>();
             services.AddTransient<IProductService, ProductService>();
-            services.AddTransient<IUserService, UserService>();
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, ShopOnlineClaimsPrincipalFactory>();
             services.AddTransient<IRoleService, RoleService>();
@@ -259,17 +259,18 @@ namespace ShopOnline.Api
                         },
                         Name = "Bearer",
                         },
-                        new List<string>()
-                        }
+                        new string[]{}
+                    }
                 });
             });
 
             services.AddMediatR(typeof(AssemblyReference).Assembly);
 
-            services.AddStackExchangeRedisCache(options => {
+            services.AddStackExchangeRedisCache(options =>
+            {
                 options.Configuration = "redis:6379,abortConnect=False";
             });
-
+            services.AddScoped<IUserService, UserService>();
             //services.AddControllers(config =>
             //{
             //    config.RespectBrowserAcceptHeader = true;
@@ -286,7 +287,8 @@ namespace ShopOnline.Api
             //logger.AddFile("Logs/shoponline-{Date}.txt");
             app.UseSwagger();
 
-            app.UseSwaggerUI(c => { 
+            app.UseSwaggerUI(c =>
+            {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
                 c.RoutePrefix = "";
             });
@@ -320,6 +322,8 @@ namespace ShopOnline.Api
             app.UseAuthorization();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<JWTMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

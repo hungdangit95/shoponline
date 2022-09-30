@@ -27,5 +27,6 @@ namespace ShopOnlineApp.Application.Interfaces
         string GetUserId();
 
         void SaveChanges();
+
     }
 }
