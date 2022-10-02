@@ -24,7 +24,7 @@ services:
       - redis
     build:
       context: .
-      dockerfile: ShopOnline.Api/Dockerfile
+      dockerfile: ShopOnlineApp/Dockerfile
     links:
       - mssqlserver
       - redis

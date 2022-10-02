@@ -61,6 +61,8 @@ namespace ShopOnlineApp.Initialization
                 }, "123654$");
                 var user = await _userManager.FindByNameAsync("admin");
                 await _userManager.AddToRoleAsync(user, "Admin");
+                await _userManager.AddClaimAsync(user, new System.Security.Claims.Claim("IsActive", "True"));
+               // await _userManager.AddClaimAsync(user, new System.Security.Claims.Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress", options.Value.AdminEmail));
             }
             if (!_context.Contacts.Any())
             {

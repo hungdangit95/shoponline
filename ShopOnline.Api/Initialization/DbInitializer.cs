@@ -67,9 +67,9 @@ namespace ShopOnline.Api.Initialization
                 _context.Contacts.Add(new Contact()
                 {
                     Id = CommonConstants.DefaultContactId,
-                    Address = "No 04 Lane 250/39 Kim giang Hoàng Mai-Đại Kim-Hà Nội",
+                    Address = "Dan Phuong, Ha Noi",
                     Email = "danghonghung31121995@gmail.com",
-                    Name = "Shop Online",
+                    Name = "ShopOnline",
                     Phone = "0983491814",
                     Status = Status.Active,
                     Website = "http://pandashop.com",
